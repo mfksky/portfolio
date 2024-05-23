@@ -1,22 +1,31 @@
 ---
 ---
 <span class="bg-line"></span>
-<span class="bg-line"></span>
-<span class="bg-line"></span>
-<style>
+<span class="bg-line line-2"></span>
+<span class="bg-line line-3"></span>
+<style lang="scss">
     .bg-line {
         position: absolute;
         top: 0;
-        left: 168px;
+        left: var(--desktopStart);
         width: 1px;
         height: 100%;
         background-color: var(--whiteColor);
         opacity: .067;
-        &:nth-child(2) {
-            left: calc((100% - 168px) / 3 + 168px);
+        &.line-2 {
+            left: calc((100% - var(--desktopStart)) / 3 + var(--desktopStart));
         }
-        &:nth-child(3) {
-            left: calc(((100% - 168px) / 3 * 2) + 168px);
+        &.line-3 {
+            left: calc(((100% - var(--desktopStart)) / 3 * 2) + var(--desktopStart));
+        }
+        @media (max-width: 768px){
+            left: var(--tabletStart);
+            &.line-2 {
+            left: calc((100% - var(--tabletStart)) / 3 + var(--tabletStart));
+        }
+            &.line-3 {
+                left: calc(((100% - var(--tabletStart)) / 3 * 2) + var(--tabletStart));
+            }
         }
     }
 </style>

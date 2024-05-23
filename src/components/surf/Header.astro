@@ -1,0 +1,195 @@
+---
+const menuItems = [
+    { href: "#surf", icon: "surf", label: "Surf", iconWidth: 53.59, iconHeight: 45.42 },
+    { href: "#travel", icon: "travel", label: "Travel", iconWidth: 50, iconHeight: 32 },
+    { href: "#sleep", icon: "sleep", label: "Sleep", iconWidth: 39, iconHeight: 40 },
+    { href: "#shop", icon: "shop", label: "Shop", iconWidth: 16, iconHeight: 44 }
+];
+---
+<header class="header">
+    <div class="header__logo">Go<span></span>Surf</div>
+    <div class="header__menu">
+        <nav class="header__nav">
+            {menuItems.map(item => (
+                <a href={item.href}>
+                    <img
+                        src={`/surf/icons/${item.icon}.svg`}
+                        width={item.iconWidth}
+                        height={item.iconHeight}
+                        alt={item.label}
+                        title={item.label}
+                    />
+                    <div>{item.label}</div>
+                </a>
+            ))}
+        </nav>
+        <buutton class="header__search">
+            <svg>
+                <use xlink:href="/surf/icons/icons.svg#search"></use>
+            </svg>
+        </buutton>
+        <div class="header__date">
+            <span class="header__day">23</span>
+            <div>
+                <span class="header__month">05</span> | <span class="header__year">2024</span>
+            </div>
+        </div>
+        <button class="header__geo">
+            <svg>
+                <use xlink:href="/surf/icons/icons.svg#geo"></use>
+            </svg>
+            <span>California</span>
+        </button>
+    </div>
+</header>
+<style lang="scss">
+    .header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        width: 168px;
+        height: 1024px;
+        border-right: 1px solid rgba(255, 255, 255, 0.2515);
+        z-index: 1000;
+        transition: left .3s ease;
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 168px;
+            height: 181px;
+            background-color: var(--accentColor);
+        }
+        @media (max-width: 768px){
+                left: -70vw;
+                width: 70vw;
+                height: 100vh;
+                backdrop-filter: blur(40.7742px);
+                z-index: 1000;
+                overflow-y: auto;
+                &._active {
+                    left: 0;
+                }
+                &::before {
+                    display: none;
+                }
+            }
+        &__logo {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 23px;
+            font-size: 60px;
+            line-height: 86px;
+            font-weight: 800;
+            writing-mode: vertical-rl;
+            text-wrap: nowrap;
+            text-transform: uppercase;
+            transform: rotate(180deg);
+            cursor: default;
+            span {
+                display: block;
+                width: 1px;
+                height: 20px;
+                background-color: var(--whiteColor);
+            }
+            @media (max-width: 768px){
+                display: none;
+            }
+        }
+        &__menu {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            margin-top: 118px;
+            @media (max-width: 768px){
+                margin-top: 40px;
+            }
+        }
+        &__nav {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            a {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 7px;
+                color: inherit;
+                font-size: 12px;
+                line-height: 14px;
+                letter-spacing: 3px;
+                text-transform: uppercase;
+                transition: all .3s ease;
+                &:hover {
+                    color: var(--accentColor);
+                    transform: scale(1.1);
+                }
+            }
+        }
+        &__search {
+            cursor: pointer;
+            transition: transform .3s ease;
+            svg {
+                width: 24px;
+                height: 24px;
+                fill: var(--whiteColor);
+                transition: all .3s ease;
+            }
+            &:hover {
+                transform: scale(1.1);
+                svg {
+                    fill: var(--accentColor);
+                }
+            }
+        }
+        &__date {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            div {
+                font-size: 16px;
+                line-height: 19px;
+                font-weight: 300;
+                letter-spacing: 1.4px;
+            }
+        }
+        &__day {
+            font-size: 72px;
+            line-height: 64px;
+            font-weight: 800;
+        }
+        &__geo {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 12px;
+            line-height: 14px;
+            font-weight: 300;
+            letter-spacing: 1.05px;
+            transition: all .3s ease;
+            cursor: pointer;
+            svg {
+                width: 11px;
+                height: 14px;
+                fill: var(--whiteColor);
+                transition: all .3s ease;
+            }
+            &:hover {
+                color: var(--accentColor);
+                transform: scale(1.1);
+                svg {
+                    fill: var(--accentColor);
+                }
+            }
+        }
+    }
+</style>

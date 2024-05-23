@@ -1,0 +1,59 @@
+---
+---
+<div class="burger">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const burger = document.querySelector('.burger');
+        const header = document.querySelector('.header');
+
+    burger.addEventListener('click', () => {
+        burger.classList.toggle('_active');
+        header.classList.toggle('_active');
+    });
+});
+</script>
+<style lang="scss">
+    .burger {
+        position: absolute;
+        top: 40px;
+        left: 40px;
+        width: 30px;
+        height: 23px;
+        transition: all .3s ease;
+        z-index: 1001;
+        span {
+            position: absolute;
+            top: calc(50% - 1px);
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background-color: var(--whiteColor);
+            transition: transform .3s ease;
+            &:first-child {
+                top: 0;
+            }
+            &:last-child {
+                top: auto;
+                bottom: 0;
+            }
+        }
+        &._active {
+            left: auto;
+            left: calc(70vw - 70px);
+            span {
+                transform: rotate(45deg);
+                top: calc(50% - 1px);
+                &:first-child {
+                    transform: rotate(-45deg);
+                }
+            }
+        }
+        @media (min-width: 768px){
+            display: none;
+        }
+    }
+</style>

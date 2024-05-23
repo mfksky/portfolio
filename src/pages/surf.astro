@@ -1,4 +1,6 @@
 ---
+import Burger from '../components/surf/Burger.astro';
+import Header from '../components/surf/Header.astro';
 import BgLines from '../components/surf/BgLines.astro';
 import '../styles/global.css';
 
@@ -14,8 +16,9 @@ const pageTitle = "Go Surf лендинг";
 	</head>
 	<body>
         <div class="wrapper">
+            <Burger />
+            <Header />
             <main class="page">
-                <h1>TEST</h1>
             </main>
             <BgLines />
         </div>
@@ -26,6 +29,8 @@ const pageTitle = "Go Surf лендинг";
         --whiteColor: #fff;
         --bgColor: #171919;
         --accentColor: #4AF6CD;
+        --desktopStart: 168px;
+        --tabletStart: 40px;
 
         font-family: "Fira Sans", sans-serif;
         color: var(--whiteColor);
@@ -37,5 +42,11 @@ const pageTitle = "Go Surf лендинг";
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         background-color: var(--bgColor);
+    }
+    h1 {
+        font-size: 80px;
+        line-height: 86px;
+        font-weight: 800;
+        text-transform: uppercase;
     }
 </style>
