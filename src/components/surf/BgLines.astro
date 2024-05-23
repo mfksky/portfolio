@@ -1,0 +1,22 @@
+---
+---
+<span class="bg-line"></span>
+<span class="bg-line"></span>
+<span class="bg-line"></span>
+<style>
+    .bg-line {
+        position: absolute;
+        top: 0;
+        left: 168px;
+        width: 1px;
+        height: 100%;
+        background-color: var(--whiteColor);
+        opacity: .067;
+        &:nth-child(2) {
+            left: calc((100% - 168px) / 3 + 168px);
+        }
+        &:nth-child(3) {
+            left: calc(((100% - 168px) / 3 * 2) + 168px);
+        }
+    }
+</style>

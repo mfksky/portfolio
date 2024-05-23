@@ -1,0 +1,41 @@
+---
+import BgLines from '../components/surf/BgLines.astro';
+import '../styles/global.css';
+
+const pageTitle = "Go Surf лендинг";
+---
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;300;400;500;800&display=swap" rel="stylesheet">
+		<meta name="viewport" content="width=device-width" />
+		<title>{pageTitle}</title>
+	</head>
+	<body>
+        <div class="wrapper">
+            <main class="page">
+                <h1>TEST</h1>
+            </main>
+            <BgLines />
+        </div>
+	</body>
+</html>
+<style>
+    :root {
+        --whiteColor: #fff;
+        --bgColor: #171919;
+        --accentColor: #4AF6CD;
+
+        font-family: "Fira Sans", sans-serif;
+        color: var(--whiteColor);
+        font-size: 22px;
+        line-height: 32px;
+        font-weight: 400;
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-color: var(--bgColor);
+    }
+</style>
