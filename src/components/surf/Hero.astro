@@ -92,32 +92,15 @@ const sliderHeadings = ['West', 'North', 'South', 'East'];
 				},
 			},
 		});
-
-		const setHeight = () => {
-			const vh = window.innerHeight * 0.01;
-			const section = document.querySelector('.hero__swiper'); // исправлен селектор, добавлен точка перед классом
-			const content = document.querySelector('.hero__content'); // добавлен селектор для контента
-
-			if (section && content) { // добавлена проверка на наличие элементов
-				if (window.innerWidth <= 768) { // добавлена проверка ширины окна
-					section.style.height = `${vh * 100}px`; // установка высоты для swiper
-					content.style.height = `${vh * 100}px`; // установка высоты для контента
-				} else {
-					section.style.height = ''; // сброс высоты для swiper
-					content.style.height = ''; // сброс высоты для контента
-				}
-			}
-		}
-
-		window.addEventListener('resize', setHeight);
-    	setHeight();
-
 	});
 </script>
 <style lang="scss">
 	.hero {
 		&__swiper {
 			height: 1024px;
+			@media (max-width: 768px){
+				height: 100dvh;
+			}
 		}
 		&__content {
 			position: relative;
@@ -134,6 +117,8 @@ const sliderHeadings = ['West', 'North', 'South', 'East'];
 				padding-bottom: 90px;
 			}
 			@media (max-width: 768px){
+				height: 100vh;
+				height: 100dvh;
 				padding-right: 40px;
 			}
 			@media (max-width: 480px){
