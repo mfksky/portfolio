@@ -1,4 +1,5 @@
 ---
+import Date from './Date.astro';
 const menuItems = [
     { href: "#surf", icon: "surf", label: "Surf", iconWidth: 53.59, iconHeight: 45.42 },
     { href: "#travel", icon: "travel", label: "Travel", iconWidth: 50, iconHeight: 32 },
@@ -28,12 +29,7 @@ const menuItems = [
                 <use xlink:href="/surf/icons/icons.svg#search"></use>
             </svg>
         </buutton>
-        <div class="header__date">
-            <span class="header__day">23</span>
-            <div>
-                <span class="header__month">05</span> | <span class="header__year">2024</span>
-            </div>
-        </div>
+        <Date />
         <button class="header__geo">
             <svg>
                 <use xlink:href="/surf/icons/icons.svg#geo"></use>
@@ -150,23 +146,6 @@ const menuItems = [
                     fill: var(--accentColor);
                 }
             }
-        }
-        &__date {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            div {
-                font-size: 16px;
-                line-height: 19px;
-                font-weight: 300;
-                letter-spacing: 1.4px;
-            }
-        }
-        &__day {
-            font-size: 72px;
-            line-height: 64px;
-            font-weight: 800;
         }
         &__geo {
             display: flex;

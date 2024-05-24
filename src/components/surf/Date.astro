@@ -1,0 +1,47 @@
+---
+---
+<div class="date">
+    <span class="date__day"></span>
+    <div>
+        <span class="date__month"></span> | <span class="date__year"></span>
+    </div>
+</div>
+<script>
+    const dateElements = {
+        day: document.querySelector('.date__day'),
+        month: document.querySelector('.date__month'),
+        year: document.querySelector('.date__year')
+    };
+  
+    function updateDate() {
+        const now = new Date();
+        const day = now.getDate();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const year = now.getFullYear();
+
+        dateElements.day.textContent = day.toString();
+        dateElements.month.textContent = month.toString();
+        dateElements.year.textContent = year.toString();
+    }
+  
+    updateDate();
+</script>
+<style lang="scss">
+    .date {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        &__day {
+            font-size: 72px;
+            line-height: 64px;
+            font-weight: 800;
+        }
+        div {
+            font-size: 16px;
+            line-height: 19px;
+            font-weight: 300;
+            letter-spacing: 1.4px;
+        }
+    }
+</style>
