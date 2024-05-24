@@ -1,0 +1,318 @@
+---
+import '../../../node_modules/swiper/swiper.min.css';
+import '../../../node_modules/swiper/modules/effect-fade.css';
+import '../../styles/surf/swiper.scss';
+
+const sliderHeadings = ['West', 'North', 'South', 'East'];
+---
+<div class="hero">
+	<div class="hero__swiper swiper">
+		<div class="swiper-wrapper">
+			{sliderHeadings.map(heading => (
+				<div class="swiper-slide">
+					<div class="hero__content">
+						<div class="hero__text">
+							<div>Surf</div>
+							<h1>{heading} Shore</h1>
+							<div>Condition</div>
+							<h3>Radical</h3>
+						</div>
+						<img class="hero__logo lazyload" data-src="/surf/images/hero/go_surf.png" alt="Go Surf">
+						<noscript>
+							<img class="hero__logo" src="/surf/images/hero/go_surf.png" alt="Go Surf">
+						</noscript>
+						<img class="hero__map lazyload" data-src="/surf/images/hero/map.svg" alt="West Shore | Malibu, CA">
+						<noscript>
+							<img class="hero__map" src="/surf/images/hero/map.svg" alt="West Shore | Malibu, CA">
+						</noscript>
+					</div>
+				</div>
+			))}
+		</div>
+		<div class="hero__nav-buttons">
+			<button class="hero__nav-btn-next">
+				<svg>
+					<use xlink:href="/surf/icons/icons.svg#arrow"></use>
+				</svg>
+			</button>
+			<button class="hero__nav-btn-prev">
+				<svg>
+					<use xlink:href="/surf/icons/icons.svg#arrow"></use>
+				</svg>
+			</button>
+		</div>
+		<div class="hero__pagination">
+			<div class="hero__pagination-bullet">
+				<span class="hero__pagination-line"></span>
+				<div class="hero__pagination-text">
+					<span></span>
+					<span></span>
+				</div>
+			</div>
+		</div>
+		<button class="hero__nav-btn-next _single">
+			<svg>
+				<use xlink:href="/surf/icons/icons.svg#arrow"></use>
+			</svg>
+		</button>
+		<a class="hero__scroll" href="#surf">
+			<svg>
+				<use xlink:href="/surf/icons/icons.svg#scroll"></use>
+			</svg>
+		</a>
+	</div>
+</div>
+<script>
+	import Swiper from 'swiper';
+	import { EffectFade, Autoplay, Navigation, Pagination } from 'swiper/modules';
+  
+	window.addEventListener('load', () => {
+		const swiper = new Swiper('.swiper', {
+			modules: [EffectFade, Autoplay, Navigation, Pagination],
+			slidesPerView: 1,
+			loop: true,
+			effect: 'fade',
+			fadeEffect: {
+				crossFade: true
+			},
+			autoplay: {
+				delay: 8000,
+				disableOnInteraction: false
+			},
+			speed: 700,
+			navigation: {
+				nextEl: '.hero__nav-btn-next',
+				prevEl: '.hero__nav-btn-prev',
+			},
+			pagination: {
+				el: '.hero__pagination',
+				clickable: true,
+				renderBullet: function (index, className) {
+					return '<span class="hero__pagination-bullet ' + className + '">' + ('0' + (index + 1)) + '</span>';
+				},
+			},
+		});
+	});
+</script>
+<style lang="scss">
+	.hero {
+		&__swiper {
+			height: 1024px;
+			@media (max-width: 768px){
+				height: 100vh;
+			}
+		}
+		&__content {
+			position: relative;
+			display: flex;
+			align-items: flex-end;
+			justify-content: flex-end;
+			width: 100%;
+			height: 1024px;
+			padding: 0 80px 166px 0;
+			background-image: url('/surf/images/hero/hero1_bg_small.jpg');
+			background-position: 50% 50%;
+			background-size: cover;
+			@media (max-width: 1300px){
+				padding-bottom: 90px;
+			}
+			@media (max-width: 768px){
+				height: 100vh;
+				padding-right: 40px;
+			}
+			@media (max-width: 480px){
+				padding-right: 30px;
+				padding-left: 30px;
+			}
+		}
+		&__text {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-end;
+			text-align: right;
+			div {
+				position: relative;
+				margin-bottom: 16px;
+				padding-left: 104px;
+				font-size: 22px;
+				line-height: 32px;
+				letter-spacing: 7.33px;
+				text-transform: uppercase;
+				opacity: 50.12%;
+				&::before {
+					content: '';
+					position: absolute;
+					top: calc(50% - .5px);
+					left: 0;
+					width: 80px;
+					height: 1px;
+					background-color: var(--whiteColor);
+				}
+			}
+			h1 {
+				margin-bottom: 44px;
+				font-size: 80px;
+				line-height: 86px;
+				font-weight: 800;
+				text-transform: uppercase;
+			}
+			h3 {
+				font-size: 40px;
+				line-height: 40px;
+				font-weight: 800;
+				text-transform: uppercase;
+			}
+			@media (max-width: 768px){
+				div {
+					font-size: 16px;
+					line-height: 22px;
+				}
+				h1 {
+					font-size: 56px;
+					line-height: 62px;
+				}
+				h3 {
+					font-size: 28px;
+					line-height: 34px;
+				}
+			}
+			@media (max-width: 480px){
+				div {
+					margin-bottom: 10px;
+					font-size: 13px;
+					line-height: 16px;
+				}
+				h1 {
+					font-size: 45px;
+					line-height: 50px;
+				}
+				h3 {
+					font-size: 22px;
+					line-height: 26px;
+				}
+			}
+		}
+		&__logo {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 453px;
+			height: 303px;
+			@media (max-width: 768px){
+				width: 318px;
+				height: 212px;
+			}
+			@media (max-width: 480px){
+				width: 254px;
+				height: 170px;
+			}
+		}
+		&__map {
+			position: absolute;
+			top: 0;
+			right: 0;
+			@media (max-width: 480px){
+				display: none;
+			}
+		}
+		&__nav-buttons {
+			position: absolute;
+			top: 40px;
+			right: 80px;
+			z-index: 10;
+			display: flex;
+			align-items: center;
+			gap: 20px;
+			button {
+				svg {
+					width: 24.15px;
+					height: 20.15px;
+					fill: var(--whiteColor);
+					transition: all .3s ease;
+				}
+				&:first-child {
+					svg {
+						transform: rotate(180deg);
+					}
+				}
+				&:hover {
+					svg {
+						fill: var(--accentColor);
+					}
+				}
+			}
+			@media (max-width: 768px){
+				top: 42px;
+				right: 40px;
+			}
+			@media (max-width: 480px){
+				top: 32.8px;
+				right: 30px;
+			}
+		}
+		&__pagination {
+			position: absolute;
+			bottom: 60px;
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			gap: 40px;
+			width: 100%;
+			padding-right: 80px;
+			@media (max-width: 1280px){
+				display: none;
+			}
+		}
+		&__nav-btn-next {
+			&._single {
+				position: absolute;
+				bottom: 116px;
+				right: 80px;
+				z-index: 10;
+				svg {
+					width: 24.15px;
+					height: 20.15px;
+					fill: var(--whiteColor);
+					transition: all .3s ease;
+				}
+				&:hover {
+					svg {
+						fill: var(--accentColor);
+					}
+				}
+				@media (max-width: 1300px){
+					bottom: 40px;
+					right: 40px;
+				}
+				@media (max-width: 480px){
+					right: 30px;
+				}
+			}
+		}
+		&__scroll {
+			position: absolute;
+			bottom: 40px;
+			left: 210px;
+			z-index: 10;
+			width: 20.25px;
+			height: 23.9px;
+			svg {
+				width: 20.25px;
+				height: 23.9px;
+				fill: var(--whiteColor);
+				transition: all .3s ease;
+			}
+			&:hover {
+				svg {
+					fill: var(--accentColor);
+				}
+			}
+			@media (max-width: 768px){
+				left: 40px;
+			}
+			@media (max-width: 480px){
+				left: 30px;
+			}
+		}
+	}
+</style>

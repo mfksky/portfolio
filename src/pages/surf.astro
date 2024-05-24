@@ -1,6 +1,7 @@
 ---
 import Burger from '../components/surf/Burger.astro';
 import Header from '../components/surf/Header.astro';
+import Hero from '../components/surf/Hero.astro';
 import BgLines from '../components/surf/BgLines.astro';
 import '../styles/global.css';
 
@@ -19,11 +20,15 @@ const pageTitle = "Go Surf лендинг";
             <Burger />
             <Header />
             <main class="page">
+                <Hero />
             </main>
             <BgLines />
         </div>
 	</body>
 </html>
+<script>
+    import 'lazysizes';
+</script>
 <style>
     :root {
         --whiteColor: #fff;
