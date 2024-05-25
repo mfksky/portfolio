@@ -5,7 +5,7 @@ import '../../styles/surf/swiper.scss';
 
 const sliderHeadings = ['West', 'North', 'South', 'East'];
 ---
-<div class="hero">
+<section class="hero">
 	<div class="hero__swiper swiper">
 		<div class="swiper-wrapper">
 			{sliderHeadings.map(heading => (
@@ -61,7 +61,7 @@ const sliderHeadings = ['West', 'North', 'South', 'East'];
 			</svg>
 		</a>
 	</div>
-</div>
+</section>
 <script>
 	import Swiper from 'swiper';
 	import { EffectFade, Autoplay, Navigation, Pagination } from 'swiper/modules';
