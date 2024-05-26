@@ -12,7 +12,7 @@ export function initializeMapSwiperSync() {
     });
 
     const mapDotBoxes = document.querySelectorAll('.map__dot-box');
-    const mapTexts = document.querySelectorAll('.map__text');
+    const mapTexts = document.querySelectorAll('.surf__text');
     const slides = document.querySelectorAll('.cards__slide');
 
     const initialActiveIndex = 0;

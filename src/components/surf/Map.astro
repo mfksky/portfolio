@@ -58,12 +58,6 @@ import { dots } from '../../js/surf/dots';
             <title>Current location</title>
         </svg>
     </div>
-    {dots.map(dot => (
-        <div class="map__text">
-            <div>Current Location</div>
-            <h3>{dot.location} <span></span> {dot.country} </h3>
-        </div>
-    ))}
     <img class="map__coordinates lazyload" data-src="/surf/icons/coordinates.svg" alt="geo">
     <noscript>
         <img class="map__coordinates" src="/surf/icons/coordinates.svg" alt="geo">
@@ -186,6 +180,11 @@ import { dots } from '../../js/surf/dots';
                 height: 162px;
                 padding: 20px;
             }
+            @media (max-width: 480px){
+                &._active {
+                    display: none;
+                }
+            }
         }
         &__info {
             display: flex;
@@ -291,88 +290,6 @@ import { dots } from '../../js/surf/dots';
             height: 18px;
             fill: var(--whiteColor);
             opacity: .3;
-        }
-        &__text {
-            position: absolute;
-            top: -55px;
-            right: 80px;
-            display: none;
-            flex-direction: column;
-            align-items: flex-end;
-            &._active {
-                display: flex;
-            }
-            div {
-                position: relative;
-				margin-bottom: 16px;
-				padding-left: 104px;
-				font-size: 22px;
-				line-height: 32px;
-				letter-spacing: 7.33px;
-				text-transform: uppercase;
-				opacity: 50.12%;
-				&::before {
-					content: '';
-					position: absolute;
-					top: calc(50% - .5px);
-					left: 0;
-					width: 80px;
-					height: 1px;
-					background-color: var(--whiteColor);
-				}
-            }
-            h3 {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-				font-size: 40px;
-				line-height: 40px;
-				font-weight: 800;
-				text-transform: uppercase;
-                gap: 14px;
-                span {
-                    display: inline-block;
-                    width: 1px;
-                    height: 36px;
-                    background-color: var(--whiteColor);
-                }
-			}
-            @media (max-width: 1300px){
-                right: 40px;
-            }
-            @media (max-width: 1000px){
-                top: -70px;
-            }
-            @media (max-width: 768px){
-                div {
-                    font-size: 16px;
-                    line-height: 22px;
-                }
-                h3 {
-                    font-size: 28px;
-                    line-height: 34px;
-                    span {
-                        height: 26px;
-                    }
-                }
-            }
-            @media (max-width: 480px){
-                top: -50px;
-                right: 30px;
-                div {
-                    margin-bottom: 10px;
-                    font-size: 13px;
-                    line-height: 16px;  
-                }
-                h3 {
-                    gap: 8px;
-                    font-size: 22px;
-                    line-height: 26px;
-                    span {
-                        height: 21px;
-                    }
-                }
-            }
         }
         &__coordinates {
             position: absolute;

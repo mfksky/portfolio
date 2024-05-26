@@ -1,77 +1,30 @@
 ---
 import Map from './Map.astro';
 import Cards from './Cards.astro';
+import { dots } from '../../js/surf/dots';
 ---
 <section class="surf" id="surf">
-    <div class="surf__top">
-        <h2>Surf</h2>
-        <Map />
-        <img class="surf__geo lazyload" data-src="/surf/icons/geo.svg" alt="geo">
-        <noscript>
-            <img class="surf__geo" src="/surf/icons/geo.svg" alt="geo">
-        </noscript>
-        <Cards />
-    </div>
+    <h2 class="main-heading">Surf</h2>
+    <Map />
+    <img class="surf__geo lazyload" data-src="/surf/icons/geo.svg" alt="geo">
+    <noscript>
+        <img class="surf__geo" src="/surf/icons/geo.svg" alt="geo">
+    </noscript>
+    {dots.map(dot => (
+        <div class="surf__text main-subtext">
+            <div>Current Location</div>
+            <h3>{dot.location} <span></span> {dot.country} </h3>
+        </div>
+    ))}
+    <Cards />
 </section>
 <style lang="scss">
     .surf {
         position: relative;
-        padding-top: 176px;
-        @media (max-width: 480px){
-            padding-top: 100px;
-        }
-        &__top {
-        }
-        h2 {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 120px;
-            padding-left: 245px;
-            font-size: 80px;
-            line-height: 80px; 
-            font-weight: 800;
-            text-transform: uppercase;
-            &::before {
-                content: '';
-                position: absolute;
-                top: -6px;
-                right: 0;
-                width: 80px;
-                height: 1px;
-                background-color: var(--accentColor);
-            }
-            &::after {
-                position: absolute;
-                top: 25px;
-                left: -49px;
-                content: 'Surf';
-                font-size: 200px;
-                line-height: 156px;
-                font-weight: 800;
-                opacity: .02;
-            }
-            @media (max-width: 768px){
-                padding-left: 150px;
-                font-size: 56px;
-                line-height: 62px;
-                &::after {
-                    font-size: 140px;
-                    line-height: 109px;
-                }
-            }
-            @media (max-width: 480px){
-                padding-left: 100px;
-                font-size: 45px;
-                line-height: 50px;
-                &::after {
-                    font-size: 110px;
-                    line-height: 87px;
-                }
-            }
-        }
+        margin-bottom: 285px;
         &__geo {
             position: absolute;
-            top: 219px;
+            top: 60px;
             right: 0;
             @media (max-width: 992px){
                 display: none;
