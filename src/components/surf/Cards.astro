@@ -26,14 +26,14 @@ import { dots } from '../../js/surf/dots';
             ))}
         </div>
     </div>
-    <div class="cards__nav-buttons">
-        <button class="cards__nav-prev">
+    <div class="cards__nav-buttons main-nav-buttons">
+        <button class="cards__nav-prev main-nav-buttons__button">
             <svg>
                 <use xlink:href="/surf/icons/icons.svg#arrow"></use>
                 <title>Prev</title>
             </svg>
         </button>
-        <button class="cards__nav-next">
+        <button class="cards__nav-next main-nav-buttons__button">
             <svg>
                 <use xlink:href="/surf/icons/icons.svg#arrow"></use>
                 <title>Next</title>
@@ -171,37 +171,7 @@ import { dots } from '../../js/surf/dots';
             cursor: default;
         }
         &__nav-buttons {
-            position: absolute;
             top: -50px;
-            right: 80px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            button {
-                svg {
-                    width: 25px;
-                    height: 21px;
-                    fill: var(--whiteColor);
-                    opacity: .25;
-                    transition: opacity .3s ease;
-                }
-                &:first-child {
-                    svg {
-                        transform: rotate(180deg);
-                    }
-                }
-                &:hover {
-                    svg {
-                        opacity: 1;
-                    }
-                }
-            }
-            @media (max-width: 1300px){
-                right: 40px;
-            }
-            @media (max-width: 480px){
-                right: 30px;
-            }
         }
     }
 </style>

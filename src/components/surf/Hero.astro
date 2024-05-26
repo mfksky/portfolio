@@ -25,13 +25,13 @@ const sliderHeadings = ['West', 'North', 'South', 'East'];
 				</div>
 			))}
 		</div>
-		<div class="hero__nav-buttons">
-			<button class="hero__nav-btn-prev">
+		<div class="hero__nav-buttons main-nav-buttons">
+			<button class="hero__nav-btn-prev main-nav-buttons__button">
 				<svg>
 					<use xlink:href="/surf/icons/icons.svg#arrow"></use>
 				</svg>
 			</button>
-			<button class="hero__nav-btn-next">
+			<button class="hero__nav-btn-next main-nav-buttons__button">
 				<svg>
 					<use xlink:href="/surf/icons/icons.svg#arrow"></use>
 				</svg>
@@ -46,7 +46,7 @@ const sliderHeadings = ['West', 'North', 'South', 'East'];
 				</div>
 			</div>
 		</div>
-		<button class="hero__nav-btn-next _single">
+		<button class="hero__nav-btn-next main-nav-buttons__button _single">
 			<svg>
 				<use xlink:href="/surf/icons/icons.svg#arrow"></use>
 			</svg>
@@ -216,24 +216,9 @@ const sliderHeadings = ['West', 'North', 'South', 'East'];
 			}
 		}
 		&__nav-buttons {
-			position: absolute;
-			top: 40px;
-			right: 80px;
-			z-index: 10;
-			display: flex;
-			align-items: center;
-			gap: 20px;
 			button {
 				svg {
-					width: 25px;
-					height: 21px;
-					fill: var(--whiteColor);
-					transition: all .3s ease;
-				}
-				&:first-child {
-					svg {
-						transform: rotate(180deg);
-					}
+					opacity: 1;
 				}
 				&:hover {
 					svg {
@@ -243,11 +228,9 @@ const sliderHeadings = ['West', 'North', 'South', 'East'];
 			}
 			@media (max-width: 768px){
 				top: 42px;
-				right: 40px;
 			}
 			@media (max-width: 480px){
 				top: 32.8px;
-				right: 30px;
 			}
 		}
 		&__pagination {
@@ -270,10 +253,7 @@ const sliderHeadings = ['West', 'North', 'South', 'East'];
 				right: 80px;
 				z-index: 10;
 				svg {
-					width: 25px;
-					height: 21px;
-					fill: var(--whiteColor);
-					transition: all .3s ease;
+					opacity: 1;
 				}
 				&:hover {
 					svg {
@@ -282,10 +262,6 @@ const sliderHeadings = ['West', 'North', 'South', 'East'];
 				}
 				@media (max-width: 1300px){
 					bottom: 40px;
-					right: 40px;
-				}
-				@media (max-width: 480px){
-					right: 30px;
 				}
 			}
 		}
