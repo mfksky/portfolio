@@ -70,41 +70,10 @@ import { dots } from '../../js/surf/dots';
     </noscript>
 </div>
 <script>
-    const mapDotBoxes = document.querySelectorAll('.map__dot-box');
-    const mapTexts = document.querySelectorAll('.map__text');
+    import { initializeMapSwiperSync } from '../../js/surf/mapSwiperSync';
 
-    const initialActiveIndex = 0;
-    if (mapDotBoxes.length > 0 && mapTexts.length > 0) {
-        mapDotBoxes[initialActiveIndex].querySelector('.map__dot-content').classList.add('_active', '_visible');
-        mapDotBoxes[initialActiveIndex].querySelector('.map__dot').classList.add('_active');
-        mapTexts[initialActiveIndex].classList.add('_active');
-    }
-
-    function activateElements(index) {
-        mapDotBoxes.forEach((dotBox, i) => {
-            dotBox.querySelector('.map__dot-content').classList.remove('_active', '_visible');
-            dotBox.querySelector('.map__dot').classList.remove('_active');
-        });
-        mapTexts.forEach(text => text.classList.remove('_active'));
-
-        if (mapDotBoxes[index] && mapTexts[index]) {
-            mapDotBoxes[index].querySelector('.map__dot-content').classList.add('_active');
-            setTimeout(() => {
-                mapDotBoxes[index].querySelector('.map__dot-content').classList.add('_visible');
-            }, 10);
-            mapDotBoxes[index].querySelector('.map__dot').classList.add('_active');
-            mapTexts[index].classList.add('_active');
-        }
-    }
-
-    function handleMouseOver(event) {
-        const dotBox = event.currentTarget;
-        const index = Array.from(mapDotBoxes).indexOf(dotBox);
-        activateElements(index);
-    }
-
-    mapDotBoxes.forEach(dotBox => {
-        dotBox.addEventListener('mouseover', handleMouseOver);
+    window.addEventListener('load', () => {
+        initializeMapSwiperSync();
     });
 </script>
 <style lang="scss">

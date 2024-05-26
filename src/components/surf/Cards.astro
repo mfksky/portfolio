@@ -42,18 +42,10 @@ import { dots } from '../../js/surf/dots';
     </div>
 </div>
 <script>
-    import Swiper, { Navigation } from '../../js/surf/swiper';
+    import { initializeMapSwiperSync } from '../../js/surf/mapSwiperSync';
 
     window.addEventListener('load', () => {
-        const swiperSurf = new Swiper('.cards__inner', {
-            modules: [Navigation],
-            slidesPerView: 'auto',
-            spaceBetween: -40,
-            navigation: {
-				nextEl: '.cards__nav-next',
-				prevEl: '.cards__nav-prev',
-			},
-        });
+        initializeMapSwiperSync();
     });
 </script>
 <style lang="scss">

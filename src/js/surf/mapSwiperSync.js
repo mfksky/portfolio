@@ -1,4 +1,3 @@
-// mapSwiperSync.js
 import Swiper, { Navigation } from '../../js/surf/swiper';
 
 export function initializeMapSwiperSync() {
@@ -29,15 +28,22 @@ export function initializeMapSwiperSync() {
         mapTexts.forEach(text => text.classList.remove('_active'));
         slides.forEach(slide => slide.classList.remove('swiper-slide-active'));
 
-        if (mapDotBoxes[index] && mapTexts[index] && slides[index]) {
+        if (mapDotBoxes[index] && mapTexts[index]) {
             mapDotBoxes[index].querySelector('.map__dot-content').classList.add('_active');
             setTimeout(() => {
                 mapDotBoxes[index].querySelector('.map__dot-content').classList.add('_visible');
             }, 10);
             mapDotBoxes[index].querySelector('.map__dot').classList.add('_active');
             mapTexts[index].classList.add('_active');
-            slides[index].classList.add('swiper-slide-active');
-            swiperSurf.slideTo(index);  // Прокручиваем слайдер к активному слайду
+            
+            swiperSurf.slideTo(index);
+
+            setTimeout(() => {
+                const activeSlide = slides[index];
+                if (activeSlide) {
+                    activeSlide.classList.add('swiper-slide-active');
+                }
+            }, 100);
         }
     }
 
@@ -49,6 +55,12 @@ export function initializeMapSwiperSync() {
 
     mapDotBoxes.forEach(dotBox => {
         dotBox.addEventListener('mouseover', handleMouseOver);
+    });
+
+    slides.forEach((slide, index) => {
+        slide.addEventListener('click', () => {
+            activateElements(index);
+        });
     });
 
     swiperSurf.on('slideChange', () => {
