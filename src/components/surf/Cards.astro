@@ -1,0 +1,209 @@
+---
+import { dots } from '../../js/surf/dots';
+---
+<div class="cards">
+    <div class="cards__inner swiper">
+        <div class="swiper-wrapper">
+            {dots.map(dot => (
+                <div class="cards__slide swiper-slide">
+                    <div class="cards__item">
+                        <img class="lazyload" data-src={dot.image} alt={dot.title} />
+                        <noscript>
+                            <img src={dot.image} alt={dot.title} />
+                        </noscript>
+                        <div class="cards__mask"></div>
+                        <h4>{dot.title}</h4>
+                        <div class="cards__location">{dot.location} | {dot.country}</div>
+                        <a href="#">
+                            <div>View <span></span> Surf</div>
+                            <svg>
+                                <use xlink:href="/surf/icons/icons.svg#arrow"></use>
+                                <title>View Surf</title>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+    <div class="cards__nav-buttons">
+        <button class="cards__nav-prev">
+            <svg>
+                <use xlink:href="/surf/icons/icons.svg#arrow"></use>
+                <title>Prev</title>
+            </svg>
+        </button>
+        <button class="cards__nav-next">
+            <svg>
+                <use xlink:href="/surf/icons/icons.svg#arrow"></use>
+                <title>Next</title>
+            </svg>
+        </button>
+    </div>
+</div>
+<script>
+    import Swiper, { Navigation } from '../../js/surf/swiper';
+
+    window.addEventListener('load', () => {
+        const swiperSurf = new Swiper('.cards__inner', {
+            modules: [Navigation],
+            slidesPerView: 'auto',
+            spaceBetween: -40,
+            navigation: {
+				nextEl: '.cards__nav-next',
+				prevEl: '.cards__nav-prev',
+			},
+        });
+    });
+</script>
+<style lang="scss">
+    .cards {
+        position: relative;
+        max-width: 1440px;
+        margin: 0 auto;
+        &__inner {
+            height: 840px;
+        }
+        &__slide {
+            max-width: 400px;
+            &:nth-child(1), &:nth-child(5) {
+                margin-top: 32px;
+            }
+            &:nth-child(3), &:nth-child(7) {
+                margin-top: 90px;
+            }
+            &.swiper-slide-active {
+                .cards__mask {
+                    opacity: .3;
+                }
+            }
+        }
+        &__item {
+            position: absolute;
+            width: 400px;
+            height: 750px;
+            overflow: hidden;
+            cursor: pointer;
+            img {
+                width: 100%;
+                height: 750px;
+                object-fit: cover;
+                object-position: 50% 50%;
+            }
+            h4 {
+                position: absolute;
+                top: 74px;
+                left: 40px;
+                max-width: 50px;
+                font-size: 40px;
+                line-height: 36px;
+                font-weight: 800;
+                text-transform: uppercase;
+            }
+            a {
+                position: absolute;
+                bottom: 0;
+                left: 40px;
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                width: 277px;
+                height: 80px;
+                color: inherit;
+                visibility: hidden;
+                opacity: 0;
+                transition: all .3s ease;
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: 168px;
+                    height: 100%;
+                    background-color: var(--accentColor);
+                }
+                div {
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    font-size: 40px;
+                    line-height: 36px;
+                    font-weight: 800;
+                    text-transform: uppercase;
+                    span {
+                        display: block;
+                        width: 20px;
+                        height: 1px;
+                        background-color: var(--whiteColor);
+                    }
+                }
+                svg {
+                    position: relative;
+                    width: 25px;
+                    height: 21px;
+                    fill: var(--whiteColor);
+                }
+            }
+            &:hover, ._active {
+                .cards__mask {
+                    opacity: .3;
+                }
+                a {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+        }
+        &__mask {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #1C2121;
+            opacity: .85;
+            transition: opacity .3s ease;
+        }
+        &__location {
+            position: absolute;
+            bottom: 80px;
+            left: 40px;
+            font-size: 18px;
+            line-height: 22px;
+            letter-spacing: 8px;
+            writing-mode: vertical-rl;
+            text-wrap: nowrap;
+            text-transform: uppercase;
+            transform: rotate(180deg);
+            cursor: default;
+        }
+        &__nav-buttons {
+            position: absolute;
+            top: -50px;
+            right: 80px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            button {
+                svg {
+                    width: 25px;
+                    height: 21px;
+                    fill: var(--whiteColor);
+                    opacity: .25;
+                    transition: opacity .3s ease;
+                }
+                &:first-child {
+                    svg {
+                        transform: rotate(180deg);
+                    }
+                }
+                &:hover {
+                    svg {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+</style>

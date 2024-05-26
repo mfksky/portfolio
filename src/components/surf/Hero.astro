@@ -1,8 +1,4 @@
 ---
-import '../../../node_modules/swiper/swiper.min.css';
-import '../../../node_modules/swiper/modules/effect-fade.css';
-import '../../styles/surf/swiper.scss';
-
 const sliderHeadings = ['West', 'North', 'South', 'East'];
 ---
 <section class="hero">
@@ -63,11 +59,10 @@ const sliderHeadings = ['West', 'North', 'South', 'East'];
 	</div>
 </section>
 <script>
-	import Swiper from 'swiper';
-	import { EffectFade, Autoplay, Navigation, Pagination } from 'swiper/modules';
+	import Swiper, { EffectFade, Autoplay, Navigation, Pagination } from '../../js/surf/swiper';
   
 	window.addEventListener('load', () => {
-		const swiper = new Swiper('.swiper', {
+		const swiperHero = new Swiper('.hero__swiper', {
 			modules: [EffectFade, Autoplay, Navigation, Pagination],
 			slidesPerView: 1,
 			loop: true,
@@ -227,8 +222,8 @@ const sliderHeadings = ['West', 'North', 'South', 'East'];
 			gap: 20px;
 			button {
 				svg {
-					width: 24.15px;
-					height: 20.15px;
+					width: 25px;
+					height: 21px;
 					fill: var(--whiteColor);
 					transition: all .3s ease;
 				}
@@ -272,8 +267,8 @@ const sliderHeadings = ['West', 'North', 'South', 'East'];
 				right: 80px;
 				z-index: 10;
 				svg {
-					width: 24.15px;
-					height: 20.15px;
+					width: 25px;
+					height: 21px;
 					fill: var(--whiteColor);
 					transition: all .3s ease;
 				}

@@ -1,0 +1,297 @@
+---
+import { dots } from '../../js/surf/dots';
+---
+<div class="map">
+    <div class="map__content">
+        <img class="lazyload" data-src="/surf/icons/map.svg" alt="Map">
+        <noscript>
+            <img src="/surf/icons/map.svg" alt="Map">
+        </noscript>
+        {dots.map(dot => (
+            <div class="map__dot-box" style={`top: ${dot.top}%; left: ${dot.left}%;`}>
+                <div class="map__dot"></div>
+                <div class="map__dot-content">
+                    <a class="map__info" href={dot.href}>
+                        <div class="map__info-title">
+                            <p>{dot.title}</p>
+                            <span></span>
+                            <div>{dot.country}</div>
+                        </div>
+                        <button>
+                            <svg>
+                                <use xlink:href="/surf/icons/icons.svg#arrow"></use>
+                                <title>More info</title>
+                            </svg>
+                        </button>
+                    </a>
+                    <div class="map__weather-box">
+                        <div class="map__weather-item">
+                            <img class="lazyload" data-src="/surf/images/surf/surf.svg" alt="Surf" title="Surf" />
+                            <noscript>
+                                <img src="/surf/images/surf/surf.svg" alt="Surf" />
+                            </noscript>
+                            <div>{dot.surf}</div>
+                            <p>Surf (FT)</p>
+                        </div>
+                        <div class="map__weather-item">
+                            <img class="lazyload" data-src="/surf/images/surf/water.svg" alt="Tide" title="Tide" />
+                            <noscript>
+                                <img src="/surf/images/surf/water.svg" alt="Tide" />
+                            </noscript>
+                            <div>{dot.tide}</div>
+                            <p>Tide (FT)</p>
+                        </div>
+                        <div class="map__weather-item">
+                            <img class="lazyload" data-src="/surf/images/surf/wind.svg" alt="Wind" title="Wind" />
+                            <noscript>
+                                <img src="/surf/images/surf/wind.svg" alt="Wind" />
+                            </noscript>
+                            <div>{dot.wind}</div>
+                            <p>Wind (KTS)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        ))}
+        <svg class="map__geo-small">
+            <use xlink:href="/surf/icons/icons.svg#geo"></use>
+            <title>Current location</title>
+        </svg>
+    </div>
+    {dots.map(dot => (
+        <div class="map__text">
+            <div>Current Location</div>
+            <h3>{dot.location} <span></span> {dot.country} </h3>
+        </div>
+    ))}
+    <img class="map__coordinates lazyload" data-src="/surf/icons/coordinates.svg" alt="geo">
+    <noscript>
+        <img class="map__coordinates" src="/surf/icons/coordinates.svg" alt="geo">
+    </noscript>
+</div>
+<script>
+    const mapDotBoxes = document.querySelectorAll('.map__dot-box');
+    const mapTexts = document.querySelectorAll('.map__text');
+
+    const initialActiveIndex = 0;
+    if (mapDotBoxes.length > 0 && mapTexts.length > 0) {
+        mapDotBoxes[initialActiveIndex].querySelector('.map__dot-content').classList.add('_active', '_visible');
+        mapDotBoxes[initialActiveIndex].querySelector('.map__dot').classList.add('_active');
+        mapTexts[initialActiveIndex].classList.add('_active');
+    }
+
+    function activateElements(index) {
+        mapDotBoxes.forEach((dotBox, i) => {
+            dotBox.querySelector('.map__dot-content').classList.remove('_active', '_visible');
+            dotBox.querySelector('.map__dot').classList.remove('_active');
+        });
+        mapTexts.forEach(text => text.classList.remove('_active'));
+
+        if (mapDotBoxes[index] && mapTexts[index]) {
+            mapDotBoxes[index].querySelector('.map__dot-content').classList.add('_active');
+            setTimeout(() => {
+                mapDotBoxes[index].querySelector('.map__dot-content').classList.add('_visible');
+            }, 10);
+            mapDotBoxes[index].querySelector('.map__dot').classList.add('_active');
+            mapTexts[index].classList.add('_active');
+        }
+    }
+
+    function handleMouseOver(event) {
+        const dotBox = event.currentTarget;
+        const index = Array.from(mapDotBoxes).indexOf(dotBox);
+        activateElements(index);
+    }
+
+    mapDotBoxes.forEach(dotBox => {
+        dotBox.addEventListener('mouseover', handleMouseOver);
+    });
+</script>
+<style lang="scss">
+    .map {
+        position: relative;
+        max-width: 1259px;
+        margin: 0 auto 111px auto;
+        &__content {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        &__dot-box {
+            position: absolute;
+            cursor: pointer;
+            &::before {
+                content: '';
+                position: absolute;
+                top: -25px;
+                left: calc(100% - 65px);
+                height: 25px;
+                width: 100px;
+            }
+        }
+        &__dot {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: var(--accentColor);
+            box-shadow: 0px 0px 35px rgba(74, 246, 205, 0.84);
+            transition: all .3s ease;
+            cursor: pointer;
+            &._active {
+                box-shadow: 0px 0px 20px rgba(74, 246, 205, 0.84);
+                transform: rotate(45deg);
+                border-radius: 0 50% 50% 50%;
+            }
+        }
+        &__dot-content {
+            position: absolute;
+            top: -231px;
+            left: calc(100% - 283px / 2);
+            z-index: 10;
+            display: none;
+            flex-direction: column;
+            gap: 30px;
+            width: 283px;
+            height: 216px;
+            padding: 30px;
+            background-color: rgba(15, 16, 16, 0.7);
+            border-radius: 6px;
+            opacity: 0;
+            transition: all .5s ease;
+            &._active {
+                display: flex;
+            }
+            &._visible {
+                opacity: 1;
+            }
+        }
+        &__info {
+            display: flex;
+            justify-content: space-between;
+            color: inherit;
+            button {
+                width: 17px;
+                height: 14px;
+                svg {
+                    width: 17px;
+                    height: 14px;
+                    fill: var(--whiteColor);
+                    transition: all .3s ease;
+                }
+            }
+            &:hover {
+                button {
+                    svg {
+                        fill: var(--accentColor);
+                    }
+                }
+            }
+        }
+        &__info-title {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            p {
+                font-size: 18px;
+                line-height: 26px;
+                font-weight: 800;
+                text-transform: uppercase;
+            }
+            span {
+                width: 80px;
+                height: 1px;
+                background-color: var(--accentColor);
+            }
+            div {
+                font-size: 16px;
+                line-height: 19px;
+            }
+        }
+        &__weather-box {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        &__weather-item {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 5px;
+            img {
+                height: 23.81px;
+            }
+            div {
+                font-size: 16px;
+                line-height: 23px;
+                font-weight: 800;
+            }
+            p {
+                font-size: 10px;
+                line-height: 12px;
+                font-weight: 300;
+            }
+        }
+        &__geo-small {
+            position: absolute;
+            top: 42.5%;
+            left: 15.5%;
+            width: 15px;
+            height: 18px;
+            fill: var(--whiteColor);
+            opacity: .3;
+        }
+        &__text {
+            position: absolute;
+            top: -55px;
+            right: 0;
+            display: none;
+            flex-direction: column;
+            align-items: flex-end;
+            &._active {
+                display: flex;
+            }
+            div {
+                position: relative;
+				margin-bottom: 16px;
+				padding-left: 104px;
+				font-size: 22px;
+				line-height: 32px;
+				letter-spacing: 7.33px;
+				text-transform: uppercase;
+				opacity: 50.12%;
+				&::before {
+					content: '';
+					position: absolute;
+					top: calc(50% - .5px);
+					left: 0;
+					width: 80px;
+					height: 1px;
+					background-color: var(--whiteColor);
+				}
+            }
+            h3 {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+				font-size: 40px;
+				line-height: 40px;
+				font-weight: 800;
+				text-transform: uppercase;
+                gap: 14px;
+                span {
+                    display: inline-block;
+                    width: 1px;
+                    height: 36px;
+                    background-color: var(--whiteColor);
+                }
+			}
+        }
+        &__coordinates {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+        }
+    }
+</style>

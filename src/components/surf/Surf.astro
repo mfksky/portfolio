@@ -1,0 +1,58 @@
+---
+import Map from './Map.astro';
+import Cards from './Cards.astro';
+---
+<section class="surf" id="surf">
+    <div class="surf__top">
+        <h2>Surf</h2>
+        <Map />
+        <img class="surf__geo lazyload" data-src="/surf/icons/geo.svg" alt="geo">
+        <noscript>
+            <img class="surf__geo" src="/surf/icons/geo.svg" alt="geo">
+        </noscript>
+        <Cards />
+    </div>
+</section>
+<style lang="scss">
+    .surf {
+        position: relative;
+        padding-top: 176px;
+        &__top {
+
+        }
+        h2 {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 120px;
+            padding-left: 245px;
+            font-size: 80px;
+            line-height: 80px; 
+            font-weight: 800;
+            text-transform: uppercase;
+            &::before {
+                content: '';
+                position: absolute;
+                top: -6px;
+                right: 0;
+                width: 80px;
+                height: 1px;
+                background-color: var(--accentColor);
+            }
+            &::after {
+                position: absolute;
+                top: 25px;
+                left: -49px;
+                content: 'Surf';
+                font-size: 200px;
+                line-height: 156px;
+                font-weight: 800;
+                opacity: .02;
+            }
+        }
+        &__geo {
+            position: absolute;
+            top: 219px;
+            right: 0;
+        }
+    }
+</style>
