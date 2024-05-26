@@ -17,8 +17,10 @@ import Cards from './Cards.astro';
     .surf {
         position: relative;
         padding-top: 176px;
+        @media (max-width: 480px){
+            padding-top: 100px;
+        }
         &__top {
-
         }
         h2 {
             position: relative;
@@ -48,11 +50,32 @@ import Cards from './Cards.astro';
                 font-weight: 800;
                 opacity: .02;
             }
+            @media (max-width: 768px){
+                padding-left: 150px;
+                font-size: 56px;
+                line-height: 62px;
+                &::after {
+                    font-size: 140px;
+                    line-height: 109px;
+                }
+            }
+            @media (max-width: 480px){
+                padding-left: 100px;
+                font-size: 45px;
+                line-height: 50px;
+                &::after {
+                    font-size: 110px;
+                    line-height: 87px;
+                }
+            }
         }
         &__geo {
             position: absolute;
             top: 219px;
             right: 0;
+            @media (max-width: 992px){
+                display: none;
+            }
         }
     }
 </style>

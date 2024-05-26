@@ -8,7 +8,7 @@ import { dots } from '../../js/surf/dots';
             <img src="/surf/icons/map.svg" alt="Map">
         </noscript>
         {dots.map(dot => (
-            <div class="map__dot-box" style={`top: ${dot.top}%; left: ${dot.left}%;`}>
+            <div class={`map__dot-box ${dot.id}`} style={`top: ${dot.top}%; left: ${dot.left}%;`}>
                 <div class="map__dot"></div>
                 <div class="map__dot-content">
                     <a class="map__info" href={dot.href}>
@@ -79,13 +79,21 @@ import { dots } from '../../js/surf/dots';
 <style lang="scss">
     .map {
         position: relative;
-        max-width: 1259px;
+        max-width: 1419px;
         margin: 0 auto 111px auto;
+        padding: 0 80px;
+        @media (max-width: 1300px){
+            padding: 0 40px;
+        }
+        @media (max-width: 1259px){
+            padding: 0;
+        }
         &__content {
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
+            max-width: 1259px;
         }
         &__dot-box {
             position: absolute;
@@ -97,6 +105,31 @@ import { dots } from '../../js/surf/dots';
                 left: calc(100% - 65px);
                 height: 25px;
                 width: 100px;
+            }
+            @media (max-width: 1480px){
+                &.child1 {
+                    .map__dot-content {
+                        left: 0;
+                    }
+                }
+                &.child8 {
+                    .map__dot-content {
+                        left: auto;
+                        right: 0;
+                    }
+                }
+            }
+            @media (max-width: 768px){
+                &::before {
+                    top: -17px;
+                    left: 0;
+                    height: 17px;
+                    width: 17px;
+                }
+            }
+            @media (max-width: 480px){
+                width: 1px;
+                height: 14px;
             }
         }
         &__dot {
@@ -111,6 +144,18 @@ import { dots } from '../../js/surf/dots';
                 box-shadow: 0px 0px 20px rgba(74, 246, 205, 0.84);
                 transform: rotate(45deg);
                 border-radius: 0 50% 50% 50%;
+            }
+            @media (max-width: 768px){
+                width: 17px;
+                height: 17px;
+                box-shadow: 0px 0px 25px rgba(74, 246, 205, 0.84);
+                &._active {
+                    box-shadow: 0px 0px 15px rgba(74, 246, 205, 0.84);
+                }
+            }
+            @media (max-width: 480px){
+                width: 14px;
+                height: 14px;
             }
         }
         &__dot-content {
@@ -133,6 +178,13 @@ import { dots } from '../../js/surf/dots';
             }
             &._visible {
                 opacity: 1;
+            }
+            @media (max-width: 768px){
+                top: -182px;
+                left: calc(100% - 230px / 2);
+                width: 230px;
+                height: 162px;
+                padding: 20px;
             }
         }
         &__info {
@@ -176,11 +228,27 @@ import { dots } from '../../js/surf/dots';
                 font-size: 16px;
                 line-height: 19px;
             }
+            @media (max-width: 768px){
+                p {
+                    font-size: 14px;
+                    line-height: 13px;
+                }
+                span {
+                    width: 56px;
+                }
+                div {
+                    font-size: 12px;
+                    line-height: 14px;
+                }
+            }
         }
         &__weather-box {
             display: flex;
             justify-content: space-between;
             gap: 10px;
+            @media (max-width: 768px){
+                gap: 40px;
+            }
         }
         &__weather-item {
             display: flex;
@@ -200,6 +268,20 @@ import { dots } from '../../js/surf/dots';
                 line-height: 12px;
                 font-weight: 300;
             }
+            @media (max-width: 768px){
+                flex-shrink: 0;
+                img {
+                    height: 16.6px;
+                }
+                div {
+                    font-size: 12px;
+                    line-height: 16px;
+                }
+                p {
+                    font-size: 8px;
+                    line-height: 10px;
+                }
+            }
         }
         &__geo-small {
             position: absolute;
@@ -213,7 +295,7 @@ import { dots } from '../../js/surf/dots';
         &__text {
             position: absolute;
             top: -55px;
-            right: 0;
+            right: 80px;
             display: none;
             flex-direction: column;
             align-items: flex-end;
@@ -255,12 +337,51 @@ import { dots } from '../../js/surf/dots';
                     background-color: var(--whiteColor);
                 }
 			}
+            @media (max-width: 1300px){
+                right: 40px;
+            }
+            @media (max-width: 1000px){
+                top: -70px;
+            }
+            @media (max-width: 768px){
+                div {
+                    font-size: 16px;
+                    line-height: 22px;
+                }
+                h3 {
+                    font-size: 28px;
+                    line-height: 34px;
+                    span {
+                        height: 26px;
+                    }
+                }
+            }
+            @media (max-width: 480px){
+                top: -50px;
+                right: 30px;
+                div {
+                    margin-bottom: 10px;
+                    font-size: 13px;
+                    line-height: 16px;  
+                }
+                h3 {
+                    gap: 8px;
+                    font-size: 22px;
+                    line-height: 26px;
+                    span {
+                        height: 21px;
+                    }
+                }
+            }
         }
         &__coordinates {
             position: absolute;
             top: 50%;
-            right: 0;
+            right: 80px;
             transform: translateY(-50%);
+            @media (max-width: 1300px){
+                display: none;
+            }
         }
     }
 </style>
