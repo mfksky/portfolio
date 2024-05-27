@@ -1,21 +1,21 @@
 ---
 import { dots } from '../../js/surf/dots';
 ---
-<section class="travel" id="travel">
+<section class="travel main-content" id="travel">
     <h2 class="main-heading">Travel</h2>
     <div class="travel__content swiper">
         <div class="swiper-wrapper">
             {dots.map(dot => (
-                <div class="travel__item item-travel swiper-slide">
-                    <div class="item-travel__top">
-                        <div class="item-travel__head main-subtext _active">
+                <div class="main-item swiper-slide">
+                    <div class="main-item__top">
+                        <div class="main-item__head main-subtext _active">
                             <div>Shore</div>
                             <h3>{dot.location} <span></span> {dot.country}</h3>
                         </div>
                     </div>
-                    <div class="item-travel__about">
-                        <div class="item-travel__subhead">
-                            <div class="item-travel__subtitle main-subtext _active">
+                    <div class="main-item__about">
+                        <div class="main-item__subhead">
+                            <div class="main-item__subtitle main-subtext _active">
                                 <div>Airline</div>
                                 <h3>{dot.airline}</h3>
                             </div>
@@ -24,7 +24,7 @@ import { dots } from '../../js/surf/dots';
                                 <img src="/surf/images/travel/airplane.png" alt="Airlie Beach"/>
                             </noscript>
                         </div>
-                        <div class="item-travel__info">
+                        <div class="main-item__info">
                             <div>Queensland
 Australia</div>
                             <div>7,065 Miles</div>
@@ -32,11 +32,11 @@ Australia</div>
 5 Minutes</div>
                             <div>$1,976 USD</div>
                         </div>
-                        <img class="item-travel__coctail lazyload" data-src="/surf/images/travel/coctail.png" alt="Airlie Beach"/>
+                        <img class="main-item__coctail lazyload" data-src="/surf/images/travel/coctail.png" alt="Airlie Beach"/>
                         <noscript>
-                            <img class="item-travel__coctail" src="/surf/images/travel/coctail.png" alt="Airlie Beach"/>
+                            <img class="main-item__coctail" src="/surf/images/travel/coctail.png" alt="Airlie Beach"/>
                         </noscript>
-                        <a class="item-travel__button" href="#">
+                        <a class="main-item__button" href="#">
                             <div>Book <span></span> Flight</div>
                             <svg>
                                 <use xlink:href="/surf/icons/icons.svg#arrow"></use>
@@ -47,7 +47,7 @@ Australia</div>
                 </div>
             ))}
         </div>
-        <div class="travel__nav-buttons main-nav-buttons">
+        <div class="main-content__nav-buttons main-nav-buttons">
             <button class="travel__nav-prev main-nav-buttons__button">
                 <svg>
                     <use xlink:href="/surf/icons/icons.svg#arrow"></use>
@@ -89,289 +89,6 @@ Australia</div>
         }
     }
     .travel {
-		// .travel__content
-		&__content {
-		}
-		// .travel__item
-		&__item {
-		}
-		// .travel__nav-buttons
-		&__nav-buttons {
-            top: 208px;
-		}
-		// .travel__nav-prev
-		&__nav-prev {
-		}
-		// .travel__nav-next
-		&__nav-next {
-		}
-    }
-    .item-travel {
-		// .item-travel__top
-		&__top {
-            height: 780.3px;
-            background-image: url('/surf/images/travel/bg.png');
-            background-size: 1115.29px 780.3px;
-            background-position: top left;
-            background-repeat: no-repeat;
-		}
-		// .item-travel__head
-		&__head {
-            top: 90px;
-		}
-		// .item-travel__about
-		&__about {
-            position: relative;
-            top: -100px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            padding-left: 130px;
-            @media (max-width: 1300px){
-                padding-left: 40px;
-            }
-            @media (max-width: 480px){
-                padding-left: 30px;
-            }
-		}
-		// .item-travel__subhead
-		&__subhead {
-            position: relative;
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            width: 100%;
-            margin-bottom: 90px;
-            img {
-                position: absolute;
-                bottom: 0;
-                right: 0;
-            }
-            @media (max-width: 992px){
-                img {
-                    display: none;
-                }
-            }
-		}
-		// .item-travel__subtitle
-		&__subtitle {
-            position: relative;
-            top: auto;
-            right: auto;
-            align-items: flex-start;
-            div {
-                padding-left: 0;
-                padding-right: 104px;
-                &::before {
-                    left: auto;
-                    right: 0;
-                }
-            }
-            h3 {
-                position: relative;
-                padding-right: 78px;
-                &::before {
-                    content: '';
-                    position: absolute;
-                    top: 50%;
-                    right: 0;
-                    width: 52px;
-                    height: 46px;
-                    background-image: url('/surf/images/travel/virgin.png');
-                    background-size: cover;
-                    transform: translateY(-50%);
-                }
-                @media (max-width: 768px){
-                    padding-right: 64px;
-                    &::before {
-                        width: 36.4px;
-                        height: 32.2px;
-                    }
-                }
-                @media (max-width: 480px){
-                    padding-right: 50px;
-                    &::before {
-                        width: 29.12px;
-                        height: 25.76px;
-                    }
-                }
-            }
-		}
-		// .item-travel__info
-		&__info {
-            display: flex;
-            column-gap: 60px;
-            row-gap: 260px;
-            flex-wrap: wrap;
-            width: 100%;
-            div {
-                position: relative;
-                max-height: 40px;
-                padding-left: 40px;
-                font-size: 40px;
-                line-height: 36px;
-                font-weight: 800;
-                text-transform: uppercase;
-                white-space: pre;
-                &::before {
-                    content: 'Destionation';
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    font-size: 18px;
-                    line-height: 22px;
-                    letter-spacing: 8px;
-                    font-weight: 400;
-                    writing-mode: vertical-rl;
-                    text-wrap: nowrap;
-                    opacity: .5;
-                    transform: rotate(180deg);
-                }
-                &:nth-child(2) {
-                    &::before {
-                        content: 'Distance';
-                    }
-                }
-                &:nth-child(3) {
-                    &::before {
-                        content: 'Travel Time';
-                    }
-                }
-                &:nth-child(4) {
-                    &::before {
-                        content: 'Pricing';
-                    }
-                    &::after {
-                        content: 'Round Trip';
-                        position: absolute;
-                        bottom: -16px;
-                        right: 0;
-                        font-size: 14px;
-                        line-height: 14px;
-                        letter-spacing: 5.25px;
-                        font-weight: 400;
-                        opacity: .7463;
-                    }
-                }
-            }
-            @media (max-width: 778px){
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                column-gap: 40px;
-                row-gap: 220px;
-                div {
-                    padding-left: 30px;
-                    font-size: 28px;
-                    line-height: 26px;
-                    &::before {
-                        font-size: 14px;
-                        line-height: 16px;
-                    }
-                    &:nth-child(4) {
-                        &::after {
-                            bottom: -6px;
-                            font-size: 12px;
-                            line-height: 12px;
-                            right: auto;
-                            left: 30px;
-                        }
-                    }
-                }
-            }
-            @media (max-width: 480px){
-                div {
-                    padding-left: 26px;
-                    font-size: 22px;
-                    line-height: 20px;
-                    &::before {
-                        font-size: 12px;
-                        line-height: 14px;
-                    }
-                    &:nth-child(4) {
-                        &::after {
-                            bottom: 0;
-                            font-size: 10px;
-                            line-height: 10px;
-                        }
-                    }
-                }
-            }
-            @media (max-width: 420px){
-                column-gap: 20px;
-                row-gap: 180px;
-                div {
-                    padding-left: 20px;
-                    font-size: 16px;
-                    line-height: 15px;
-                    &::before {
-                        font-size: 10px;
-                        line-height: 12px;
-                    }
-                    &:nth-child(4) {
-                        &::after {
-                            bottom: 4px;
-                            font-size: 8px;
-                            line-height: 8px;
-                            left: 20px;
-                        }
-                    }
-                }
-            }
-		}
-		// .item-travel__coctail
-		&__coctail {
-            @media (max-width: 992px){
-                display: none;
-            }
-		}
-		// .item-travel__button
-		&__button {
-            position: absolute;
-            bottom: 251px;
-            right: 50%;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            height: 80px;
-            padding-right: 17px;
-            color: inherit;
-            transform: translateX(50%);
-            &::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                right: 0;
-                width: 201px;
-                height: 100%;
-                background-color: var(--accentColor);
-            }
-            div {
-                position: relative;
-                display: flex;
-                align-items: center;
-                gap: 8px;
-                font-size: 40px;
-                line-height: 36px;
-                font-weight: 800;
-                text-transform: uppercase;
-                span {
-                    display: block;
-                    width: 20px;
-                    height: 1px;
-                    background-color: var(--whiteColor);
-                }
-            }
-            svg {
-                position: relative;
-                width: 25px;
-                height: 21px;
-                fill: var(--whiteColor);
-            }
-            @media (max-width: 992px){
-                position: relative;
-                bottom: 0;
-                margin-top: 200px;
-            }
-		}
+        margin-bottom: 68px;
     }
 </style>

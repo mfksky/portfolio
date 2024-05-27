@@ -1,0 +1,174 @@
+---
+import { dots } from '../../js/surf/dots';
+---
+<section class="sleep main-content" id="sleep">
+    <h2 class="main-heading">Sleep</h2>
+    <div class="sleep__content swiper">
+        <div class="swiper-wrapper">
+            {dots.map(dot => (
+                <div class="main-item swiper-slide">
+                    <div class="sleep__top main-item__top">
+                        <div class="main-item__head main-subtext _active">
+                            <div>Resorts</div>
+                            <h3>{dot.location} <span></span> {dot.country}</h3>
+                        </div>
+                    </div>
+                    <div class="main-item__about">
+                        <div class="sleep__subhead main-item__subhead">
+                            <div class="sleep__subtitle main-item__subtitle main-subtext _active">
+                                <div>Rating</div>
+                                <h3>Excellent</h3>
+                            </div>
+                            <img class="lazyload" data-src="/surf/images/sleep/hammock.png" alt="Airlie Beach"/>
+                            <noscript>
+                                <img src="/surf/images/sleep/hammock.png" alt="Airlie Beach"/>
+                            </noscript>
+                        </div>
+                        <div class="sleep__info main-item__info">
+                            <div>Auberge
+Australia</div>
+                            <div>5 Nights</div>
+                            <div>4 Guests</div>
+                            <div>$349 USD</div>
+                        </div>
+                        <img class="sleep__flower lazyload" data-src="/surf/images/sleep/flower2.png" alt="Airlie Beach"/>
+                        <noscript>
+                            <img class="sleep__flower" src="/surf/images/sleep/flower2.png" alt="Airlie Beach"/>
+                        </noscript>
+                        <a class="sleep__button main-item__button" href="#">
+                            <div>Book <span></span> Stay</div>
+                            <svg>
+                                <use xlink:href="/surf/icons/icons.svg#arrow"></use>
+                                <title>View Surf</title>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            ))}
+        </div>
+        <div class="main-content__nav-buttons main-nav-buttons">
+            <button class="sleep__nav-prev main-nav-buttons__button">
+                <svg>
+                    <use xlink:href="/surf/icons/icons.svg#arrow"></use>
+                    <title>Prev</title>
+                </svg>
+            </button>
+            <button class="sleep__nav-next main-nav-buttons__button">
+                <svg>
+                    <use xlink:href="/surf/icons/icons.svg#arrow"></use>
+                    <title>Next</title>
+                </svg>
+            </button>
+        </div>
+    </div>
+</section>
+<script>
+    import Swiper, { EffectFade, Navigation } from '../../js/surf/swiper';
+
+    window.addEventListener('load', () => {
+        const sleepSwiper = new Swiper('.sleep__content', {
+            modules: [EffectFade, Navigation],
+            slidesPerView: 1,
+            loop: true,
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+            navigation: {
+                nextEl: '.sleep__nav-next',
+				prevEl: '.sleep__nav-prev'
+            }
+        });
+    });
+</script>
+<style lang="scss">
+    .main-heading {
+        &::after {
+            content: 'sleep';
+        }
+    }
+    .sleep {
+        &__top {
+            height: 771px;
+            background-image: url('/surf/images/sleep/sleep.png');
+            background-size: 1102px 771px;
+        }
+        &__subhead {
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: -116px;
+                right: 0;
+                width: 158.138px;
+                height: 215px;
+                background-image: url('surf/images/sleep/flower1.png');
+            }
+            img {
+                bottom: -32px;
+            }
+        }
+        &__subtitle {
+            h3 {
+                padding-right: 179px;
+                &::before {
+                    width: 154px;
+                    height: 22px;
+                    background-image: url('/surf/images/sleep/star.svg');
+                }
+                @media (max-width: 768px){
+                    padding-right: 132px;
+                    &::before {
+                        width: 107.8px;
+                        height: 15.4px;
+                        background-size: 107.8px 15.4px;
+                    }
+                }
+                @media (max-width: 480px){
+                    padding-right: 108px;
+                    &::before {
+                        width: 86.24px;
+                        height: 12.32px;
+                        background-size: 86.24px 12.32px;
+                    }
+                }
+            }
+        }
+        &__info {
+            div {
+                &::before {
+                    content: 'Resort';
+                }
+                &:nth-child(2) {
+                    &::before {
+                        content: '# of Nights';
+                    }
+                }
+                &:nth-child(3) {
+                    &::before {
+                        content: '# of Guests';
+                    }
+                }
+                &:nth-child(4) {
+                    &::before {
+                        content: 'Pricing';
+                    }
+                    &::after {
+                        content: 'Per Night';
+                    }
+                }
+            }
+        }
+        &__button {
+            bottom: 38px;
+            &::before {
+                width: 168px;
+            }
+        }
+        &__flower {
+            margin-top: 70px;
+            @media (max-width: 992px){
+                display: none;
+            }
+        }
+    }
+</style>
