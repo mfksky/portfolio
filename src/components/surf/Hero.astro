@@ -62,7 +62,7 @@ const sliderHeadings = ['West', 'North', 'South', 'East'];
 	import Swiper, { EffectFade, Autoplay, Navigation, Pagination } from '../../js/surf/swiper';
   
 	window.addEventListener('load', () => {
-		const swiperHero = new Swiper('.hero__swiper', {
+		const heroSwiper = new Swiper('.hero__swiper', {
 			modules: [EffectFade, Autoplay, Navigation, Pagination],
 			slidesPerView: 1,
 			loop: true,
