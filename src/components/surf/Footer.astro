@@ -1,0 +1,57 @@
+---
+---
+<footer>
+    <div class="footer-logo">
+        <div>Go <span></span> Surf</div>
+    </div>
+    <p>© Go-Surf 2018. All Rights Reserved.</p>
+</footer>
+<style lang="scss">
+    footer {
+        padding: 34px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        p {
+            font-size: 12px;
+            line-height: 14px;
+            font-weight: 300;
+            letter-spacing: 1.05px;
+            text-transform: uppercase;
+            opacity: .5;
+        }
+    }
+    .footer-logo {
+        position: relative;
+        display: flex;
+        align-items: center;
+        height: 64px;
+        padding-right: 17px;
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 111px;
+            height: 100%;
+            background-color: var(--accentColor);
+        }
+        div {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 32px;
+            line-height: 48px;
+            font-weight: 800;
+            text-transform: uppercase;
+            span {
+                display: block;
+                width: 20px;
+                height: 1px;
+                background-color: var(--whiteColor);
+            }
+        }
+    }
+</style>
