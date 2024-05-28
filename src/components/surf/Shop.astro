@@ -1,0 +1,336 @@
+---
+---
+<section class="shop" id="shop">
+    <h2 class="main-heading">Shop</h2>
+    <div class="shop__content swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="shop__item">
+                    <div class="shop__info">
+                        <div class="shop__title main-subtext _active">
+                            <div>Style</div>
+                            <h3>North Nugget TT Surfboard</h3>
+                        </div>
+                        <div class="shop__price">$799<span>99</span></div>
+                        <a class="shop__button" href="#">
+                            <div>Drop <span></span> In</div>
+                            <svg>
+                                <use xlink:href="/surf/icons/icons.svg#arrow"></use>
+                                <title>View Surf</title>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="shop__image">
+                        <img class="lazyload" src="/surf/images/shop/board.png" alt="Board" />
+                        <noscript>
+                            <img src="/surf/images/shop/board.png" alt="Board" />
+                        </noscript>
+                        <div class="shop__dot">
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="shop__dot">
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="shop__dot">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="shop__extras">
+                        <h4>Extras</h4>
+                        <div class="shop__extras-box">
+                            <div class="shop__extras-item">
+                                <img class="lazyload" src="/surf/images/shop/wax.png" alt="wax" />
+                                <noscript>
+                                    <img src="/surf/images/shop/wax.png" alt="wax" />
+                                </noscript>
+                                <p>Sex Wax</p>
+                                <div>$24.99</div>
+                            </div>
+                            <div class="shop__extras-item">
+                                <img class="lazyload" src="/surf/images/shop/bracelet.png" alt="bracelet" />
+                                <noscript>
+                                    <img src="/surf/images/shop/bracelet.png" alt="bracelet" />
+                                </noscript>
+                                <p>Pura Vida</p>
+                                <div>$27.99</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-content__nav-buttons main-nav-buttons">
+            <button class="sleep__nav-prev main-nav-buttons__button">
+                <svg>
+                    <use xlink:href="/surf/icons/icons.svg#arrow"></use>
+                    <title>Prev</title>
+                </svg>
+            </button>
+            <button class="sleep__nav-next main-nav-buttons__button">
+                <svg>
+                    <use xlink:href="/surf/icons/icons.svg#arrow"></use>
+                    <title>Next</title>
+                </svg>
+            </button>
+        </div>
+    </div>
+</section>
+<style lang="scss">
+    .main-heading {
+        margin-bottom: 100px;
+        &::after {
+            content: 'shop';
+        }
+    }
+    .main-content__nav-buttons {
+        top: 0;
+    }
+    .shop {
+        &__content {
+
+        }
+        &__item {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+            padding: 0 130px;
+            background-image: url('/surf/images/shop/bg.png');
+            background-position: center right;
+            background-repeat: no-repeat;
+            @media (max-width: 1300px){
+                padding: 0 40px;
+            }
+        }
+        &__info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        &__title {
+            position: relative;
+            top: auto;
+            right: auto;
+            align-items: flex-start;
+            margin-bottom: 50px;
+            div {
+                padding-left: 0;
+                padding-right: 112px;
+                &::before {
+                    left: auto;
+                    right: 0;
+                }
+            }
+            h3 {
+                max-width: 340px;
+            }
+        }
+        &__price {
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 68px;
+            padding-top: 34px;
+            font-size: 32px;
+            line-height: 40px;
+            font-weight: 800;
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 154px;
+                height: 22px;
+                background-image: url('/surf/images/sleep/star.svg');
+            }
+            span {
+                align-self: flex-start;
+                padding-top: 7px;
+                font-size: 18px;
+                line-height: 18px;
+            }
+        }
+        &__button {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            height: 80px;
+            padding-right: 17px;
+            color: inherit;
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 112px;
+                height: 100%;
+                background-color: var(--accentColor);
+            }
+            div {
+                position: relative;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 40px;
+                line-height: 36px;
+                font-weight: 800;
+                text-transform: uppercase;
+                span {
+                    display: block;
+                    width: 20px;
+                    height: 1px;
+                    background-color: var(--whiteColor);
+                }
+            }
+            svg {
+                position: relative;
+                width: 25px;
+                height: 21px;
+                fill: var(--whiteColor);
+            }
+        }
+        &__image {
+            position: relative;
+        }
+        &__dot {
+            position: absolute;
+            top: 30%;
+            left: 78%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--whiteColor);
+            cursor: pointer;
+            &::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 28px;
+                width: 80px;
+                height: 1px;
+                background-color: var(--whiteColor);
+                opacity: .5;
+                transform: translateY(-50%);
+                transition: all .3s ease;
+                visibility: hidden;
+                opacity: 0;
+            }
+            &::after {
+                content: 'Double Concave with Vee Shape low point';
+                position: absolute;
+                top: 50%;
+                left: 130px;
+                width: 260px;
+                font-size: 24px;
+                line-height: 24px;
+                font-weight: 800;
+                text-transform: uppercase;
+                transform: translateY(-50%);
+                transition: all .3s ease;
+                visibility: hidden;
+                opacity: 0;
+            }
+            span {
+                width: 11.76px;
+                height: 2.35px;
+                background: var(--accentColor);
+                transition: all .3s ease;
+                &:last-child {
+                    position: absolute;
+                    top: 50%;
+                    right: 50%;
+                    transform: translate(50%, -50%) rotate(90deg);
+
+                }
+            }
+            &:nth-child(3) {
+                top: 40%;
+                left: -1%;
+            }
+            &:nth-child(4) {
+                top: 88%;
+                left: 23%;
+            }
+            &:hover {
+                &::before {
+                    visibility: visible;
+                    opacity: .5;
+                }
+                &::after {
+                    visibility: visible;
+                    opacity: 1;
+                }
+                span {
+                    &:last-child {
+                        opacity: 0;
+                    }
+                }
+            }
+            @media (max-width: 768px){
+                &::before {
+                    top: 30px;
+                    left: 10px;
+                    width: 1px;
+                    height: 30px;
+                    transform: translate(0);
+                }
+                &::after {
+                    top: 70px;
+                    left: 50%;
+                    transform: translate(-50%, 0);
+                }
+            }
+            @media (max-width: 480px){
+                &::after {
+                    max-width: 150px;
+                    font-size: 14px;
+                    line-height: 12px;
+                }
+            }
+        }
+        &__extras {
+            align-self: flex-end;
+            h4 {
+                margin-bottom: 40px;
+                font-size: 28px;
+                line-height: 40px;
+                font-weight: 800;
+                text-transform: uppercase;
+            }
+        }
+        &__extras-box {
+            display: flex;
+            gap: 60px;
+        }
+        &__extras-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            img {
+                margin-bottom: 40px;
+            }
+            p {
+                margin-bottom: 20px;
+                font-size: 18px;
+                line-height: 22px;
+                letter-spacing: 8px;
+                text-transform: uppercase;
+                opacity: .5;
+            }
+            div {
+                font-size: 18px;
+                line-height: 18px;
+                font-weight: 800;
+            }
+        }
+    }
+</style>
