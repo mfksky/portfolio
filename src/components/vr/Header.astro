@@ -1,0 +1,87 @@
+---
+---
+<header class="header">
+    <div class="_container">
+        <div class="header__body">
+            <a class="header__logo" href="#">
+                <img src="/vr/logo.svg" alt="" />
+            </a>
+            <nav class="header__menu menu">
+                <ul class="menu__nav">
+                    <li class="menu__item">
+                        <a href="#">Home</a>
+                    </li>
+                    <li class="menu__item">
+                        <a href="#">About us</a>
+                    </li>
+                    <li class="menu__item">
+                        <a href="#">Service</a>
+                    </li>
+                    <li class="menu__item">
+                        <div class="_spoller">Page</div>
+                        <ul class="menu__submenu">
+                            <li>Page1</li>
+                            <li>Page2</li>
+                            <li>Page3</li>
+                            <li>Page4</li>
+                        </ul>
+                    </li>
+                    <li class="menu__item">
+                        <div class="_spoller">Blog</div>
+                        <ul class="menu__submenu">
+                            <li>Blog1</li>
+                            <li>Blog2</li>
+                            <li>Blog3</li>
+                            <li>Blog4</li>
+                        </ul>
+                    </li>
+                </ul>
+                <button class="menu__button" type="button" title="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+            <button class="header__contact" type="button" title="Contact us">Contact us</button>
+        </div>
+    </div>
+</header>
+<style lang="scss">
+    @import '../../styles/vr/vars';
+
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+		// .header__body
+		&__body {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+		}
+		// .header__logo
+		&__logo {
+		}
+		// .header__menu
+		&__menu {
+		}
+		// .header__contact
+		&__contact {
+		}
+    }
+    .menu {
+		// .menu__nav
+		&__nav {
+		}
+		// .menu__item
+		&__item {
+		}
+		// .menu__submenu
+		&__submenu {
+		}
+		// .menu__button
+		&__button {
+		}
+    }
+</style>

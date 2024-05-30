@@ -1,0 +1,23 @@
+---
+import Header from '../components/vr/Header.astro';
+import '../styles/global.scss';
+import '../styles/vr/style.scss';
+
+const pageTitle = "VR лендинг";
+---
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<meta name="viewport" content="width=device-width" />
+		<title>{pageTitle}</title>
+	</head>
+	<body>
+        <div class="wrapper">
+            <Header />
+            <main class="page">
+            </main>
+        </div>
+	</body>
+</html>

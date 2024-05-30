@@ -1,0 +1,32 @@
+@import 'vars';
+
+:root {
+    --colorBlack_100: #18181B;
+    --colorBlack_50: #252532;
+    --colorGrey_1: #B0B0B2;
+    --colorGrey_2: #D1D1D1;
+    --colorWhite: #fff;
+    --colorLinear_1: #0CBAF1;
+    --colorLinear_2: #E95CE9;
+    --colorPurple_10: #CA6AEB;
+    --colorBlue: #19B5F1;
+    --colorSuccess: #00C566;
+    --colorError: #FF4747;
+    --colorWarn: #FACC15;
+
+    font-family: "Chakra Petch", sans-serif;
+    color: var(--colorGrey_1);
+    font-size: 16px;
+    line-height: 28px;
+    font-weight: 300;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--colorBlack_100);
+}
+._container {
+    max-width: $maxWidthContainer+px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
