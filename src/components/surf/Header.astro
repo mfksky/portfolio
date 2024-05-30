@@ -12,7 +12,7 @@ const menuItems = [
     <div class="header__menu">
         <nav class="header__nav">
             {menuItems.map(item => (
-                <a href={item.href}>
+                <a class="_goto" href={item.href}>
                     <img
                         src={`/surf/icons/${item.icon}.svg`}
                         width={item.iconWidth}

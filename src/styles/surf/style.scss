@@ -1,3 +1,21 @@
+._scr-item {
+    opacity: 0;
+    transition: opacity .6s, transform .6s;
+    &._active {
+        opacity: 1;
+        transform: translate(0) scale(1);
+    }
+}
+._slide-right {
+    transform: translateX(-100%);
+}
+._slide-left {
+    transform: translateX(100%);
+}
+._slide-up {
+    transform: translateY(200px);
+}
+
 .main-heading {
     position: relative;
     display: inline-block;

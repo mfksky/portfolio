@@ -40,6 +40,45 @@ const pageTitle = "Go Surf лендинг";
 </html>
 <script>
     import 'lazysizes';
+
+    document.addEventListener('DOMContentLoaded', function () {
+        // GOTO
+        const links = document.querySelectorAll('._goto');
+
+        for (const link of links) {
+            link.addEventListener('click', function (event) {
+                event.preventDefault();
+
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        }
+
+        // Scroll Items
+        const elements = document.querySelectorAll('._scr-item');
+        const offset = 100;
+
+            function checkVisibility() {
+                elements.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top <= window.innerHeight - offset && rect.bottom >= 0) {
+                        el.classList.add('_active');
+                    }
+                });
+            }
+
+            checkVisibility();
+
+            window.addEventListener('scroll', checkVisibility);
+
+    });
 </script>
 <style lang="scss">
     :root {

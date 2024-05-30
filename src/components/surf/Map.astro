@@ -1,12 +1,9 @@
 ---
 import { dots } from '../../js/surf/dots';
 ---
-<div class="map">
+<div class="map _scr-item _fade-in">
     <div class="map__content">
-        <img class="lazyload" data-src="/surf/icons/map.svg" alt="Map">
-        <noscript>
-            <img src="/surf/icons/map.svg" alt="Map">
-        </noscript>
+        <img src="/surf/icons/map.svg" alt="Map">
         {dots.map(dot => (
             <div class={`map__dot-box ${dot.id}`} style={`top: ${dot.top}%; left: ${dot.left}%;`}>
                 <div class="map__dot"></div>
