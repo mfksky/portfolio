@@ -1,0 +1,78 @@
+---
+---
+<button class="burger" type="button" title="Menu">
+    <div>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</button>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const burgerButton = document.querySelector('.burger');
+        const menu = document.querySelector('.menu');
+        const contact = document.querySelector('.header__contact');
+
+        burgerButton.addEventListener('click', () => {
+            burgerButton.classList.toggle('_active');
+            menu.classList.toggle('_active');
+            contact.classList.toggle('_active');
+        });
+    });
+</script>
+<style type="scss">
+    .burger {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        background: var(--bgDoubleBright);
+        transition: background .3s ease;
+        @media (min-width: 767.98px){
+            display: none;
+        }
+        div {
+            position: relative;
+            width: 10.67px;
+            height: 8px;
+            transition: transform .3s ease;
+            span {
+                position: absolute;
+                top: 50%;
+                right: 0;
+                width: 7.67px;
+                height: 1.25px;
+                background-color: var(--colorWhite);
+                transform: translateY(-50%);
+                transition: transform .3s ease;
+                &:first-child {
+                    top: 0;
+                    width: 10.67px;
+                    transform: translate(0);
+                }
+                &:last-child {
+                    top: auto;
+                    bottom: 0;
+                    width: 4.67px;
+                    transform: translate(0);
+                }
+            }
+        }
+        &._active {
+            background: var(--bgDoubleBrightActive);
+            div {
+                transform: scale(1.1);
+                span {
+                    top: 50%;
+                    width: 10.67px;
+                    transform: rotate(45deg);
+                    &:first-child {
+                        transform: rotate(-45deg);
+                    }
+                }
+            }
+        }
+    }
+</style>

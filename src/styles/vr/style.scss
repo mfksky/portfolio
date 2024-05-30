@@ -14,6 +14,11 @@
     --colorError: #FF4747;
     --colorWarn: #FACC15;
 
+    --bgDoubleGray: linear-gradient(var(--colorBlack_50), var(--colorBlack_50)) 50% 50% / calc(100% - 2px) calc(100% - 2px) no-repeat, linear-gradient(90deg, rgba(255, 255, 255, .3) 0, transparent 100%);
+    --bgBright: linear-gradient(90deg, var(--colorLinear_1), var(--colorLinear_2));
+    --bgDoubleBright: linear-gradient(var(--colorBlack_100), var(--colorBlack_100)) 50% 50% / calc(100% - 2px) calc(100% - 2px) no-repeat, linear-gradient(90deg, var(--colorLinear_1), var(--colorLinear_2));
+    --bgDoubleBrightActive: linear-gradient(var(--colorBlack_50), var(--colorBlack_50)) 50% 50% / calc(100% - 2px) calc(100% - 2px) no-repeat, linear-gradient(90deg, var(--colorLinear_1), var(--colorLinear_2));
+
     font-family: "Chakra Petch", sans-serif;
     color: var(--colorGrey_1);
     font-size: 16px;

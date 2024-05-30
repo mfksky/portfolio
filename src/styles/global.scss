@@ -3,7 +3,11 @@
 html {
 	height: 100%;
 }
-
+body {
+	&._lock {
+		overflow: hidden;
+	}
+}
 .wrapper {
 	position: relative;
 	width: 100%;

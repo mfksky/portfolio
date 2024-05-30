@@ -1,4 +1,5 @@
 ---
+import Burger from './Burger.astro';
 ---
 <header class="header">
     <div class="_container">
@@ -8,44 +9,117 @@
             </a>
             <nav class="header__menu menu">
                 <ul class="menu__nav">
-                    <li class="menu__item">
-                        <a href="#">Home</a>
+                    <li class="menu__item _active">
+                        <a class="menu__title" href="#">Home</a>
                     </li>
                     <li class="menu__item">
-                        <a href="#">About us</a>
+                        <a class="menu__title" href="#">About us</a>
                     </li>
                     <li class="menu__item">
-                        <a href="#">Service</a>
+                        <a class="menu__title" href="#">Service</a>
                     </li>
-                    <li class="menu__item">
-                        <div class="_spoller">Page</div>
-                        <ul class="menu__submenu">
-                            <li>Page1</li>
-                            <li>Page2</li>
-                            <li>Page3</li>
-                            <li>Page4</li>
-                        </ul>
+                    <li class="menu__item  _menu-spoller">
+                        <div class="menu__spoller">
+                            <div class="menu__spoller-title">
+                                <div>Page</div>
+                                <svg>
+                                    <use xlink:href="/vr/icons/icons.svg#arrow"></use>
+                                </svg>
+                            </div>
+                            <ul class="menu__spoller-submenu">
+                                <li>
+                                    <a href="#">Page1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Page2</a>
+                                </li>
+                                <li>
+                                    <a href="#">Page3</a>
+                                </li>
+                                <li>
+                                    <a href="#">Page4</a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
-                    <li class="menu__item">
-                        <div class="_spoller">Blog</div>
-                        <ul class="menu__submenu">
-                            <li>Blog1</li>
-                            <li>Blog2</li>
-                            <li>Blog3</li>
-                            <li>Blog4</li>
-                        </ul>
+                    <li class="menu__item _menu-spoller">
+                        <div class="menu__spoller">
+                            <div class="menu__spoller-title">
+                                <div>Blog</div>
+                                <svg>
+                                    <use xlink:href="/vr/icons/icons.svg#arrow"></use>
+                                </svg>
+                            </div>
+                            <ul class="menu__spoller-submenu">
+                                <li>
+                                    <a href="#">Blog1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Blog1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Blog3</a>
+                                </li>
+                                <li>
+                                    <a href="#">Blog4</a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
                 </ul>
-                <button class="menu__button" type="button" title="Menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
             </nav>
-            <button class="header__contact" type="button" title="Contact us">Contact us</button>
+            <div class="header__buttons">
+                <button class="header__contact" type="button" title="Contact us">
+                    <span>Contact us</span>
+                </button>
+                <Burger />
+            </div>
         </div>
     </div>
 </header>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const spollers = document.querySelectorAll('._menu-spoller');
+
+    spollers.forEach(function(spoller) {
+        const title = spoller.querySelector('.menu__spoller-title');
+        const submenu = spoller.querySelector('.menu__spoller-submenu');
+
+        title.addEventListener('click', function(event) {
+            event.stopPropagation();
+
+            document.querySelectorAll('.menu__spoller-title').forEach(function(item) {
+                if (item !== title) {
+                    item.classList.remove('_active');
+                }
+            });
+            document.querySelectorAll('.menu__spoller-submenu').forEach(function(item) {
+                if (item !== submenu) {
+                    item.classList.remove('_active');
+                }
+            });
+
+            title.classList.toggle('_active');
+            submenu.classList.toggle('_active');
+        });
+    });
+
+    document.addEventListener('click', function(event) {
+        if (event.target instanceof Element) {
+            const closestSpoller = event.target.closest('._menu-spoller');
+
+            if (!closestSpoller) {
+                document.querySelectorAll('.menu__spoller-title').forEach(function(item) {
+                    item.classList.remove('_active');
+                });
+                document.querySelectorAll('.menu__spoller-submenu').forEach(function(item) {
+                    item.classList.remove('_active');
+                });
+            }
+        }
+    });
+});
+</script>
 <style lang="scss">
     @import '../../styles/vr/vars';
 
@@ -54,34 +128,195 @@
         top: 0;
         left: 0;
         width: 100%;
+        z-index: 1000;
 		// .header__body
 		&__body {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            height: 114px;
 		}
 		// .header__logo
 		&__logo {
+            position: relative;
+            z-index: 1;
+            margin-right: 28px;
 		}
 		// .header__menu
 		&__menu {
 		}
+        // .header__buttons
+        &__buttons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
 		// .header__contact
 		&__contact {
+            position: relative;
+            padding: 12px 24px;
+            line-height: 28px;
+            background: var(--bgDoubleBright);
+            overflow: hidden;
+            cursor: pointer;
+            transition: color .3s ease;
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: -1;
+                background: var(--bgBright);
+                opacity: 0;
+                transition: opacity .3s ease;
+            }
+            span {
+                position: relative;
+                z-index: 3;
+                transition: color .3s ease;
+            }
+            &:hover {
+                &::before {
+                    opacity: 1;
+                    z-index: 2;
+                }
+                span {
+                    color: var(--colorWhite);
+                }
+            }
+            @media (max-width:$md3+px){
+                height: 32px;
+                padding: 0 24px;
+                &._active {
+                    background: var(--bgDoubleBrightActive);
+                }
+            }
+            @media (max-width:$md4+px){
+                display: none;
+            }
 		}
+
     }
     .menu {
+        @media (max-width:$md3+px){
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            padding: 114px 15px 0 15px;
+            background-color: rgba(37, 37, 50, .95);
+            backdrop-filter: blur(20px);
+            overflow-y: auto;
+            visibility: hidden;
+            opacity: 0;
+            transition: all .6s ease;
+            &._active {
+                left: 0;
+                visibility: visible;
+                opacity: 1;
+            }
+        }
 		// .menu__nav
 		&__nav {
+            display: flex;
+            align-items: center;
+            gap: 64px;
+            @media (max-width:$md2+px){
+                gap: 32px;
+            }
+            @media (max-width:$md3+px){
+                display: flex;
+                flex-direction: column;
+            }
 		}
 		// .menu__item
 		&__item {
+            &:hover {
+                .menu__title {
+                    color: var(--colorWhite);
+                }
+                .menu__spoller-title {
+                    color: var(--colorWhite);
+                    svg {
+                        fill: var(--colorWhite);
+                    }
+                }
+            }
+            @media (max-width:$md3+px){
+                width: 100%;
+            }
 		}
-		// .menu__submenu
-		&__submenu {
-		}
-		// .menu__button
-		&__button {
+        &__title {
+            display: flex;
+            align-items: center;
+            height: 28px;
+            color: inherit;
+            transition: color .3s ease;
+        }
+        &__spoller {
+            position: relative;
+        }
+        &__spoller-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color .3s ease 0s;
+            cursor: pointer;
+            svg {
+                position: relative;
+                top: 1.5px;
+                width: 6px;
+                height: 4px;
+                fill: var(--colorGrey_1);
+                transition: all .3s ease 0s;
+            }
+            &._active {
+                color: var(--colorWhite);
+                svg {
+                    transform: rotate(180deg);
+                    fill: var(--colorWhite);
+                }
+            }
+            @media (max-width:$md3+px){
+                width: 100%;
+                justify-content: space-between;
+                svg {
+                    width: 12px;
+                    height: 8px;
+                }
+            }
+        }
+		// .menu__spoller-submenu
+		&__spoller-submenu {
+            position: absolute;
+            top: 120%;
+            left: 0;
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 15px;
+            padding-right: 80px;
+            background: var(--bgDoubleGray);
+            opacity: 0;
+            transition: all .3s ease;
+            a {
+                color: inherit;
+                transition: color .3s ease;
+                &:hover {
+                    color: var(--colorWhite);
+                }
+            }
+            &._active {
+                display: flex;
+                opacity: 1;
+            }
+            @media (max-width:$md3+px){
+                position: relative;
+                top: 10px;
+            }
 		}
     }
 </style>
