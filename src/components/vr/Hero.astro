@@ -55,6 +55,8 @@ import AdvantagesHero from './AdvantagesHero.astro';
     </div>
 </section>
 <style lang="scss">
+    @import '../../styles/vr/vars';
+
     .hero {
         position: relative;
         padding-top: 127px;
@@ -85,12 +87,30 @@ import AdvantagesHero from './AdvantagesHero.astro';
             align-items: center;
             justify-content: space-between;
             gap: 40px;
+            @media (max-width:$md2+px){
+                align-items: flex-end;
+            }
+            @media (max-width:$md3+px){
+                flex-direction: column;
+                align-items: flex-start;
+                padding-bottom: 144px;
+            }
+            @media (max-width:$md5+px){
+                padding-bottom: 100px;
+            }
 		}
 		// .hero__info
 		&__info {
             display: flex;
             flex-direction: column;
-            gap: 40px;
+            gap: 42px;
+            @media (max-width:$md2+px){
+                padding-bottom: 42px;
+            }
+            @media (max-width:$md3+px){
+                padding-bottom: 0;
+                gap: 32px;
+            }
 		}
 		// .hero__text
 		&__text {
@@ -109,6 +129,13 @@ import AdvantagesHero from './AdvantagesHero.astro';
             align-items: center;
             justify-content: space-between;
             gap: 42px;
+            @media (max-width:$md2+px){
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            @media (max-width:$md3+px){
+                gap: 144px;
+            }
 		}
 		// .hero__clients
 		&__clients {
@@ -210,6 +237,23 @@ import AdvantagesHero from './AdvantagesHero.astro';
                 background: var(--colorLinear_2);
                 filter: blur(70px);
                 opacity: .4;
+            }
+            @media (max-width:$md3+px){
+                position: absolute;
+                bottom: 0;
+                right: -120px;
+                z-index: -1;
+                img {
+                    width: 354px;
+                    height: 422px;
+                }
+            }
+            @media (max-width:$md5+px){
+                right: -350px;
+                img {
+                    width: calc(354px - 10%);
+                    height: calc(422px - 10%);
+                }
             }
 		}
     }

@@ -1,9 +1,13 @@
 h1 {
     color: var(--colorWhite);
-    font-size: 64px;
-    line-height: 83px;
+    font-size: 48px;
+    line-height: 58px;
     font-weight: 600;
     letter-spacing: -.5px;
+    @media (min-width:$md2+px){
+        @include adaptiv-value("font-size", 64, 42, 1);
+        @include adaptiv-value("line-height", 83, 61, 1);
+    }
 }
 
 h3 {

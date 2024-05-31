@@ -31,6 +31,8 @@ const advContents = [
 </div>
 
 <style lang="scss">
+	@import '../../styles/vr/vars';
+
 	.advantages-hero {
 		position: relative;
 		z-index: 1;
@@ -50,6 +52,25 @@ const advContents = [
 			p {
 				font-size: 14px;
 				line-height: 28px;
+			}
+		}
+		@media (max-width:$md2+px){
+			padding: 36px;
+		}
+		@media (max-width:$md3+px){
+			grid-template-columns: repeat(2, 1fr);
+			&__item {
+				&:last-child {
+					grid-column: span 2;
+				}
+			}
+		}
+		@media (max-width:$md3+px){
+			grid-template-columns: 1fr;
+			&__item {
+				&:last-child {
+					grid-column: span 1;
+				}
 			}
 		}
 	}
