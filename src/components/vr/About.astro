@@ -1,0 +1,164 @@
+---
+const title = 'About us';
+const heading = 'Bring your events to life like never before with our VR services.';
+const subtext = 'VRNas is a leading provider of VR services for education, entertainment, architecture, and events. Our mission is to bring the power of virtual reality to everyone, allowing them to explore new worlds, learn in new ways, and experience events in a whole new light.';
+const listItems = ['Cutting-Edge Technology', 'Versatile Applications', 'Affordable and Accessible'];
+const buttonText = 'Read More';
+const mainImage = '/vr/images/about/main.png';
+const videoImage = '/vr/images/about/video.png';
+---
+
+<section class="about">
+    <div class="_container">
+        <div class="about__content">
+            <div class="about__left">
+                <img class="about__image lazyload" data-src={mainImage} alt="Main image">
+                <noscript>
+                    <img class="about__image" src={mainImage} alt="Main image">
+                </noscript>
+                <span></span>
+                <div class="about__video video">
+                    <div>
+                        <img class="lazyload" data-src={videoImage} alt="Video">
+                        <noscript>
+                            <img src={videoImage} alt="Video">
+                        </noscript>
+                    </div>
+                </div>
+            </div>
+            <div class="about__right">
+                <div class="about__text">
+                    <h4>{title}</h4>
+                    <h2>{heading}</h2>
+                    <p>{subtext}</p>
+                    <ul>
+                        {
+                            listItems.map((item) => (
+                                <li>{item}</li>
+                            ))
+                        }
+                    </ul>
+                </div>
+                <button class="about__button main-button">{buttonText}</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style lang="scss">
+    @import '../../styles/vr/vars';
+    @import '../../styles/vr/mixins';
+
+	.about {
+		// .about__content
+		&__content {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            @include adaptiv-value("gap", 80, 10, 1);
+            @media (max-width:$md2+px){
+                gap: 40px;
+            }
+            @media (max-width:$md3+px){
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 48px;
+            }
+		}
+		// .about__left
+		&__left {
+            flex: 0 1 50%;
+            position: relative;
+            padding-bottom: 8px;
+            padding-left: 24px;
+            &::before {
+                content: '';
+                position: absolute;
+                bottom: 17%;
+                left: 0;
+                z-index: -2;
+                width: 100%;
+                height: 47.6%;
+                background: var(--bgBright);
+                transform: rotate(-25deg);
+                filter: blur(70px);
+                opacity: .5;
+            }
+            &::after {
+                content: '';
+                position: absolute;
+                top: 25%;
+                left: 5%;
+                z-index: -1;
+                width: 53.5%;
+                height: 47.7%;
+                background: var(--colorLinear_2);
+                filter: blur(70px);
+                opacity: .4;
+            }
+            span {
+                position: absolute;
+                bottom: 8px;
+                left: 0;
+                z-index: -100;
+                width: 73.47%;
+                height: 78.813%;
+                background: var(--colorBlack_50);
+            }
+		}
+		// .about__image
+		&__image {
+            position: relative;
+            z-index: 1;
+		}
+		// .about__video
+		&__video {
+            position: absolute;
+            bottom: -15px;
+            right: 0;
+            z-index: 2;
+		}
+		// .about__right
+		&__right {
+            flex: 0 1 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 32px;
+            //max-width: 577px;
+		}
+		// .about__text
+		&__text {
+            h4 {
+                display: inline-block;
+                margin-bottom: 12px;
+                color: transparent;
+                font-size: 16px;
+                line-height: 21px;
+                font-weight: 500;
+                letter-spacing: .14em;
+                text-transform: uppercase;
+                background: var(--bgBright);
+                background-clip: text;
+            }
+            h2 {
+                margin-bottom: 12px;
+            }
+            p {
+                margin-bottom: 24px;
+            }
+            ul {
+                display: flex;
+                flex-direction: column;
+                gap: 14px;
+                li {
+                    padding-left: 28px;
+                    background: url('/vr/icons/check.svg') left center / 16px 16px no-repeat;
+                }
+            }
+		}
+		// .about__button
+		&__button {
+		}
+    }
+</style>

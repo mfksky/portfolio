@@ -34,7 +34,7 @@ import AdvantagesHero from './AdvantagesHero.astro';
                         </ul>
                         <div><span>32k+</span> Happy Client</div>
                     </div>
-                    <div class="hero__video">
+                    <div class="hero__video video">
                         <div>
                             <img class="lazyload" data-src="/vr/images/hero/video.png" alt="Video">
                             <noscript>
@@ -59,8 +59,8 @@ import AdvantagesHero from './AdvantagesHero.astro';
 
     .hero {
         position: relative;
+        margin-bottom: 120px;
         padding-top: 127px;
-        overflow: hidden;
         &::before {
             content: '';
             position: absolute;
@@ -78,6 +78,9 @@ import AdvantagesHero from './AdvantagesHero.astro';
             width: 1100px;
             height: 721px;
             background: url('/vr/images/hero/after.svg');
+        }
+        @media (max-width:$md3+px){
+            margin-bottom: 100px;
         }
 		// .hero__content
 		&__content {
@@ -174,41 +177,7 @@ import AdvantagesHero from './AdvantagesHero.astro';
             }
 		}
 		// .hero__video
-		&__video {
-            position: relative;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            width: 196px;
-            height: 127.94px;
-            background-color: #21232E;
-            overflow: hidden;
-            cursor: pointer;
-            &::before {
-                content: '';
-                position: absolute;
-                top: 50%;
-                right: 50%;
-                z-index: 1;
-                width: 28px;
-                height: 28px;
-                background: url('/vr/images/hero/play.svg') center no-repeat;
-                border: 1.17px solid var(--colorWhite);
-                border-radius: 50%;
-                transform: translate(50%, -50%);
-                transition: transform .3s ease 0s;
-            }
-            div {
-                transition: transform .6s ease 0s;
-            }
-            &:hover {
-                &::before {
-                    transform: translate(50%, -50%) scale(1.3);
-                }
-                div {
-                    transform: scale(1.1);
-                }
-            }
+		&__video { 
 		}
 		// .hero__image
 		&__image {
@@ -220,7 +189,7 @@ import AdvantagesHero from './AdvantagesHero.astro';
                 left: 0;
                 z-index: -2;
                 width: 100%;
-                height: 300px;
+                height: 47.6%;
                 background: var(--bgBright);
                 transform: rotate(-25deg);
                 filter: blur(70px);
@@ -232,8 +201,8 @@ import AdvantagesHero from './AdvantagesHero.astro';
                 top: 25%;
                 left: 5%;
                 z-index: -1;
-                width: 300px;
-                height: 300px;
+                width: 53.5%;
+                height: 47.7%;
                 background: var(--colorLinear_2);
                 filter: blur(70px);
                 opacity: .4;
