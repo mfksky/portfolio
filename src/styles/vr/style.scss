@@ -1,4 +1,5 @@
 @import 'vars';
+@import 'typo';
 
 :root {
     --colorBlack_100: #18181B;
@@ -34,4 +35,35 @@
     max-width: $maxWidthContainer+px;
     margin: 0 auto;
     padding: 0 15px;
+}
+.main-button {
+    position: relative;
+    display: inline-block;
+    padding: 18px 38px;
+    color: var(--colorWhite);
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    background: var(--bgBright);
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        background: var(--bgBright);
+        transform: scale(1.1);
+        filter: blur(20px);
+        opacity: 0;
+        transition: opacity .3s ease;
+    }
+    &:hover {
+        &::before {
+            opacity: 1;
+        }
+    }
 }

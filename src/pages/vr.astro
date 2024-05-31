@@ -1,5 +1,6 @@
 ---
 import Header from '../components/vr/Header.astro';
+import Hero from '../components/vr/Hero.astro';
 import '../styles/global.scss';
 import '../styles/vr/style.scss';
 
@@ -17,7 +18,11 @@ const pageTitle = "VR лендинг";
         <div class="wrapper">
             <Header />
             <main class="page">
+				<Hero />
             </main>
         </div>
 	</body>
 </html>
+<script>
+	import 'lazysizes';
+</script>
