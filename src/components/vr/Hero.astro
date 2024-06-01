@@ -44,7 +44,7 @@ import AdvantagesHero from './AdvantagesHero.astro';
                     </div>
                 </div>
             </div>
-            <div class="hero__image">
+            <div class="hero__image bg-element">
                 <img class="lazyload" data-src="/vr/images/hero/hero_image.png" alt="Hero image">
                 <noscript>
                     <img src="/vr/images/hero/hero_image.png" alt="Hero image">
@@ -182,31 +182,6 @@ import AdvantagesHero from './AdvantagesHero.astro';
 		// .hero__image
 		&__image {
             position: relative;
-            &::before {
-                content: '';
-                position: absolute;
-                bottom: 17%;
-                left: 0;
-                z-index: -2;
-                width: 100%;
-                height: 47.6%;
-                background: var(--bgBright);
-                transform: rotate(-25deg);
-                filter: blur(70px);
-                opacity: .5;
-            }
-            &::after {
-                content: '';
-                position: absolute;
-                top: 25%;
-                left: 5%;
-                z-index: -1;
-                width: 53.5%;
-                height: 47.7%;
-                background: var(--colorLinear_2);
-                filter: blur(70px);
-                opacity: .4;
-            }
             @media (max-width:$md3+px){
                 position: absolute;
                 bottom: 0;

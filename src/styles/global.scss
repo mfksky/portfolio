@@ -1,4 +1,6 @@
-@import './assets/null.css';
+@use "sass:math";
+
+@import './assets/mixins';
 
 html {
 	height: 100%;

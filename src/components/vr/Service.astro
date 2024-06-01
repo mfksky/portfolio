@@ -1,0 +1,208 @@
+---
+const title = 'OUR SERVICE';
+const heading = 'Our Service';
+const subtext = 'We use the latest VR hardware and software to create high-quality VR experiences that are accessible and affordable. Our goal is to provide exceptional customer service and support, and our team is always available to answer any questions and address any concerns you may have.';
+const serviceItems = [
+    {
+        url: '#',
+        image: '/vr/icons/software.svg',
+        title: 'VR Development',
+        text: 'From concept to creation, our team of VR developers will bring your vision to life.'
+    },
+    {
+        url: '#',
+        image: '/vr/icons/design.svg',
+        title: 'VR Design',
+        text: 'Our talented VR designers will create immersive and engaging environments that will captivate your audience.'
+    },
+    {
+        url: '#',
+        image: '/vr/icons/review.svg',
+        title: 'VR Consulting',
+        text: 'Our VR consultants will work with you to ensure that your VR experience meets your goals and exceeds your expectations.'
+    },
+    {
+        url: '#',
+        image: '/vr/icons/video-console.svg',
+        title: 'VR Games',
+        text: 'We offer a wide selection of VR games that are suitable for players of all ages and skill levels.'
+    },
+    {
+        url: '#',
+        image: '/vr/icons/party.svg',
+        title: 'VR Events',
+        text: 'Make your next event unforgettable with our VR event services.'
+    },
+    {
+        url: '#',
+        image: '/vr/icons/theatre.svg',
+        title: 'VR Entertainment',
+        text: 'Create a VR escape room, or offer VR experiences at a theme park, we have the expertise and experience to make it happen.'
+    },
+];
+---
+
+<section class="service">
+    <div class="_container">
+        <div class="service__content">
+            <div class="service__text">
+                <div class="service__heading">
+                    <h4 class="h4-linear">{title}</h4>
+                    <h2>{heading}</h2>
+                </div>
+                <div class="service__subtext">{subtext}</div>
+            </div>
+            <div class="service__cards cards-service">
+                {
+                    serviceItems.map((item) => (
+                        <div class="cards-service__item">
+                            <div class="cards-service__image">
+                                <img class="lazyload" data-src={item.image} alt={item.title} />
+                                <noscript>
+                                    <img src={item.image} alt={item.title} />
+                                </noscript>
+                            </div>
+                            <h3>{item.title}</h3>
+                            <p>{item.text}</p>
+                            <div class="cards-service__button">
+                                <button type="button" title="Learn more">
+                                    <span>Learn more</span>
+                                </button>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<style lang="scss">
+    @import '../../styles/vr/vars';
+
+    .service {
+		// .service__content
+		&__content {
+            display: flex;
+            flex-direction: column;
+            gap: 46px;
+		}
+		// .service__text
+		&__text {
+            display: flex;
+            justify-content: space-between;
+		}
+		// .service__heading
+		&__heading {
+            flex-shrink: 0;
+		}
+		// .service__subtext
+		&__subtext {
+            max-width: 625px;
+		}
+    }
+    .cards-service {
+        display: flex;
+        gap: 32px 36px;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding-bottom: 120px;
+        // .cards-service__item
+        &__item {
+            position: relative;
+            flex-basis: calc(33.33% - 24px);
+            height: 291px;
+            padding: 38px 34px 0 34px;
+            font-size: 14px;
+            line-height: 28px;
+            background: var(--bgDoubleGray);
+            transition: background .3s ease;
+            overflow: hidden;
+            cursor: pointer;
+            &:nth-child(2), &:nth-child(5) {
+                top: 60px;
+            }
+            &:nth-child(3), &:nth-child(6) {
+                top: 120px;
+            }
+            h3 {
+                margin-bottom: 12px;
+            }
+            &:hover {
+                background: var(--bgGrayBrightBorder);
+                .cards-service__button {
+                    visibility: visible;
+                    opacity: 1;
+                    button {
+                        transform: translateY(0);
+                    }
+                }
+            }
+        }
+        // .cards-service__image
+        &__image {
+            margin-bottom: 60px;
+        }
+        // .cards-service__button
+        &__button {
+            position: absolute;
+            right: 1px;
+            bottom: 1px;
+            left: 1px;
+            z-index: 1;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            height: 152px;
+            padding-bottom: 30px;
+            background: linear-gradient(
+                to bottom,
+                rgba(37, 37, 50, 0) 0%,
+                rgba(37, 37, 50, 0.91) 53%,
+                rgba(37, 37, 50, 1.0) 100%
+            );
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity .3s ease;
+            button {
+                position: relative;
+                padding: 18px 38px;
+                font-size: 14px;
+                line-height: 14px;
+                letter-spacing: 1.5px;
+                font-weight: 700;
+                text-transform: uppercase;
+                background: linear-gradient(var(--colorBlack_50), var(--colorBlack_50)) 50% 50% / calc(100% - 2px) calc(100% - 2px) no-repeat, linear-gradient(90deg, var(--colorLinear_1), var(--colorLinear_2));
+                overflow: hidden;
+                transform: translateY(100%);
+                transition: transform .3s ease;
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    z-index: -1;
+                    background: var(--bgBright);
+                    opacity: 0;
+                    transition: opacity .3s ease;
+                }
+                span {
+                    position: relative;
+                    z-index: 3;
+                    transition: color .3s ease;
+                }
+                &:hover {
+                    &::before {
+                        opacity: 1;
+                        z-index: 2;
+                    }
+                    span {
+                        color: var(--colorWhite);
+                    }
+                }
+            }
+        }
+    }
+</style>
