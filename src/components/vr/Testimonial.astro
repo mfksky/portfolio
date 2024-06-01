@@ -1,0 +1,270 @@
+---
+const title = 'TESTIMONIAL';
+const heading = 'What Our Clients Are Saying';
+const mainImage = '/vr/images/testimonial/bg.png';
+const clients = [
+    {
+        name: 'Robert Fox', position: 'CEO Anono', image: '/vr/images/hero/01.png', text: 'The team was professional, responsive, and a pleasure to work with. We highly recommend VRNas for any VR needs.'
+    },
+    {
+        name: 'Robert Bear', position: 'CEO Ololo', image: '/vr/images/hero/02_1.png', text: 'The team was professional, responsive, and a pleasure to work with. We highly recommend VRNas for any VR needs.'
+    },
+    {
+        name: 'Robert Fish', position: 'CEO Google', image: '/vr/images/hero/06.png', text: 'The team was professional, responsive, and a pleasure to work with. We highly recommend VRNas for any VR needs.'
+    },
+    {
+        name: 'Robert Green', position: 'CEO Yandex', image: '/vr/images/hero/04.png', text: 'The team was professional, responsive, and a pleasure to work with. We highly recommend VRNas for any VR needs.'
+    },
+    {
+        name: 'Robert Black', position: 'CEO Bing', image: '/vr/images/hero/02.png', text: 'The team was professional, responsive, and a pleasure to work with. We highly recommend VRNas for any VR needs.'
+    },
+    {
+        name: 'Robert White', position: 'CEO Yahoo', image: '/vr/images/hero/03.png', text: 'The team was professional, responsive, and a pleasure to work with. We highly recommend VRNas for any VR needs.'
+    },
+];
+---
+
+<section class="testimonial">
+    <div class="_container">
+        <div class="testimonial__content">
+            <div class="testimonial__text">
+                <h4 class="h4-linear">{title}</h4>
+                <h2>{heading}</h2>
+            </div>
+            <div class="testimonial__image">
+                <img class="lazyload" data-src="/vr/images/testimonial/bg.png" alt="Bg" />
+                <noscript>
+                    <img src={mainImage} alt="Bg" />
+                </noscript>
+            </div>
+            <div class="testimonial__clients clients-testimonial">
+                {
+                    clients.map((item) => (
+                        <div class="clients-testimonial__item">
+                            <div class="clients-testimonial__button">
+                                <img class="lazyload" data-src={item.image} alt={item.name} />
+                                <noscript>
+                                    <img src={item.image} alt={item.name} />
+                                </noscript>
+                            </div>
+                            <div class="clients-testimonial__info">
+                                <p>{item.text}</p>
+                                <div><span>{item.name}</span> - {item.position}</div>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const container = document.querySelector('.clients-testimonial');
+
+        if (container) {
+            const firstItem = container.querySelector('.clients-testimonial__item') as HTMLElement | null;
+            if (firstItem) {
+                const firstButton = firstItem.querySelector('.clients-testimonial__button') as HTMLElement | null;
+                const firstInfo = firstItem.querySelector('.clients-testimonial__info') as HTMLElement | null;
+
+                if (firstButton && firstInfo) {
+                    firstButton.classList.add('_active');
+                    firstInfo.classList.add('_active');
+                }
+            }
+            
+            container.addEventListener('click', (event: Event) => {
+                const target = event.target as HTMLElement;
+                const button = target.closest('.clients-testimonial__button') as HTMLElement | null;
+
+                if (button) {
+                    const item = button.closest('.clients-testimonial__item') as HTMLElement | null;
+                    const info = item ? item.querySelector('.clients-testimonial__info') as HTMLElement | null : null;
+
+                    if (!item || !info) return;
+                    
+                    container.querySelectorAll('.clients-testimonial__button._active').forEach(btn => btn.classList.remove('_active'));
+                    container.querySelectorAll('.clients-testimonial__info._active').forEach(inf => inf.classList.remove('_active'));
+
+                    button.classList.add('_active');
+                    info.classList.add('_active');
+                }
+            });
+        }
+    });
+</script>
+
+
+<style lang="scss">
+    @import '../../styles/vr/vars';
+
+    .testimonial {
+        margin-bottom: 120px;
+        @media (max-width:$md3+px){
+            margin-bottom: 100px;
+        }
+		// .testimonial__content
+		&__content {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+		}
+		// .testimonial__text
+		&__text {
+            position: absolute;
+            top: 111px;
+            left: 50%;
+            width: 100%;
+            text-align: center;
+            transform: translateX(-50%);
+		}
+		// .testimonial__image
+		&__image {
+            margin: 0 -25px;
+		}
+		// .testimonial__clients
+		&__clients {
+		}
+    }
+    .clients-testimonial {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        // .clients-testimonial__item
+        &__item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+            &:nth-child(1) {
+                display: block;
+                top: 25.7%;
+                left: 0;
+            }
+            &:nth-child(2) {
+                display: block;
+                top: 73.4%;
+                left: 11%;
+            }
+            &:nth-child(3) {
+                display: block;
+                top: 48.275%;
+                left: 84.475%;
+            }
+            &:nth-child(4) {
+                display: block;
+                top: 20%;
+                left: 59.710%;
+            }
+            &:nth-child(5) {
+                display: block;
+                top: 69.526%;
+                left: 47.586%;
+            }
+            &:nth-child(6) {
+                display: block;
+                top: 88.7%;
+                left: 76%;
+            }
+        }
+        // .clients-testimonial__button
+        &__button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 75px;
+            height: 75px;
+            background: url('/vr/icons/bg.svg') 100% / 100% no-repeat;
+            cursor: pointer;
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: url('/vr/icons/bg_active.svg') 100% / 100% no-repeat;
+                transition: opacity .3s ease;
+                opacity: 0;
+            }
+            &::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                z-index: -2;
+                width: 90%;
+                height: 50%;
+                background: var(--bgBright);
+                border-radius: 88% 12% 88% 12% / 20% 37% 63% 80%;
+                filter: blur(7px);
+                transform: translate(-50%, -50%) rotate(-20deg);
+                opacity: 0;
+            }
+            &._active {
+                &::before {
+                    opacity: 1;
+                }
+                &::after {
+                    opacity: 1;
+                }
+            }
+            &:hover {
+                &::before {
+                    opacity: 1;
+                }
+            }
+            img {
+                position: relative;
+                width: 48.87px;
+                height: 48.87px;
+                border: .79px solid transparent;
+                border-radius: 50%;
+            }
+        }
+        // .clients-testimonial__info
+        &__info {
+            position: absolute;
+            top: 50%;
+            left: calc(100% + 16px);
+            width: 297px;
+            padding: 18px 18px 18px 23px;
+            color: var(--colorGrey_2);
+            font-size: 12px;
+            line-height: 20px;
+            background: url('/vr/icons/rectangle.svg') 100% / 100% no-repeat;
+            transform: translateY(-50%);
+            display: none;
+            p {
+                margin-bottom: 8px;
+            }
+            div {
+                position: relative;
+                display: inline-block;
+                line-height: 24px;
+                &::before {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 1px;
+                    background: var(--bgBright);
+                }
+                span {
+                    color: var(--colorWhite);
+                }
+
+            }
+            &._active {
+                display: block;
+            }
+        }
+    }
+
+</style>
