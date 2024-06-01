@@ -55,7 +55,7 @@ const serviceItems = [
             <div class="service__cards cards-service">
                 {
                     serviceItems.map((item) => (
-                        <div class="cards-service__item">
+                        <a class="cards-service__item" href="#">
                             <div class="cards-service__image">
                                 <img class="lazyload" data-src={item.image} alt={item.title} />
                                 <noscript>
@@ -69,7 +69,7 @@ const serviceItems = [
                                     <span>Learn more</span>
                                 </button>
                             </div>
-                        </div>
+                        </a>
                     ))
                 }
             </div>
@@ -86,11 +86,18 @@ const serviceItems = [
             display: flex;
             flex-direction: column;
             gap: 46px;
+            @media (max-width:$md3+px){
+                gap: 24px;
+            }
 		}
 		// .service__text
 		&__text {
             display: flex;
             justify-content: space-between;
+            @media (max-width:$md3+px){
+                flex-direction: column;
+                gap: 12px;
+            }
 		}
 		// .service__heading
 		&__heading {
@@ -98,7 +105,10 @@ const serviceItems = [
 		}
 		// .service__subtext
 		&__subtext {
-            max-width: 625px;
+            max-width: 52.084%;
+            @media (max-width:$md3+px){
+                max-width: 100%;
+            }
 		}
     }
     .cards-service {
@@ -107,12 +117,16 @@ const serviceItems = [
         justify-content: space-between;
         flex-wrap: wrap;
         padding-bottom: 120px;
+        @media (max-width:$md2+px){
+            gap: 15px;
+        }
         // .cards-service__item
         &__item {
             position: relative;
             flex-basis: calc(33.33% - 24px);
             height: 291px;
             padding: 38px 34px 0 34px;
+            color: inherit;
             font-size: 14px;
             line-height: 28px;
             background: var(--bgDoubleGray);
@@ -137,6 +151,22 @@ const serviceItems = [
                         transform: translateY(0);
                     }
                 }
+            }
+            @media (max-width:$md1+px){
+                height: auto;
+                padding-bottom: 34px;
+            }
+            @media (max-width:$md2+px){
+                flex-basis: calc(50% - 7.5px);
+                &:nth-child(2), &:nth-child(5) {
+                    top: 0;
+                }
+                &:nth-child(3), &:nth-child(6) {
+                    top: 0;
+                }
+            }
+            @media (max-width:$md3+px){
+                flex-basis: 100%;
             }
         }
         // .cards-service__image
