@@ -1,0 +1,200 @@
+---
+const title = 'WHY CHOOSE US';
+const heading = 'Why Choose Us for Your VR Needs';
+const spollerItems = [
+    {
+        title: 'Passionate and Experienced Team',
+        text: 'We are proud of our team of VR experts who are passionate about VR and dedicated to delivering the highest quality work. Our team consists of experienced VR developers, designers, and technicians who have a proven track record of creating immersive and engaging VR experiences.'
+    },
+    {
+        title: 'Customized Solutions',
+        text: 'We are proud of our team of VR experts who are passionate about VR and dedicated to delivering the highest quality work. Our team consists of experienced VR developers, designers, and technicians who have a proven track record of creating immersive and engaging VR experiences.'
+    },
+    {
+        title: 'Exceptional Customer Service',
+        text: 'We are proud of our team of VR experts who are passionate about VR and dedicated to delivering the highest quality work. Our team consists of experienced VR developers, designers, and technicians who have a proven track record of creating immersive and engaging VR experiences.'
+    },
+];
+const mainImage = '/vr/images/choose/image.png';
+const videoImage = '/vr/images/choose/video.jpg';
+---
+
+<section class="choose">
+    <div class="_container">
+        <div class="choose__content">
+            <div class="choose__text">
+                <h4 class="h4-linear">{title}</h4>
+                <h2>{heading}</h2>
+                <div class="choose__spollers">
+                    {
+                        spollerItems.map((item) => (
+                            <div class="choose__item">
+                                <div class="choose__title">
+                                    <h3>{item.title}</h3>
+                                    <svg>
+                                        <use xlink:href="/vr/icons/icons.svg#arrow"></use>
+                                    </svg>
+                                </div>
+                                <div class="choose__info">{item.text}</div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+            <div class="choose__right bg-element">
+                <img class="choose__image lazyload" data-src={mainImage} alt="Main image">
+                <noscript>
+                    <img class="choose__image" src={mainImage} alt="Main image">
+                </noscript>
+                <span></span>
+                <div class="choose__video video">
+                    <div>
+                        <img class="lazyload" data-src={videoImage} alt="Video">
+                        <noscript>
+                            <img src={videoImage} alt="Video">
+                        </noscript>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const spoilers = document.querySelectorAll('.choose__item');
+
+        spoilers.forEach((spoiler, index) => {
+            const title = spoiler.querySelector('.choose__title');
+            const info = spoiler.querySelector('.choose__info');
+
+            if (!(info instanceof HTMLElement)) return;
+
+            const setInfoStyles = (isActive) => {
+                info.style.maxHeight = isActive ? `${info.scrollHeight}px` : '0';
+                info.style.opacity = isActive ? '1' : '0';
+            };
+
+            info.style.overflow = 'hidden';
+            info.style.transition = 'max-height 0.5s ease, opacity 0.5s ease';
+
+            if (index === 0) {
+                spoiler.classList.add('_active');
+                setInfoStyles(true);
+            } else {
+                setInfoStyles(false);
+            }
+
+            title.addEventListener('click', () => {
+                spoiler.classList.toggle('_active');
+                const isActive = spoiler.classList.contains('_active');
+                setInfoStyles(isActive);
+            });
+        });
+    });
+</script>
+
+<style lang="scss">
+    @import '../../styles/vr/vars';
+
+    .choose {
+        margin-bottom: 120px;
+        @media (max-width:$md3+px){
+            margin-bottom: 100px;
+        }
+		// .choose__content
+		&__content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            @include adaptiv-value("gap", 80, 10, 1);
+            @media (max-width:$md2+px){
+                gap: 40px;
+            }
+            @media (max-width:$md3+px){
+                flex-direction: column-reverse;
+                align-items: flex-start;
+                gap: 76px;
+            }
+		}
+		// .choose__text
+		&__text {
+            flex: 0 1 50%;
+            h2 {
+                margin-bottom: 32px;
+            }
+		}
+		// .choose__spollers
+		&__spollers {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+		}
+		// .choose__item
+		&__item {
+		}
+		// .choose__title
+		&__title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255,255,255,.35);
+            cursor: pointer;
+            h3 {
+                font-weight: 500;
+            }
+            svg {
+                width: 6px;
+                height: 4px;
+                fill: var(--colorWhite);
+                transition: all .3s ease;
+            }
+            &:hover {
+                svg {
+                    transform: rotate(180deg);
+                }
+            }
+		}
+        // .choose__info
+        &__info {
+            // display: none;
+            padding-top: 12px;
+            color: var(--colorGrey_2);
+            // &._active {
+            //     display: block;
+            // }
+        }
+		// .choose__right
+		&__right {
+            flex: 0 1 50%;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            span {
+                bottom: 0;
+            }
+            @media (max-width:$md3+px){
+                span {
+                    left: 34px;
+                }
+            }
+		}
+		// .choose__image
+		&__image {
+		}
+		// .choose__video
+		&__video {
+            position: absolute;
+            bottom: -5.62%;
+            right: 15%;
+            @media (max-width:$md3+px){
+                right: 0;
+            }
+            @media (max-width:$md4+px){
+                width: 147.39px;
+                height: 96.21px;
+            }
+		}
+    }
+</style>
