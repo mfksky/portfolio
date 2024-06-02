@@ -1,8 +1,151 @@
 ---
+const title = 'Our Trusted Partners';
+const heading = 'Discover the Companies We Work With';
+const mainImage = '/vr/images/partners/image.png';
+const partners = [
+    {
+        title: 'Logo 1', img: '/vr/images/partners/logo1.svg'
+    },
+    {
+        title: 'Logo 2', img: '/vr/images/partners/logo2.svg'
+    },
+    {
+        title: 'Logo 3', img: '/vr/images/partners/logo3.svg'
+    },
+    {
+        title: 'Logo 4', img: '/vr/images/partners/logo4.svg'
+    },
+    {
+        title: 'Logo 5', img: '/vr/images/partners/logo5.svg'
+    },
+    {
+        title: 'Logo 6', img: '/vr/images/partners/logo6.svg'
+    },
+    {
+        title: 'Logo 7', img: '/vr/images/partners/logo7.svg'
+    },
+];
 ---
 
 <section class="partners section">
     <div class="_container">
-        
+        <div class="partners__content">
+            <div class="partners__text">
+                <h4 class="h4-linear">{title}</h4>
+                <h2>{heading}</h2>
+            </div>
+            <div class="partners__list">
+                <div class="partners__img">
+                    <img class="lazyload" data-src={mainImage} alt="Main image" />
+                    <noscript>
+                        <img src={mainImage} alt="Main image" />
+                    </noscript>
+                </div>
+                {
+                    partners.map((item, index) => (
+                    <div class={`partners__item _${index + 1}`}>
+                        <img class="lazyload" data-src={item.img} alt={item.title} />
+                        <noscript>
+                            <img src={item.img} alt={item.title} />
+                        </noscript>
+                    </div>
+                    ))
+                }
+            </div>
+        </div>
     </div>
 </section>
+
+<style lang="scss">
+    @import '../../styles/vr/vars';
+
+    .partners {
+		// .partners__content
+		&__content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 58px;
+		}
+		// .partners__text
+		&__text {
+            text-align: center;
+		}
+		// .partners__list
+		&__list {
+            position: relative;
+            &::before {
+                content: '';
+                position: absolute;
+                bottom: 15%;
+                left: 20%;
+                z-index: -2;
+                width: 60%;
+                height: 20%;
+                background: var(--bgBright);
+                transform: translateY(-50%) rotate(-25deg);
+                filter: blur(100px);
+                opacity: .3;
+            }
+            &::after {
+                content: '';
+                position: absolute;
+                top: 40%;
+                left: 25%;
+                z-index: -1;
+                width: 43.5%;
+                height: 37.7%;
+                background: var(--colorLinear_2);
+                filter: blur(100px);
+                opacity: .2;
+            }
+		}
+		// .partners__img
+		&__img {
+		}
+		// .partners__item
+		&__item {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            @include adaptiv-value("width", 102, 34, 1);
+            @include adaptiv-value("height", 102, 34, 1);
+            padding: 0 12px;
+            background: url('/vr/images/partners/bg.svg') 100% / 100% no-repeat;
+            transform: translate(-50%, -50%);
+            @media (max-width:$md3+px){
+                padding: 0 5px;
+            }
+            &._1 {
+                top: 67%;
+                left: 7%;
+            }
+            &._2 {
+                top: 42%;
+                left: 12%;
+            }
+            &._3 {
+                top: 20%;
+                left: 26%;
+            }
+            &._4 {
+                top: 10%;
+                left: 50%;
+            }
+            &._5 {
+                top: 20%;
+                left: 74%;
+            }
+            &._6 {
+                top: 42%;
+                left: 88%;
+            }
+            &._7 {
+                top: 67%;
+                left: 93%;
+            }
+		}
+    }
+</style>
