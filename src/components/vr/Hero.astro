@@ -1,7 +1,7 @@
 ---
 import AdvantagesHero from './AdvantagesHero.astro';
 ---
-<section class="hero" id="home">
+<section class="hero section" id="home">
     <div class="_container">
         <div class="hero__content">
             <div class="hero__info">
@@ -59,7 +59,6 @@ import AdvantagesHero from './AdvantagesHero.astro';
 
     .hero {
         position: relative;
-        margin-bottom: 120px;
         padding-top: 127px;
         &::before {
             content: '';
@@ -78,9 +77,6 @@ import AdvantagesHero from './AdvantagesHero.astro';
             width: 1100px;
             height: 721px;
             background: url('/vr/images/hero/after.svg');
-        }
-        @media (max-width:$md3+px){
-            margin-bottom: 100px;
         }
 		// .hero__content
 		&__content {

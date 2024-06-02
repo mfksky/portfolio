@@ -1,0 +1,239 @@
+---
+const title = 'our pricing';
+const heading = 'Affordable VR Services for Everyone';
+const subtext = 'At VRNas, we believe that everyone should have access to the benefits of VR. That\'s why we offer a range of pricing options to meet the needs of any budget.';
+const priceItems = [
+    {
+        title: 'Customizable Packages',
+        text: 'We understand that each project is unique, so we offer customizable packages to ensure that you get the services you need at a price that works for you. Our team will work with you to create a package that meets your specific goals and budget.',
+    },
+    {
+        title: 'Flexible Payment Options',
+        text: 'We offer flexible payment options to make it easy for you to get started with our services. We accept various payment methods, including credit cards, bank transfers, and PayPal, and we can also work with you to create a payment plan that suits your needs.',
+    },
+    {
+        title: 'Satisfaction Guarantee',
+        text: 'We stand behind our services and are committed to ensuring that you are completely satisfied with the final product. If for any reason you are not happy with our services, we will work with you to make it right or provide a full refund.',
+    }
+];
+const mainImage = '/vr/images/price/image.png';
+const price = '$99';
+---
+
+<section class="price section">
+    <div class="_container">
+        <div class="price__content">
+            <div class="price__text">
+                <h4 class="h4-linear">{title}</h4>
+                <h2>{heading}</h2>
+                <p>{subtext}</p>
+            </div>
+            <div class="price__info info-price">
+                <div class="info-price__content">
+                    <div class="info-price__left">
+                        {
+                            priceItems.map((item) => (
+                                <div class="info-price__item">
+                                    <div class="info-price__icon">
+                                        <img class="lazyload" data-src="/vr/icons/cloud.svg" alt={item.title} />
+                                        <noscript>
+                                            <img src="/vr/icons/cloud.svg" alt={item.title} />
+                                        </noscript>
+                                    </div>
+                                    <div class="info-price__text">
+                                        <h4>{item.title}</h4>
+                                        <p>{item.text}</p>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                    <div class="info-price__right">
+                        <img class="lazyload" data-src={mainImage} alt="Main Image" />
+                        <noscript>
+                            <img src={mainImage} alt="Main Image" />
+                        </noscript>
+                        <div class="info-price__price-box">
+                            <p>Start from</p>
+                            <div>{price}</div>
+                            <button class="main-button">Get Started</button>
+                            <span>30 Days Moneyback Guarantee</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style lang="scss">
+    @import '../../styles/vr/vars';
+
+    .price {
+        padding-bottom: 48px;
+        @media (max-width:$md3+px){
+            padding-bottom: 88px;
+        }
+		// .price__content
+		&__content {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            @media (max-width:$md3+px){
+                gap: 47px;
+            }
+		}
+		// .price__text
+		&__text {
+            h2 {
+                margin-bottom: 16px;
+            }
+            p {
+                max-width: 625px;
+            }
+		}
+		// .price__info
+		&__info {
+		}
+    }
+    .info-price {
+        position: relative;
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            background: url('/vr/images/price/bg.svg') 0 0 / cover no-repeat;
+        }
+        &::after {
+            content: '';
+            position: absolute;
+            top: 30%;
+            right: -10%;
+            z-index: -2;
+            width: 70%;
+            height: 50%;
+            background: var(--bgBright);
+            transform: rotate(-25deg);
+            filter: blur(80px);
+            opacity: .2;
+        }
+		// .info-price__content
+		&__content {
+            display: flex;
+            justify-content: space-between;
+            @media (max-width:$md2+px){
+                flex-direction: column;
+            }
+		}
+		// .info-price__left
+		&__left {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            padding: 55px 42px;
+            @media (max-width:$md3+px){
+                padding: 32px 22px;
+            }
+		}
+		// .info-price__item
+		&__item {
+            display: flex;
+            gap: 16px;
+		}
+		// .info-price__icon
+		&__icon {
+            flex-shrink: 0;
+		}
+		// .info-price__text
+		&__text {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding-right: 80px;
+            h4 {
+                color: var(--colorWhite);
+                font-size: 18px;
+                line-height: 23px;
+            }
+            p {
+                font-weight: 400;
+            }
+            @media (max-width:$md2+px){
+                padding-right: 0;
+            }
+		}
+		// .info-price__right
+		&__right {
+            position: relative;
+            flex-shrink: 0;
+            align-self: flex-end;
+            padding: 31px 0 0 40px;
+            border-left: 1px solid rgba(255, 255, 255, .1);
+            img {
+                width: 360.15px;
+                height: 520px;
+            }
+            @media (max-width:$md2+px){
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+                padding-top: 32px;
+                border-left: none;
+                border-top: 1px solid rgba(255, 255, 255, .1);
+            }
+            @media (max-width:$md3+px){
+                img {
+                    width: 256.26px;
+                    height: 370px;
+                }
+            }
+		}
+		// .info-price__price-box
+		&__price-box {
+            position: absolute;
+            bottom: -48px;
+            right: 172px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 321px;
+            height: 222px;
+            background: var(--bgGrayBrightBorder);
+            p {
+                color: var(--colorGrey_2);
+                font-size: 14px;
+                line-height: 20px;
+                font-weight: 500;
+            }
+            button {
+                margin: 14px 0;
+            }
+            div {
+                color: var(--colorWhite);
+                font-size: 60px;
+                line-height: 66px;
+                font-weight: 600;
+            }
+            span {
+                font-size: 12px;
+                line-height: 20px;
+            }
+            @media (max-width:$md2+px){
+                right: auto;
+                left: 40px;
+            }
+            @media (max-width:$md3+px){
+                bottom: -88px;
+                left: 15px;
+            }
+            @media (max-width:$md5+px){
+                width: 260px;
+            }
+		}
+    }
+</style>

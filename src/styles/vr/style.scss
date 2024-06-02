@@ -79,6 +79,13 @@
     }
 }
 
+.section {
+    margin-bottom: 120px;
+    @media (max-width:$md3+px){
+        margin-bottom: 100px;
+    }
+}
+
 .bg-element {
     &::before {
         content: '';
