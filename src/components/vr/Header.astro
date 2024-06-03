@@ -1,6 +1,7 @@
 ---
 import Burger from './Burger.astro';
 ---
+
 <header class="header">
     <div class="_container">
         <div class="header__body">
@@ -77,6 +78,7 @@ import Burger from './Burger.astro';
         </div>
     </div>
 </header>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const spollers = document.querySelectorAll('._menu-spoller');
@@ -118,6 +120,16 @@ import Burger from './Burger.astro';
                 }
             }
         });
+
+        const header = document.querySelector('.header');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 0) {
+                header.classList.add('_scroll');
+            } else {
+                header.classList.remove('_scroll');
+            }
+        });
     });
 </script>
 <style lang="scss">
@@ -129,12 +141,23 @@ import Burger from './Burger.astro';
         left: 0;
         width: 100%;
         z-index: 1000;
+        &._scroll {
+            background-color: rgba(37,37,50,.8);
+            backdrop-filter: blur(20px);
+            .header__body {
+                height: 60px;
+            }
+            .header__contact {
+                padding: 6px 24px;
+            }
+        }
 		// .header__body
 		&__body {
             display: flex;
             align-items: center;
             justify-content: space-between;
             height: 114px;
+            transition: all .3s ease;
 		}
 		// .header__logo
 		&__logo {
@@ -161,7 +184,7 @@ import Burger from './Burger.astro';
             transition: all .3s ease;
             border-image-source: linear-gradient(90deg, var(--colorLinear_1), var(--colorLinear_2));
             cursor: pointer;
-            transition: color .3s ease;
+            transition: all .3s ease;
             &::before {
                 content: '';
                 position: absolute;

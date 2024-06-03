@@ -8,11 +8,11 @@ const bgImage = '/vr/images/started/bg.jpg';
 <section class="started section">
     <div class="_container">
         <div class="started__content">
-            <div class="started__text">
+            <div class="started__text _scr-item _fade-up">
                 <h4 class="h4-linear">{title}</h4>
                 <h2>{heading}</h2>
             </div>
-            <div class="started__video video-started" id="video-started">
+            <div class="started__video video-started _scr-item _fade-up" id="video-started" data-duration="1s" data-offset="100">
                 <img class="video-started__image lazyload" data-src={bgImage} alt="Bg Image" />
                 <noscript>
                     <img class="video-started__image" src={bgImage} alt="Bg Image" />
@@ -27,7 +27,7 @@ const bgImage = '/vr/images/started/bg.jpg';
                     <span class="video-started__progress"></span>
                 </div>
             </div>
-            <div class="started__button main-button">Get started</div>
+            <div class="started__button main-button _scr-item _fade-up" data-duration="1s" data-offset="100">Get started</div>
         </div>
     </div>
 </section>

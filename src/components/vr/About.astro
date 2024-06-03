@@ -11,7 +11,7 @@ const videoImage = '/vr/images/about/video.png';
 <section class="about section">
     <div class="_container">
         <div class="about__content">
-            <div class="about__left bg-element">
+            <div class="about__left bg-element _scr-item _fade-right" data-duration="1s" data-delay="0">
                 <img class="about__image lazyload" data-src={mainImage} alt="Main image">
                 <noscript>
                     <img class="about__image" src={mainImage} alt="Main image">
@@ -26,12 +26,12 @@ const videoImage = '/vr/images/about/video.png';
                     </div>
                 </div>
             </div>
-            <div class="about__right">
+            <div class="about__right _scr-item _fade-left" data-duration="1s" data-delay="0" data-offset="300">
                 <div class="about__text">
                     <h4 class="h4-linear">{title}</h4>
                     <h2>{heading}</h2>
                     <p>{subtext}</p>
-                    <ul>
+                    <ul class="_scr-item _fade-up" data-duration=".6s" data-delay="0" data-offset="100">
                         {
                             listItems.map((item) => (
                                 <li>{item}</li>
@@ -39,7 +39,7 @@ const videoImage = '/vr/images/about/video.png';
                         }
                     </ul>
                 </div>
-                <button class="about__button main-button">{buttonText}</button>
+                <button class="about__button main-button _scr-item _fade-up" data-duration=".6s" data-delay="0" data-offset="50">{buttonText}</button>
             </div>
         </div>
     </div>

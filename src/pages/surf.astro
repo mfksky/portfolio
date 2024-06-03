@@ -64,18 +64,18 @@ const pageTitle = "Go Surf лендинг";
         const elements = document.querySelectorAll('._scr-item');
         const offset = 100;
 
-            function checkVisibility() {
-                elements.forEach(el => {
-                    const rect = el.getBoundingClientRect();
-                    if (rect.top <= window.innerHeight - offset && rect.bottom >= 0) {
-                        el.classList.add('_active');
-                    }
-                });
-            }
+        function checkVisibility() {
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top <= window.innerHeight - offset && rect.bottom >= 0) {
+                    el.classList.add('_active');
+                }
+            });
+        }
 
-            checkVisibility();
+        checkVisibility();
 
-            window.addEventListener('scroll', checkVisibility);
+        window.addEventListener('scroll', checkVisibility);
 
     });
 </script>

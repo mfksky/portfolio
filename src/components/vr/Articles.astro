@@ -10,11 +10,11 @@ const heading = 'Stay Up-to-Date with Our VR Insights';
     <div class="_container">
         <div class="articles__content">
             <div class="articles__text">
-                <div>
+                <div class="_scr-item _fade-up">
                     <h4 class="h4-linear">{title}</h4>
                     <h2>{heading}</h2>
                 </div>
-                <a class="articles__out-btn" href="#">
+                <a class="articles__out-btn _scr-item _fade-up" data-duration="1s" data-delay=".1s" href="#">
                     <span>see all</span>
                 </a>
             </div>
@@ -22,7 +22,7 @@ const heading = 'Stay Up-to-Date with Our VR Insights';
                 <PopularArticles />
                 <RecentArticles />
             </div>
-            <a class="articles__out-btn _mobile" href="#">
+            <a class="articles__out-btn _mobile _scr-item _fade-up" data-duration="1s" data-offset="100" href="#">
                 <span>see all</span>
             </a>
         </div>
@@ -62,7 +62,7 @@ const heading = 'Stay Up-to-Date with Our VR Insights';
             border: 1px solid;
             border-image-slice: 1;
             border-image-source: linear-gradient(90deg, var(--colorLinear_1), var(--colorLinear_2));
-            transition: color .3s ease;
+            transition: all .3s ease;
             &::before {
                 content: '';
                 position: absolute;

@@ -46,16 +46,16 @@ const serviceItems = [
     <div class="_container">
         <div class="service__content">
             <div class="service__text">
-                <div class="service__heading">
+                <div class="service__heading _scr-item _fade-up">
                     <h4 class="h4-linear">{title}</h4>
                     <h2>{heading}</h2>
                 </div>
-                <div class="service__subtext">{subtext}</div>
+                <div class="service__subtext _scr-item _fade-up" data-duration="1s" data-delay=".1s">{subtext}</div>
             </div>
             <div class="service__cards cards-service">
                 {
                     serviceItems.map((item) => (
-                        <a class="cards-service__item" href="#">
+                        <a class="cards-service__item _scr-item _fade-up" data-offset="100" href="#">
                             <div class="cards-service__image">
                                 <img class="lazyload" data-src={item.image} alt={item.title} />
                                 <noscript>
@@ -131,7 +131,7 @@ const serviceItems = [
             font-size: 14px;
             line-height: 28px;
             background: var(--bgDoubleGray);
-            transition: background .3s ease;
+            transition: all .3s ease;
             overflow: hidden;
             cursor: pointer;
             &:nth-child(2), &:nth-child(5) {

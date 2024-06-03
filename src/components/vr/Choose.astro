@@ -24,8 +24,8 @@ const videoImage = '/vr/images/choose/video.jpg';
         <div class="choose__content">
             <div class="choose__text">
                 <h4 class="h4-linear">{title}</h4>
-                <h2>{heading}</h2>
-                <div class="choose__spollers">
+                <h2 class="_scr-item _fade-up">{heading}</h2>
+                <div class="choose__spollers _scr-item _fade-up" data-duration="1s" data-offset="100">
                     {
                         spollerItems.map((item) => (
                             <div class="choose__item">
@@ -41,7 +41,7 @@ const videoImage = '/vr/images/choose/video.jpg';
                     }
                 </div>
             </div>
-            <div class="choose__right bg-element">
+            <div class="choose__right bg-element _scr-item _fade-left" data-duration="1s" data-delay=".2s">
                 <img class="choose__image lazyload" data-src={mainImage} alt="Main image">
                 <noscript>
                     <img class="choose__image" src={mainImage} alt="Main image">

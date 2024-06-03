@@ -27,17 +27,17 @@ const clients = [
 <section class="testimonial section">
     <div class="_container">
         <div class="testimonial__content">
-            <div class="testimonial__text">
+            <div class="testimonial__text _scr-item _fade-up" data-duration="1s">
                 <h4 class="h4-linear">{title}</h4>
                 <h2>{heading}</h2>
             </div>
-            <div class="testimonial__image">
+            <div class="testimonial__image _scr-item _scale-down" data-duration="1s" data-delay=".3s">
                 <img class="lazyload" data-src="/vr/images/testimonial/bg.png" alt="Bg" />
                 <noscript>
                     <img src={mainImage} alt="Bg" />
                 </noscript>
             </div>
-            <div class="testimonial__clients clients-testimonial">
+            <div class="testimonial__clients clients-testimonial _scr-item _scale-down" data-duration="1s" data-delay=".3s" data-offset="100">
                 {
                     clients.map((item) => (
                         <div class="clients-testimonial__item">
@@ -119,6 +119,9 @@ const clients = [
             width: 100%;
             text-align: center;
             transform: translateX(-50%);
+            &._visible {
+                transform: translateX(-50%);
+            }
             @media (max-width:$md2+px){
                 top: 60px;
             }
