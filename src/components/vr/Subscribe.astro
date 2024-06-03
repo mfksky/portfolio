@@ -1,0 +1,143 @@
+---
+const heading = 'Subscribe to our newsletter for latest updates';
+---
+
+<section class="subscribe section">
+    <div class="_container">
+        <div class="subscribe__content">
+            <div class="subscribe__text">
+                <h2>{heading}</h2>
+            </div>
+            <div class="subscribe__form">
+                <form action="#">
+                    <input type="text" name="email" placeholder="Enter your email address">
+                    <button type="submit">
+                        <svg>
+                            <use xlink:href="vr/icons/icons.svg#send"></use>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style lang="scss">
+    @import '../../styles/vr/vars';
+
+    .subscribe {
+        position: relative;
+        &::before {
+            content: '';
+            position: absolute;
+            bottom: 45px;
+            left: 0;
+            z-index: -1;
+            width: 1100px;
+            height: 721px;
+            background: url('/vr/images/hero/after.svg');
+        }
+		// .subscribe__content
+		&__content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            padding: 38px 74px;
+            background: var(--bgBright);
+            border-radius: 4px;
+            @media (max-width:$md2+px){
+                padding: 35px;
+            }
+            @media (max-width:$md3+px){
+                flex-direction: column;
+                gap: 8px;
+                padding: 31px 15px;
+            }
+		}
+		// .subscribe__text
+		&__text {
+            h2 {
+                max-width: 520px;
+                font-size: 40px;
+                line-height: 58px;
+                letter-spacing: .05;
+                @media (max-width:$md2+px){
+                    font-size: 28px;
+                    line-height: 36px;
+                    font-weight: 600;
+                    letter-spacing: -0.5%;
+                }
+                @media (max-width:$md3+px){
+                    text-align: center;
+                }
+            }
+		}
+		// .subscribe__form
+		&__form {
+            @media (max-width:$md4+px){
+                width: 100%;
+            }
+            form {
+                position: relative;
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    left: 15px;
+                    width: 21.5px;
+                    height: 19.5px;
+                    background: url('/vr/icons/message.svg');
+                    transform: translateY(-50%);
+                }
+                input {
+                    width: 365px;
+                    height: 56px;
+                    padding-left: 46px;
+                    color: var(--colorWhite);
+                    font-size: 16px;
+                    line-height: 28px;
+                    border: 1px solid transparent;
+                    border-radius: 2px;
+                    background-color: rgba(255, 255, 255, .21);
+                    &:focus {
+                        border-color: var(--colorWhite);
+                    }
+                    &::placeholder {
+                        color: var(--colorWhite);
+                        transition: opacity .3s ease;
+                    }
+                    &:hover {
+                        &::placeholder {
+                            opacity: .5;
+                        }
+                    }
+                    @media (max-width:$md4+px){
+                        width: 100%;
+                    }
+                }
+                button {
+                    position: absolute;
+                    top: 50%;
+                    right: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 49.33px;
+                    height: 49.33px;
+                    background-color: rgba(255, 255, 255, .21);
+                    transform: translateY(-50%);
+                    transition: background-color .3s ease;
+                    svg {
+                        width: 16px;
+                        height: 16px;
+                        fill: var(--colorWhite);
+                    }
+                    &:hover {
+                        background-color: rgba(255, 255, 255, .41);
+                    }
+                }
+            }
+		}
+    }
+</style>
