@@ -1,4 +1,251 @@
 ---
+const recentItems = [
+    {
+        img: '/vr/images/articles/recent/1.jpg', badge: 'VR Education', title: 'The Future of Education: How VR is Revolutionizing the Classroom', url: '#'
+    },
+    {
+        img: '/vr/images/articles/recent/2.jpg', badge: 'VR Architecture', title: 'Bringing Designs to Life: How VR is Changing Architecture', url: '#'
+    },
+    {
+        img: '/vr/images/articles/recent/3.jpg', badge: 'VR Entertainment', title: 'Making Events Memorable: The Power of VR for Corporate and Special Occasions', url: '#'
+    },
+    {
+        img: '/vr/images/articles/recent/4.jpg', badge: 'VR Event', title: 'Exploring New Worlds: The Benefits of VR Travel', url: '#'
+    },
+    {
+        img: '/vr/images/articles/recent/1.jpg', badge: 'VR Education', title: 'The Future of Education: How VR is Revolutionizing the Classroom', url: '#'
+    },
+    {
+        img: '/vr/images/articles/recent/2.jpg', badge: 'VR Architecture', title: 'Bringing Designs to Life: How VR is Changing Architecture', url: '#'
+    },
+];
 ---
 
-<h2>Test</h2>
+<script>
+    function truncateText(element) {
+        const maxLength = parseInt(element.getAttribute('data-shortened'));
+
+        const text = element.textContent.trim();
+
+        if (text.length > maxLength) {
+            const truncatedText = text.substring(0, maxLength) + '...';
+
+            element.textContent = truncatedText;
+        }
+    }
+
+    window.addEventListener('load', () => {
+        const truncateItem = document.querySelectorAll('[data-shortened]');
+
+        truncateItem.forEach(function(element) {
+            truncateText(element);
+        });
+    });
+</script>
+
+<div class="recent-articles">
+    <h3 class="recent-articles__heading">Recent Article</h3>
+    <div class="recent-articles__content">
+        {
+            recentItems.map((item => (
+                <a class="recent-articles__item" href={item.url}>
+                    <div class="recent-articles__image">
+                        <img class="lazyload" data-src={item.img} alt={item.title} />
+                        <noscript>
+                            <img src={item.img} alt={item.title} />
+                        </noscript>
+                    </div>
+                    <div class="recent-articles__text">
+                        <span>{item.badge}</span>
+                        <div data-shortened="58">{item.title}</div>
+                    </div>
+                    <div class="recent-articles__out-btn">
+                        <svg>
+                            <use xlink:href="/vr/icons/icons.svg#long_arrow"></use>
+                        </svg>
+                    </div>
+                </a>
+            )))
+        }
+    </div>
+</div>
+
+<style lang="scss">
+    @import '../../styles/vr/vars';
+
+    .recent-articles {
+        position: relative;
+        &::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -97px;
+            z-index: -1;
+            width: 400%;
+            height: 605px;
+            background: var(--bgDoubleGray);
+        }
+        @media (max-width:$md2+px){
+            padding: 24px;
+            &::before {
+                left: 0;
+                width: 100%;
+                height: 624px;
+            }
+        }
+		// .recent-articles__heading
+		&__heading {
+            margin-bottom: 32px;
+            color: var(--colorWhite);
+            font-size: 28px;
+            line-height: 36px;
+            font-weight: 600;
+            letter-spacing: -0.5%;
+		}
+		// .recent-articles__content
+		&__content {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            height: 504px;
+            margin-right: -48px;
+            padding-right: 46px;
+            overflow: hidden scroll;
+            -ms-overflow-style: none;
+            &::-webkit-scrollbar {
+                width: 2px;
+            }
+            &::-webkit-scrollbar-track {
+                background: rgba(255, 255, 255, .12);
+                border-radius: 32px;
+            }
+            &::-webkit-scrollbar-thumb {
+                background: var(--colorWhite);
+                border-radius: 32px;
+                &:hover {
+
+                }
+            }
+            @media (max-width: 1300px){
+                margin-right: 0;
+                padding-right: 30px;
+            }
+            @media (max-width:$md4+px){
+                padding-right: 10px;
+            }
+		}
+		// .recent-articles__item
+		&__item {
+            display: flex;
+            align-items: center;
+            gap: 21px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid rgba(255, 255, 255, .12);
+            cursor: pointer;
+            &:hover {
+                .recent-articles__image {
+                    img {
+                        transform: scale(1.1);  
+                    }
+                }
+                .recent-articles__text {
+                    div {
+                        color: var(--colorGrey_2);
+                    }
+                }
+                .recent-articles__out-btn {
+                    &::before {
+                        opacity: 1;
+                    }
+                }
+            }
+            @media (max-width:$md2+px){
+                width: 100%;
+            }
+		}
+		// .recent-articles__image
+		&__image {
+            position: relative;
+            min-width: 142px;
+            height: 91px;
+            overflow: hidden;
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform .3s ease;
+            }
+            @media (max-width:$md5+px){
+                min-width: 122px;
+                height: 73px;
+            }
+		}
+		// .recent-articles__text
+		&__text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+            span {
+                color: var(--colorWhite);
+                padding: 2px 10px;
+                font-size: 14px;
+                line-height: 20px;
+                font-weight: 500;
+                background-color: rgba(255,255,255,.3);
+                border-radius: 16px; 
+            }
+            div {
+                color: var(--colorWhite);
+                font-size: 18px;
+                line-height: 23px;
+                transition: color .3s ease;
+            }
+            @media (max-width:$md2+px){
+                flex: 1;
+                div {
+                    font-size: 16px;
+                    line-height: 21px;
+                    font-weight: 600;
+                }
+            }
+		}
+		// .recent-articles__out-btn
+		&__out-btn {
+            position: relative;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border: 1px solid;
+            border-image-slice: 1;
+            border-image-source: linear-gradient(90deg, var(--colorLinear_1), var(--colorLinear_2));
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, var(--colorLinear_1), var(--colorLinear_2));
+                opacity: 0;
+                transition: opacity .3s ease;
+            }
+            svg {
+                position: relative;
+                z-index: 1;
+                width: 16.67px;
+                height: 12.5px;
+                fill: var(--colorWhite);
+            }
+            @media (max-width:$md3+px){
+                display: none;
+            }
+		}
+    }
+</style>

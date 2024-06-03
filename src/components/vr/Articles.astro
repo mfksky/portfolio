@@ -4,20 +4,6 @@ import RecentArticles from './RecentArticles.astro';
 
 const title = 'Our Articles';
 const heading = 'Stay Up-to-Date with Our VR Insights';
-const recentItems = [
-    {
-        img: '/vr/images/articles/recent/1.jpg', badge: 'VR Education', title: 'The Future of Education: How VR is Revolutionizing the Classroom', url: '#'
-    },
-    {
-        img: '/vr/images/articles/recent/2.jpg', badge: 'VR Architecture', title: 'Bringing Designs to Life: How VR is Changing Architecture', url: '#'
-    },
-    {
-        img: '/vr/images/articles/recent/3.jpg', badge: 'VR Entertainment', title: 'Making Events Memorable: The Power of VR for Corporate and Special Occasions', url: '#'
-    },
-    {
-        img: '/vr/images/articles/recent/4.jpg', badge: 'VR Event', title: 'Exploring New Worlds: The Benefits of VR Travel', url: '#'
-    },
-];
 ---
 
 <section class="articles section">
@@ -51,8 +37,8 @@ const recentItems = [
 		&__content {
             display: flex;
             flex-direction: column;
-            gap: 48px;
-            @media (max-width:$md3+px){
+            gap: 104px;
+            @media (max-width:$md2+px){
                 gap: 40px;
             }
 		}
@@ -112,8 +98,12 @@ const recentItems = [
 		&__body {
             display: flex;
             gap: 50px;
+            @media (max-width: 1300px){
+                gap: 20px;
+            }
             @media (max-width:$md2+px){
                 flex-direction: column;
+                gap: 52px;
             }
 		}
     }
