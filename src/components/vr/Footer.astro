@@ -1,0 +1,214 @@
+---
+const quicklinks = ['Home', 'Pricing Plan', 'Service', 'Blog', 'Our Team'];
+const support = ['About us', 'Contact us', 'FAQ', 'Tems & Conditions', 'Privacy Policy'];
+const address = 'Tanjung Sari Street no.48, Pontianak City';
+const email = 'Support@VRNas.com';
+const tel = '+123 456 7890';
+const socials = [
+    {
+        img: '/vr/icons/icons.svg#twitter', title: 'Twitter', url: '#'
+    },
+    {
+        img: '/vr/icons/icons.svg#fb', title: 'Facebook', url: '#'
+    },
+    {
+        img: '/vr/icons/icons.svg#inst', title: 'Instagram', url: '#'
+    },
+    {
+        img: '/vr/icons/icons.svg#git', title: 'Git', url: '#'
+    },
+];
+---
+
+<footer class="footer">
+    <div class="_container">
+        <div class="footer__top">
+            <div class="footer__left">
+                <a class="footer__logo" href="#">
+                    <img src="/vr/logo.svg" alt="" />
+                </a>
+                <div class="footer__social">
+                    {
+                        socials.map((item) => (
+                            <a href={item.url}>
+                                <svg>
+                                    <use xlink:href={item.img}></use>
+                                    <title>{item.title}</title>
+                                </svg>
+                            </a>
+                        ))
+                    }
+                </div>
+            </div>
+            <div class="footer__right">
+                <div class="footer__col">
+                    <h5>Quicklinks</h5>
+                    {
+                        quicklinks.map((item) => (
+                            <a href="#">{item}</a>
+                        ))
+                    }
+                </div>
+                <div class="footer__col">
+                    <h5>Support</h5>
+                    {
+                        support.map((item) => (
+                            <a href="#">{item}</a>
+                        ))
+                    }
+                </div>
+                <div class="footer__col">
+                    <h5>Need Help?</h5>
+                    <a href="#" class="footer__img-link">
+                        <svg>
+                            <use xlink:href="/vr/icons/icons.svg#geo"></use>
+                        </svg>
+                        <div>{address}</div>
+                    </a>
+                    <a href={`mailto:${email}`} class="footer__img-link">
+                        <svg>
+                            <use xlink:href="/vr/icons/icons.svg#email"></use>
+                        </svg>
+                        <div>{email}</div>
+                    </a>
+                    <a href={`tel:${tel}`} class="footer__img-link">
+                        <svg>
+                            <use xlink:href="/vr/icons/icons.svg#phone"></use>
+                        </svg>
+                        <div>{tel}</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer__bottom">© Copyright 2023, All Rights Reserved</div>
+    </div>
+</footer>
+
+<style lang="scss">
+    @import '../../styles/vr/vars';
+
+    .footer {
+        position: relative;
+        padding: 58px 0 46px 0;
+        &::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 1011px;
+            height: 498px;
+            background: url('/vr/icons/lines_2.svg');
+        }
+        @media (max-width:$md2+px){
+            padding-top: 0;
+            padding-bottom: 32px;
+        }
+		// .footer__top
+		&__top {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            width: 100%;
+            @media (max-width:$md2+px){
+                display: flex;
+                flex-direction: column;
+                gap: 56px;
+            }
+		}
+		// .footer__left
+		&__left {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 20px;
+            padding-bottom: 35px;
+            @media (max-width:$md2+px){
+                flex-direction: row;
+                align-items: center;
+            }
+            @media (max-width:$md5+px){
+                flex-direction: column;
+                gap: 30px;
+            }
+		}
+		// .footer__logo
+		&__logo {
+		}
+		// .footer__social
+		&__social {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 46px;
+                height: 46px;
+                background: url('/vr/icons/bg_1.svg') 0 0 / 100% 100% no-repeat;
+                border-radius: 46px;
+                svg {
+                    height: 18px;
+                    fill: var(--colorWhite);
+                    transition: transform .3s ease;
+                }
+                &:hover {
+                    svg {
+                        transform: scale(1.2);
+                    }
+                }
+            }
+		}
+		// .footer__right
+		&__right {
+            display: flex;
+            justify-content: space-between;
+            gap: 86px;
+            @media (max-width:$md2+px){
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                gap: 64px 100px;
+            }
+		}
+		// .footer__col
+		&__col {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            h5 {
+                color: var(--colorWhite);
+                font-weight: 600;
+            }
+            a {
+                color: var(--colorWhite);
+                font-weight: 300;
+                transition: color .3s ease;
+                &:hover {
+                    color: var(--colorGrey_1);
+                }
+            }
+		}
+		// .footer__img-link
+		&__img-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            svg {
+                width: 20px;
+                height: 20px;
+                fill: var(--colorGrey_1);
+            }
+		}
+		// .footer__bottom
+		&__bottom {
+            margin-top: 32px;
+            padding-top: 32px;
+            color: var(--colorWhite);
+            font-weight: 300;
+            text-align: center;
+            border-top: 1px solid;
+            border-image-slice: 1;
+            border-image-source: linear-gradient(90deg, var(--colorLinear_1), var(--colorLinear_2));
+		}
+    }
+</style>
