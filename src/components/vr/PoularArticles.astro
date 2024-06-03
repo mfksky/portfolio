@@ -85,7 +85,33 @@ const popularItems = [
     @import '../../styles/vr/vars';
 
     .popular-articles {
+        position: relative;
         max-width: 53%;
+        &::before {
+            content: '';
+            position: absolute;
+            top: 5%;
+            left: -10%;
+            z-index: -2;
+            width: 80%;
+            height: 47.6%;
+            background: var(--bgBright);
+            transform: rotate(-25deg);
+            filter: blur(70px);
+            opacity: .3;
+        }
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 5%;
+            z-index: -1;
+            width: 53.5%;
+            height: 47.7%;
+            background: var(--colorLinear_2);
+            filter: blur(70px);
+            opacity: .3;
+        }
         @media (max-width:$md2+px){
             max-width: none;
         }
