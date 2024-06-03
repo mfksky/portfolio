@@ -1,0 +1,216 @@
+---
+const popularItems = [
+    {
+        img: '/vr/images/articles/popular/1.jpg', badge: 'VR Games', title: 'Entertainment Goes Virtual: The Rise of VR Gaming', url: '#'
+    },
+    {
+        img: '/vr/images/articles/popular/1.jpg', badge: 'VR Education', title: 'Bringing Designs to Life: How VR is Changing Architecture', url: '#'
+    },
+    {
+        img: '/vr/images/articles/popular/1.jpg', badge: 'VR Education', title: 'Bringing Designs to Life: How VR is Changing Architecture', url: '#'
+    },
+];
+---
+
+<div class="popular-articles">
+    <h3 class="popular-articles__heading">Popular Article</h3>
+    <div class="popular-articles__content swiper">
+        <div class="swiper-wrapper">
+            {
+                popularItems.map((item) => (
+                    <div class="popular-articles__item swiper-slide">
+                        <img class="lazyload" data-src={item.img} alt={item.badge} />
+                        <noscript>
+                            <img src={item.img} alt={item.badge} />
+                        </noscript>
+                        <div class="popular-articles__info">
+                            <div class="popular-articles__text">
+                                <span>{item.badge}</span>
+                                <a href={item.url}>{item.title}</a>
+                            </div>
+                            <a class="popular-articles__out-btn" href={item.url}>
+                                <svg>
+                                    <use xlink:href="/vr/icons/icons.svg#long_arrow"></use>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+        <div class="popular-articles__pagination"></div>
+    </div>
+</div>
+
+<script>
+    import Swiper, {EffectCreative, Autoplay, Pagination } from '../../js/vr/swiper';
+
+    window.addEventListener('load', () => {
+        const popularArticlesSwiper = new Swiper('.popular-articles__content', {
+            modules: [EffectCreative, Autoplay, Pagination],
+            slidesPerView: 1,
+            loop: true,
+            effect: 'creative',
+            creativeEffect: {
+                prev: {
+                    shadow: true,
+                    origin: "left center",
+                    translate: ["-5%", 0, -200],
+                    rotate: [0, 100, 0],
+                },
+                next: {
+                    origin: "right center",
+                    translate: ["5%", 0, -200],
+                    rotate: [0, -100, 0],
+                },
+            },
+            autoplay: {
+                delay: 7000,
+                disableOnInteraction: true
+            },
+            speed: 1000,
+            pagination: {
+                el: '.popular-articles__pagination',
+				clickable: true,
+                renderBullet: function (index, className) {
+					return '<span class="popular-articles__pagination-bullet ' + className + '">' + '</span>';
+				},
+            }
+
+        });
+    });
+</script>
+
+<style lang="scss">
+    @import '../../styles/vr/vars';
+
+    .popular-articles {
+        max-width: 636px;
+        @media (max-width:$md2+px){
+            max-width: none;
+        }
+		// .popular-articles__heading
+		&__heading {
+            margin-bottom: 32px;
+            color: var(--colorWhite);
+            font-size: 28px;
+            line-height: 36px;
+            font-weight: 600;
+            letter-spacing: -0.5%;
+		}
+		// .popular-articles__content
+		&__content {
+            padding-bottom: 47px;
+            @media (max-width:$md3+px){
+                padding-bottom: 35px;
+            }
+		}
+		// .popular-articles__item
+		&__item {
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            min-height: 425px;
+            padding: 24px;
+            overflow: hidden;
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            @media (max-width:$md3+px){
+                padding: 15px;
+            }
+		}
+		// .popular-articles__info
+		&__info {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            gap: 56px;
+		}
+		// .popular-articles__text
+		&__text {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+            span {
+                color: var(--colorWhite);
+                padding: 2px 10px;
+                font-size: 14px;
+                line-height: 20px;
+                font-weight: 500;
+                background-color: rgba(255,255,255,.3);
+                border-radius: 16px;
+            }
+            a {
+                color: var(--colorWhite);
+                font-size: 32px;
+                line-height: 42px;
+                font-weight: 600;
+                letter-spacing: -0.5px;
+                transition: color .3s ease;
+                &:hover {
+                    color: var(--colorGrey_1);
+                }
+                @media (max-width:$md3+px){
+                    font-size: 20px;
+                    line-height: 26px;
+                    font-weight: 500;
+                }
+            }
+		}
+		// .popular-articles__out-btn
+		&__out-btn {
+            position: relative;
+            flex-shrink: 0;
+            align-self: flex-end;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border: 1px solid;
+            border-image-slice: 1;
+            border-image-source: linear-gradient(90deg, var(--colorLinear_1), var(--colorLinear_2));
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, var(--colorLinear_1), var(--colorLinear_2));
+                opacity: 0;
+                transition: opacity .3s ease;
+            }
+            &:hover {
+                &::before {
+                    opacity: 1;
+                }
+            }
+            svg {
+                position: relative;
+                z-index: 1;
+                width: 16.67px;
+                height: 12.5px;
+                fill: var(--colorWhite);
+            }
+		}
+        // .popular-articles__pagination
+        &__pagination {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            z-index: 1;
+            display: flex;
+            gap: 12px;
+            transform: translateX(-50%);
+        }
+    }
+</style>

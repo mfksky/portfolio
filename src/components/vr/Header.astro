@@ -79,46 +79,46 @@ import Burger from './Burger.astro';
 </header>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-    const spollers = document.querySelectorAll('._menu-spoller');
+        const spollers = document.querySelectorAll('._menu-spoller');
 
-    spollers.forEach(function(spoller) {
-        const title = spoller.querySelector('.menu__spoller-title');
-        const submenu = spoller.querySelector('.menu__spoller-submenu');
+        spollers.forEach(function(spoller) {
+            const title = spoller.querySelector('.menu__spoller-title');
+            const submenu = spoller.querySelector('.menu__spoller-submenu');
 
-        title.addEventListener('click', function(event) {
-            event.stopPropagation();
+            title.addEventListener('click', function(event) {
+                event.stopPropagation();
 
-            document.querySelectorAll('.menu__spoller-title').forEach(function(item) {
-                if (item !== title) {
-                    item.classList.remove('_active');
-                }
-            });
-            document.querySelectorAll('.menu__spoller-submenu').forEach(function(item) {
-                if (item !== submenu) {
-                    item.classList.remove('_active');
-                }
-            });
-
-            title.classList.toggle('_active');
-            submenu.classList.toggle('_active');
-        });
-    });
-
-    document.addEventListener('click', function(event) {
-        if (event.target instanceof Element) {
-            const closestSpoller = event.target.closest('._menu-spoller');
-
-            if (!closestSpoller) {
                 document.querySelectorAll('.menu__spoller-title').forEach(function(item) {
-                    item.classList.remove('_active');
+                    if (item !== title) {
+                        item.classList.remove('_active');
+                    }
                 });
                 document.querySelectorAll('.menu__spoller-submenu').forEach(function(item) {
-                    item.classList.remove('_active');
+                    if (item !== submenu) {
+                        item.classList.remove('_active');
+                    }
                 });
+
+                title.classList.toggle('_active');
+                submenu.classList.toggle('_active');
+            });
+        });
+
+        document.addEventListener('click', function(event) {
+            if (event.target instanceof Element) {
+                const closestSpoller = event.target.closest('._menu-spoller');
+
+                if (!closestSpoller) {
+                    document.querySelectorAll('.menu__spoller-title').forEach(function(item) {
+                        item.classList.remove('_active');
+                    });
+                    document.querySelectorAll('.menu__spoller-submenu').forEach(function(item) {
+                        item.classList.remove('_active');
+                    });
+                }
             }
-        }
+        });
     });
-});
 </script>
 <style lang="scss">
     @import '../../styles/vr/vars';
@@ -156,8 +156,10 @@ import Burger from './Burger.astro';
             position: relative;
             padding: 12px 24px;
             line-height: 28px;
-            background: var(--bgDoubleBright);
-            overflow: hidden;
+            border: 1px solid;
+            border-image-slice: 1;
+            transition: all .3s ease;
+            border-image-source: linear-gradient(90deg, var(--colorLinear_1), var(--colorLinear_2));
             cursor: pointer;
             transition: color .3s ease;
             &::before {
@@ -165,10 +167,9 @@ import Burger from './Burger.astro';
                 position: absolute;
                 top: 0;
                 left: 0;
-                right: 0;
-                bottom: 0;
-                z-index: -1;
-                background: var(--bgBright);
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, var(--colorLinear_1), var(--colorLinear_2));
                 opacity: 0;
                 transition: opacity .3s ease;
             }
@@ -180,7 +181,6 @@ import Burger from './Burger.astro';
             &:hover {
                 &::before {
                     opacity: 1;
-                    z-index: 2;
                 }
                 span {
                     color: var(--colorWhite);
@@ -189,9 +189,6 @@ import Burger from './Burger.astro';
             @media (max-width:$md3+px){
                 height: 32px;
                 padding: 0 24px;
-                &._active {
-                    background: var(--bgDoubleBrightActive);
-                }
             }
             @media (max-width:$md4+px){
                 display: none;

@@ -47,6 +47,7 @@
     margin: 0 auto;
     padding: 0 15px;
 }
+
 .main-button {
     position: relative;
     display: inline-block;
@@ -58,6 +59,7 @@
     letter-spacing: 1.5px;
     text-transform: uppercase;
     background: var(--bgBright);
+    cursor: pointer;
     &::before {
         content: '';
         position: absolute;
@@ -157,5 +159,22 @@
         div {
             transform: scale(1.1);
         }
+    }
+}
+
+// Swiper Popular Articles
+.popular-articles__pagination-bullet {
+    position: relative;
+    z-index: 1;
+    width: 9px;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 32px;
+    opacity: .31;
+    transition: opacity 1s ease;
+    cursor: pointer;
+    &.swiper-pagination-bullet-active {
+        width: 17px;
+        opacity: 1;
     }
 }

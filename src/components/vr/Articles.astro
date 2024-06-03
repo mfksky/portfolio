@@ -1,0 +1,121 @@
+---
+import PopularArticles from './PoularArticles.astro';
+import RecentArticles from './RecentArticles.astro';
+
+const title = 'Our Articles';
+const heading = 'Stay Up-to-Date with Our VR Insights';
+const recentItems = [
+    {
+        img: '/vr/images/articles/recent/1.jpg', badge: 'VR Education', title: 'The Future of Education: How VR is Revolutionizing the Classroom', url: '#'
+    },
+    {
+        img: '/vr/images/articles/recent/2.jpg', badge: 'VR Architecture', title: 'Bringing Designs to Life: How VR is Changing Architecture', url: '#'
+    },
+    {
+        img: '/vr/images/articles/recent/3.jpg', badge: 'VR Entertainment', title: 'Making Events Memorable: The Power of VR for Corporate and Special Occasions', url: '#'
+    },
+    {
+        img: '/vr/images/articles/recent/4.jpg', badge: 'VR Event', title: 'Exploring New Worlds: The Benefits of VR Travel', url: '#'
+    },
+];
+---
+
+<section class="articles section">
+    <div class="_container">
+        <div class="articles__content">
+            <div class="articles__text">
+                <div>
+                    <h4 class="h4-linear">{title}</h4>
+                    <h2>{heading}</h2>
+                </div>
+                <a class="articles__out-btn" href="#">
+                    <span>see all</span>
+                </a>
+            </div>
+            <div class="articles__body">
+                <PopularArticles />
+                <RecentArticles />
+            </div>
+            <a class="articles__out-btn _mobile" href="#">
+                <span>see all</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<style lang="scss">
+    @import '../../styles/vr/vars';
+
+    .articles {
+		// .articles__content
+		&__content {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+            @media (max-width:$md3+px){
+                gap: 40px;
+            }
+		}
+		// .articles__text
+		&__text {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 20px;
+		}
+		// .articles__out-btn
+		&__out-btn {
+            position: relative;
+            padding: 18px 38px;
+            color: inherit;
+            font-size: 14px;
+            line-height: 14px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border: 1px solid;
+            border-image-slice: 1;
+            border-image-source: linear-gradient(90deg, var(--colorLinear_1), var(--colorLinear_2));
+            transition: color .3s ease;
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, var(--colorLinear_1), var(--colorLinear_2));
+                opacity: 0;
+                transition: opacity .3s ease;
+            }
+            span {
+                position: relative;
+                z-index: 1;
+            }
+            &:hover {
+                color: var(--colorWhite);
+                &::before {
+                    opacity: 1;
+                }
+            }
+            &._mobile {
+                display: none;
+            }
+            @media (max-width:$md3+px){
+                display: none;
+                &._mobile {
+                    display: block;
+                }
+            }
+		}
+		// .articles__body
+		&__body {
+            display: flex;
+            gap: 50px;
+            @media (max-width:$md2+px){
+                flex-direction: column;
+            }
+		}
+    }
+
+</style>
