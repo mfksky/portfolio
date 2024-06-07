@@ -8,7 +8,7 @@ type Schema = {
   global: Global;
 };
 
-const directus = createDirectus<Schema>(import.meta.env.DIRECTUS_URL)
+const directus = createDirectus<Schema>('http://147.45.246.185:8055')
   .with(rest())
   .with(authentication('json'));
 
