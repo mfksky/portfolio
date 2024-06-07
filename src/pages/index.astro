@@ -1,5 +1,21 @@
 ---
+import directus from '../lib/directus';
+import { readSingleton } from "@directus/sdk";
+
+const global = await directus.request(readSingleton('global'));
+
+import Header from '../components/main/Header.astro';
 const pageTitle = "Главная";
+const parentClass = 'header__contacts';
+const socialNetworks = [
+	{
+		title: 'Telegram', url: 'https://t.me/mfkboy', icon: 'tg'
+	},
+	{
+		title: 'VK', url: 'https://vk.com/mfkboy', icon: 'vk'
+	},
+];
+
 ---
 <html lang="ru">
 	<head>
@@ -10,8 +26,9 @@ const pageTitle = "Главная";
 	</head>
 	<body>
         <div class="wrapper">
+			<Header parentClass={parentClass} socialNetworks={socialNetworks} />
             <main class="page">
-                <h1>Главная</h1>
+                <h1>{global.title}</h1>
             </main>
         </div>
 	</body>

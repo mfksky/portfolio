@@ -1,0 +1,31 @@
+---
+import HeaderContacts from './HeaderContacts.astro';
+const navItems = [
+    {
+        title: 'Главная', url: '#intro'
+    },
+    {
+        title: 'Портфолио', url: '#portfolio'
+    },
+    {
+        title: 'Stack', url: '#stack'
+    },
+    {
+        title: 'Навыки', url: '#skills'
+    },
+    {
+        title: 'Контакты', url: '#contacts'
+    },
+];
+const { parentClass, socialNetworks } = Astro.props;
+---
+<header class="header">
+    <nav class="header__nav">
+        {
+            navItems.map((item) => (
+                <a class="header__nav-item" href={item.url}>{item.title}</a>
+            ))
+        }
+    </nav>
+    <HeaderContacts parentClass={parentClass} socialNetworks={socialNetworks} />
+</header>

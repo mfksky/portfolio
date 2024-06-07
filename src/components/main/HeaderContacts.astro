@@ -1,0 +1,27 @@
+---
+const { parentClass, socialNetworks } = Astro.props;
+---
+
+<div class={`${parentClass ? parentClass : ''} contacts-header`}>
+    <button class="contacts-header__btn" type="button" title="Написать мне">
+        <span>Написать мне</span>
+        <svg>
+            <use xlink:href="/main/icons/icons.svg#chat"></use>
+            <title>Написать мне</title>
+        </svg>
+    </button>
+    <ul class="contacts-header__content">
+        {
+            socialNetworks.map((item) => (
+                <li>
+                    <a href={item.url}>
+                        <svg>
+                            <use xlink:href={`/main/icons/icons.svg#${item.icon}`}></use>
+                            <title>{item.title}</title>
+                        </svg>
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+</div>
