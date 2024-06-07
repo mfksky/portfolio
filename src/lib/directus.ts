@@ -1,5 +1,8 @@
 import { createDirectus, rest, authentication } from '@directus/sdk';
 
+import dotenv from 'dotenv';
+dotenv.config();
+
 type Global = {
   title: string;
 };
@@ -8,10 +11,13 @@ type Schema = {
   global: Global;
 };
 
-const directus = createDirectus<Schema>('http://147.45.246.185:8055')
+if (!process.env.DIRECTUS_URL || !process.env.DIRECTUS_EMAIL || !process.env.DIRECTUS_PASSWORD) {
+  throw new Error('Directus environment variables are not set');
+}
+const directus = createDirectus<Schema>(process.env.DIRECTUS_URL)
   .with(rest())
   .with(authentication('json'));
 
-await directus.login('mfksky@icloud.com', 'mainloginDIRECTUSPORTFOLIO1905!');
+await directus.login(process.env.DIRECTUS_EMAIL, process.env.DIRECTUS_PASSWORD);
 
 export default directus;
