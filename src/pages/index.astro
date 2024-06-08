@@ -1,11 +1,7 @@
 ---
-import directus from '../lib/directus';
-import { readSingleton } from "@directus/sdk";
-
-const global = await directus.request(readSingleton('global'));
-
+import {fetchSEOData} from '../utils/seo'
 import Header from '../components/main/Header.astro';
-const pageTitle = "Главная";
+
 const parentClass = 'header__contacts';
 const socialNetworks = [
 	{
@@ -16,19 +12,23 @@ const socialNetworks = [
 	},
 ];
 
+const pageId = 'index';
+const { title, description } = await fetchSEOData(pageId);
+
 ---
 <html lang="ru">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
-		<title>{pageTitle}</title>
+		<title>{title}</title>
 	</head>
 	<body>
         <div class="wrapper">
 			<Header parentClass={parentClass} socialNetworks={socialNetworks} />
             <main class="page">
-                <h1>{global.title}</h1>
+				<h1>{title}</h1>
+				<p>{description}</p>
             </main>
         </div>
 	</body>
