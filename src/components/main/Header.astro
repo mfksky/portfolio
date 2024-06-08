@@ -17,7 +17,7 @@ const navItems = [
         title: 'Контакты', url: '#contacts'
     },
 ];
-const { parentClass, socialNetworks } = Astro.props;
+const { parentClass, contactNetworks } = Astro.props;
 ---
 <header class="header">
     <nav class="header__nav">
@@ -27,5 +27,5 @@ const { parentClass, socialNetworks } = Astro.props;
             ))
         }
     </nav>
-    <HeaderContacts parentClass={parentClass} socialNetworks={socialNetworks} />
+    <HeaderContacts parentClass={parentClass} contactNetworks={contactNetworks} />
 </header>

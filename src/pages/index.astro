@@ -3,11 +3,13 @@ import { fetchSEOData } from '../utils/seo'
 import Default from '../layouts/Default.astro'
 import Header from '../components/main/Header.astro';
 
+import '../styles/surf/style.scss';
+
 const pageId = 'index';
 const { lang, title, description, fonts } = await fetchSEOData(pageId);
 
 const parentClass = 'header__contacts';
-const socialNetworks = [
+const contactNetworks = [
 	{
 		title: 'Telegram', url: 'https://t.me/mfkboy', icon: 'tg'
 	},
@@ -19,7 +21,7 @@ const socialNetworks = [
 ---
 
 <Default lang={lang} title={title} description={description} fonts={fonts}>
-	<Header parentClass={parentClass} socialNetworks={socialNetworks} />
+	<Header parentClass={parentClass} contactNetworks={contactNetworks} />
 	<main class="page">
 	</main>
 </Default>

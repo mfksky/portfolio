@@ -1,5 +1,5 @@
 ---
-const { parentClass, socialNetworks } = Astro.props;
+const { parentClass, contactNetworks } = Astro.props;
 ---
 
 <div class={`${parentClass ? parentClass : ''} contacts-header`}>
@@ -12,7 +12,7 @@ const { parentClass, socialNetworks } = Astro.props;
     </button>
     <ul class="contacts-header__content">
         {
-            socialNetworks.map((item) => (
+            contactNetworks.map((item) => (
                 <li>
                     <a href={item.url}>
                         <svg>
