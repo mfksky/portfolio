@@ -3,6 +3,9 @@ import { fetchSEOData } from '../utils/seo'
 import Default from '../layouts/Default.astro'
 import Header from '../components/main/Header.astro';
 
+const pageId = 'index';
+const { lang, title, description, fonts } = await fetchSEOData(pageId);
+
 const parentClass = 'header__contacts';
 const socialNetworks = [
 	{
@@ -13,12 +16,9 @@ const socialNetworks = [
 	},
 ];
 
-const pageId = 'index';
-const { title, description } = await fetchSEOData(pageId);
-
 ---
 
-<Default title={title}>
+<Default lang={lang} title={title} description={description} fonts={fonts}>
 	<Header parentClass={parentClass} socialNetworks={socialNetworks} />
 	<main class="page">
 		<h1>{title}</h1>

@@ -1,5 +1,6 @@
 ---
 const { lang, title, description, fonts} = Astro.props;
+const shouldIncludeFonts = fonts !== undefined && fonts !== '';
 ---
 
 <html lang={lang}>
@@ -9,6 +10,9 @@ const { lang, title, description, fonts} = Astro.props;
 		<meta name="viewport" content="width=device-width" />
         <title>{title}</title>
 		<meta name="description" content={description}>
+		{shouldIncludeFonts &&
+			<link href={fonts} rel="stylesheet" />
+		}
 	</head>
 	<body>
         <div class="wrapper">

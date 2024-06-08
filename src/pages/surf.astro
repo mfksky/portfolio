@@ -1,4 +1,6 @@
 ---
+import { fetchSEOData } from '../utils/seo'
+import Default from '../layouts/Default.astro'
 import Burger from '../components/surf/Burger.astro';
 import Header from '../components/surf/Header.astro';
 import Hero from '../components/surf/Hero.astro';
@@ -11,32 +13,24 @@ import BgLines from '../components/surf/BgLines.astro';
 import '../styles/surf/style.scss';
 import '../styles/surf/swiper.scss';
 
-const pageTitle = "Go Surf лендинг";
+const pageId = 'surf';
+const { lang, title, description, fonts } = await fetchSEOData(pageId);
 ---
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;300;400;500;800&display=swap" rel="stylesheet">
-		<meta name="viewport" content="width=device-width" />
-		<title>{pageTitle}</title>
-	</head>
-	<body>
-        <div class="wrapper">
-            <Burger />
-            <Header />
-            <main class="page">
-                <Hero />
-                <SurfSection />
-                <TravelSection />
-                <SleepSection />
-                <ShopSection />
-            </main>
-            <Footer />
-            <BgLines />
-        </div>
-	</body>
-</html>
+
+<Default lang={lang} title={title} description={description} fonts={fonts}>
+    <Burger />
+    <Header />
+    <main class="page">
+        <Hero />
+        <SurfSection />
+        <TravelSection />
+        <SleepSection />
+        <ShopSection />
+    </main>
+    <Footer />
+    <BgLines />
+</Default>
+
 <script>
     import 'lazysizes';
 
