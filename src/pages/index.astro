@@ -3,7 +3,7 @@ import { fetchSEOData } from '../utils/seo'
 import Default from '../layouts/Default.astro'
 import Header from '../components/main/Header.astro';
 
-import '../styles/surf/style.scss';
+import '../styles/main/style.scss';
 
 const pageId = 'index';
 const { lang, title, description, fonts } = await fetchSEOData(pageId);
@@ -25,3 +25,28 @@ const contactNetworks = [
 	<main class="page">
 	</main>
 </Default>
+
+<style lang="scss">
+	:root {
+        --bgColor1: #111;
+        --bgColor2: #161616;
+        --fontColor1: #e9e9f1;
+        --fontColor2: #c7c6d3;
+        --accentColor1: #4e69ff;
+        --accentColor2: #435efa;
+        --borderColor: #303033;
+
+    }
+
+    html {
+        font-size: 10px;
+    }
+
+	body {
+		color: var(--fontColor1);
+		font-size: 2.4rem;
+		line-height: 3.2rem;
+		font-weight: 400;
+		background-color: var(--bgColor1);
+	}
+</style>

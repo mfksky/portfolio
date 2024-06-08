@@ -3,7 +3,7 @@ const { parentClass, contactNetworks } = Astro.props;
 ---
 
 <div class={`${parentClass ? parentClass : ''} contacts-header`}>
-    <button class="contacts-header__btn" type="button" title="Написать мне">
+    <button class="contacts-header__btn button-main" type="button" title="Написать мне">
         <span>Написать мне</span>
         <svg>
             <use xlink:href="/main/icons/icons.svg#chat"></use>
@@ -25,3 +25,18 @@ const { parentClass, contactNetworks } = Astro.props;
         }
     </ul>
 </div>
+
+<style lang="scss">
+    @import '../../styles/vr/vars';
+
+    .contacts-header {
+        position: relative;
+		// .contacts-header__btn
+		&__btn {
+		}
+		// .contacts-header__content
+		&__content {
+		}
+    }
+
+</style>
