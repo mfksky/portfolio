@@ -1,0 +1,38 @@
+---
+import AvatarContacts from './AvatarContacts.astro'
+
+const logo = '/main/logo.svg';
+const logoTitle = 'Александр Иванов';
+const myImage = '/main/images/me.jpg';
+const specs = 'Верстка и фронтенд разработка';
+const location = 'Белгород, Россия';
+const { parentClass, contactNetworks } = Astro.props;
+---
+
+<div class="avatar">
+    <div class="avatar__top">
+        <div class="avatar__logo">
+            <div class="avatar__logo-image">
+                <img src={logo} alt="MFK" />
+            </div>
+            <p>{logoTitle}</p>
+        </div>
+        <div class="avatar__main-image">
+            <img class="lazyload" data-src={myImage} alt={logoTitle} />
+            <noscript>
+                <img src={myImage} alt={logoTitle} />
+            </noscript>
+        </div>
+    </div>
+    <div class="avatar__middle">
+        <div>
+            <span>Специализация</span>
+            <p>{specs}</p>
+        </div>
+        <div>
+            <span>Локация</span>
+            <p>{location}</p>
+        </div>
+    </div>
+    <AvatarContacts parentClass={parentClass} contactNetworks={contactNetworks} />
+</div>

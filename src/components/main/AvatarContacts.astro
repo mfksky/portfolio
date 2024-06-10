@@ -2,15 +2,9 @@
 const { parentClass, contactNetworks } = Astro.props;
 ---
 
-<div class={`${parentClass ? parentClass : ''} contacts-header`}>
-    <button class="contacts-header__btn" type="button" title="Написать мне">
-        <div>Написать мне</div>
-        <svg>
-            <use xlink:href="/main/icons/icons.svg#chat"></use>
-            <title>Написать мне</title>
-        </svg>
-    </button>
-    <ul class="contacts-header__content">
+<div class={`${parentClass ? parentClass : ''} contacts-avatar`}>
+    <button class="contacts-avatar__btn">Связаться со мной</button>
+    <ul class="contacts-avatar__content">
         {
             contactNetworks.map((item) => (
                 <li>
@@ -25,10 +19,11 @@ const { parentClass, contactNetworks } = Astro.props;
         }
     </ul>
 </div>
+
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const callBtn = document.querySelector('.contacts-header__btn');
-        const callContent = document.querySelector('.contacts-header__content');
+        const callBtn = document.querySelector('.contacts-avatar__btn');
+        const callContent = document.querySelector('.contacts-avatar__content');
 
         callBtn.addEventListener('click', () => {
             callBtn.classList.toggle('_active');
@@ -40,11 +35,11 @@ const { parentClass, contactNetworks } = Astro.props;
 <style lang="scss">
     @import '../../styles/assets/vars';
 
-    .contacts-header {
+    .contacts-avatar {
         position: relative;
         display: inline-block;
-		// .contacts-header__btn
-		&__btn {
+        // .contacts-avatar__btn
+        &__btn {
             position: relative;
             z-index: 1;
             display: flex;
@@ -69,32 +64,18 @@ const { parentClass, contactNetworks } = Astro.props;
             &:hover {
                 background-color: var(--accentColor2);
             }
-            @media (max-width:$md3+px){
-                padding: 0 2rem;
-                div {
-                    display: none;
-                }
-            }
-            @media (max-width:$md4+px){
-                height: 4rem;
-                padding: 0 1.5rem;
-                svg {
-                    width: 1.5rem;
-                    height: 1.5rem;
-                }
-            }
-		}
-		// .contacts-header__content
-		&__content {
+        }
+        // .contacts-avatar__content
+        &__content {
             position: absolute;
-            top: 5rem;
+            bottom: 5rem;
             right: 0;
             display: flex;
             align-items: center;
             gap: 1rem;
             padding: 1.5rem 0;
             opacity: 0;
-            transform: translateY(-6.5rem);
+            transform: translateY(6.5rem);
             transition: transform .3s ease;
             &._active {
                 transform: translateY(0);
@@ -124,11 +105,7 @@ const { parentClass, contactNetworks } = Astro.props;
                     }
                 }
             }
-            @media (max-width:$md2+px){
-                top: -6.5rem;
-                transform: translateY(6.5rem);
-            }
-		}
+        }
     }
 
 </style>
