@@ -10,7 +10,7 @@ const { parentClass, contactNetworks } = Astro.props;
 ---
 
 <div class="avatar">
-    <div class="avatar__top">
+    <div class="avatar__info">
         <div class="avatar__logo">
             <div class="avatar__logo-image">
                 <img src={logo} alt="MFK" />
@@ -23,16 +23,147 @@ const { parentClass, contactNetworks } = Astro.props;
                 <img src={myImage} alt={logoTitle} />
             </noscript>
         </div>
-    </div>
-    <div class="avatar__middle">
-        <div>
-            <span>Специализация</span>
-            <p>{specs}</p>
-        </div>
-        <div>
-            <span>Локация</span>
-            <p>{location}</p>
+        <div class="avatar__specs">
+            <div>
+                <span>Специализация</span>
+                <p>{specs}</p>
+            </div>
+            <div>
+                <span>Локация</span>
+                <p>{location}</p>
+            </div>
         </div>
     </div>
     <AvatarContacts parentClass={parentClass} contactNetworks={contactNetworks} />
 </div>
+
+<style lang="scss">
+    @import '../../styles/assets/vars';
+
+    .avatar {
+        position: fixed;
+        top: 50%;
+        left: 6%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 40rem;
+        height: calc(100vh - 10%);
+        padding: 6rem;
+        border: 1px solid var(--borderColor);
+        border-radius: 5rem;
+        transform: translateY(-50%);
+        @media (max-width: 1600px){
+            left: 3%;
+            width: 30rem;
+            height: calc(100vh - 6%);
+            padding: 3rem;
+            border-radius: 2.5rem;
+        }
+        @media (max-width:$md2+px){
+            position: relative;
+            top: 0;
+            left: 0;
+            width: auto;
+            height: auto;
+            margin: 3rem 3rem 0 3rem;
+            transform: translateY(0);
+        }
+        @media (max-width:$md3+px){
+            margin: 1.5rem 1.5rem 0 1.5rem;
+        }
+		// .avatar__info
+		&__info {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: space-between;
+            @media (max-width:$md2+px){
+                margin-bottom: 6rem;
+            }
+            @media (max-width:$md3+px){
+                margin-bottom: 4rem;
+            }
+		}
+		// .avatar__logo
+		&__logo {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            font-size: 3rem;
+            line-height: 3rem;
+            font-weight: 600;
+            p {
+                max-width: 160px;
+            }
+		}
+		// .avatar__logo-image
+		&__logo-image {
+            flex-shrink: 0;
+            width: 6rem;
+            height: 6rem;
+            background-color: var(--accentColor1);
+            border-radius: 1rem;
+		}
+		// .avatar__main-image
+		&__main-image {
+            margin-bottom: 6rem;
+            img {
+                border-radius: 2rem;
+            }
+            @media (max-width:$md2+px){
+                img {
+                    width: 30rem;
+                    height: 30rem;
+                }
+            }
+            @media (max-width:$md3+px){
+                width: 100%;
+                margin-bottom: 4rem;
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+                
+            }
+		}
+		// .avatar__specs
+		&__specs {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+            div {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                span {
+                    color: var(--fontColor2);
+                    font-size: 1.3rem;
+                    line-height: 1.3rem;
+                    letter-spacing: 1px;
+                    text-transform: uppercase;
+                }
+                p {
+                    font-size: 2.4rem;
+                    line-height: 2.6rem;
+                    font-weight: 600;
+                }
+            }
+            @media (max-width:$md3+px){
+                gap: 3rem;
+                div {
+                    span {
+                        font-size: 1rem;
+                        line-height: 1rem;
+                    }
+                    p {
+                        font-size: 2rem;
+                        line-height: 2.2rem;
+                    }
+                }
+            }
+		}
+    }
+
+</style>
