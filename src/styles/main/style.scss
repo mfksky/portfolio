@@ -1,5 +1,68 @@
 @import '../assets/null.scss';
-@import '../../styles/vr/vars';
+@import '../../styles/assets/vars';
+
+@font-face {
+    font-family: 'FuturaPT';
+    font-display: swap;
+    src: url('/fonts/FuturaPT-Book.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FuturaPT';
+    font-display: swap;
+    src: url('/fonts/FuturaPT-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FuturaPT';
+    font-display: swap;
+    src: url('/fonts/FuturaPT-Demi.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FuturaPT';
+    font-display: swap;
+    src: url('/fonts/FuturaPT-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+:root {
+    --bgColor1: #111;
+    --bgColor2: #161616;
+    --fontColor1: #e9e9f1;
+    --fontColor2: #c7c6d3;
+    --accentColor1: #4e69ff;
+    --accentColor2: #435efa;
+    --borderColor: #303033;
+
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-family: FuturaPT, sans-serif;
+    color: var(--fontColor1);
+    font-size: 2.4rem;
+    line-height: 3.2rem;
+    font-weight: 400;
+    text-rendering: optimizeLegibility;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-smooth: always;
+    background-color: var(--bgColor1);
+}
 
 .button-main {
     display: flex;
@@ -11,14 +74,14 @@
     font-size: 1.3rem;
     line-height: 100%;
     font-weight: 600;
-    letter-spacing: 2.4rem;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
     background-color: var(--accentColor1);
-    border-radius: 1.2rem;
+    border-radius: 1rem;
     transition: background-color .3s ease 0s;
     svg {
-        width: 2rem;
-        height: 2rem;
+        width: 1.8rem;
+        height: 1.8rem;
         fill: var(--fontColor1);
     }
     &:hover {
