@@ -3,6 +3,7 @@ import { fetchSEOData } from '../utils/seo'
 import Default from '../layouts/Default.astro'
 import Header from '../components/main/Header.astro';
 import Avatar from '../components/main/Avatar.astro';
+import Home from '../components/main/Home.astro';
 
 import '../styles/main/style.scss';
 
@@ -28,5 +29,6 @@ const contactNetworks = [
 	<Header parentClass={parentClass} contactNetworks={contactNetworks} />
 	<Avatar parentClass={parentClass} contactNetworks={contactNetworks} />
 	<main class="page">
+		<Home />
 	</main>
 </Default>
