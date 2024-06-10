@@ -3,8 +3,8 @@ const { parentClass, contactNetworks } = Astro.props;
 ---
 
 <div class={`${parentClass ? parentClass : ''} contacts-header`}>
-    <button class="contacts-header__btn button-main" type="button" title="Написать мне">
-        <span>Написать мне</span>
+    <button class="contacts-header__btn" type="button" title="Написать мне">
+        <div>Написать мне</div>
         <svg>
             <use xlink:href="/main/icons/icons.svg#chat"></use>
             <title>Написать мне</title>
@@ -25,6 +25,17 @@ const { parentClass, contactNetworks } = Astro.props;
         }
     </ul>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const callBtn = document.querySelector('.contacts-header__btn');
+        const callContent = document.querySelector('.contacts-header__content');
+
+        callBtn.addEventListener('click', () => {
+            callBtn.classList.toggle('_active');
+            callContent.classList.toggle('_active');
+        });
+    });
+</script>
 
 <style lang="scss">
     @import '../../styles/assets/vars';
@@ -32,16 +43,46 @@ const { parentClass, contactNetworks } = Astro.props;
     .contacts-header {
         position: relative;
         display: inline-block;
-        &:hover {
-            .contacts-header__content {
-                transform: translateY(0);
-            }
-        }
 		// .contacts-header__btn
 		&__btn {
             position: relative;
             z-index: 1;
-            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            height: 5rem;
+            padding: 0 4rem;
+            font-size: 1.3rem;
+            line-height: 100%;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            background-color: var(--accentColor1);
+            border-radius: 1rem;
+            transition: background-color .3s ease 0s;
+            svg {
+                width: 1.8rem;
+                height: 1.8rem;
+                fill: var(--fontColor1);
+            }
+            &:hover {
+                background-color: var(--accentColor2);
+            }
+            @media (max-width:$md3+px){
+                padding: 0 2rem;
+                div {
+                    display: none;
+                }
+            }
+            @media (max-width:$md4+px){
+                height: 4rem;
+                padding: 0 1.5rem;
+                svg {
+                    width: 1.5rem;
+                    height: 1.5rem;
+                }
+            }
 		}
 		// .contacts-header__content
 		&__content {
@@ -52,14 +93,20 @@ const { parentClass, contactNetworks } = Astro.props;
             align-items: center;
             gap: 1rem;
             padding: 1.5rem 0;
+            opacity: 0;
             transform: translateY(-6.5rem);
             transition: transform .3s ease;
+            &._active {
+                transform: translateY(0);
+                opacity: 1;
+            }
             a {
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 width: 3.6rem;
                 height: 3.6rem;
+                background-color: var(--bgCol1);
                 border: 1px solid var(--borderColor);
                 border-radius: .8rem;
                 transition: all .3s ease;
@@ -76,6 +123,10 @@ const { parentClass, contactNetworks } = Astro.props;
                         fill: var(--bgCol1);
                     }
                 }
+            }
+            @media (max-width:$md2+px){
+                top: -6.5rem;
+                transform: translateY(6.5rem);
             }
 		}
     }

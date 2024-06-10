@@ -2,30 +2,123 @@
 import HeaderContacts from './HeaderContacts.astro';
 const navItems = [
     {
-        title: 'Главная', url: '#intro'
+        title: 'Главная', url: '#intro', icon: 'home'
     },
     {
-        title: 'Портфолио', url: '#portfolio'
+        title: 'Портфолио', url: '#portfolio', icon: 'portfolio'
     },
     {
-        title: 'Stack', url: '#stack'
+        title: 'Stack', url: '#stack', icon: 'stack'
     },
     {
-        title: 'Навыки', url: '#skills'
+        title: 'Навыки', url: '#skills', icon: 'skills'
     },
     {
-        title: 'Контакты', url: '#contacts'
+        title: 'Контакты', url: '#contacts', icon: 'contacts'
     },
 ];
 const { parentClass, contactNetworks } = Astro.props;
 ---
+
 <header class="header">
     <nav class="header__nav">
         {
             navItems.map((item) => (
-                <a class="header__nav-item" href={item.url}>{item.title}</a>
+                <a class="header__nav-item" href={item.url}>
+                    <div>{item.title}</div>
+                    <svg>
+                        <use xlink:href={`/main/icons/icons.svg#${item.icon}`}></use>
+                    </svg>
+                </a>
             ))
         }
     </nav>
     <HeaderContacts parentClass={parentClass} contactNetworks={contactNetworks} />
 </header>
+
+<style lang="scss">
+    @import '../../styles/assets/vars';
+
+    .header {
+        position: fixed;
+        top: 8rem;
+        left: 5rem;
+        right: 5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 4rem;
+        background-color: var(--bgColor2);
+        border-radius: 1rem;
+        @media (max-width:$md1+px){
+            gap: 2rem;
+        }
+        @media (max-width:$md2+px){
+            top: auto;
+            bottom: 1.5rem;
+        }
+        @media (max-width:$md3+px){
+            gap: 0;
+        }
+        @media (max-width:$md5+px){
+            left: 3rem;
+            right: 3rem;
+        }
+		// .header__nav
+		&__nav {
+            display: flex;
+            gap: 2rem;
+            @media (max-width:$md1+px){
+                gap: 1rem;
+            }
+            @media (max-width:$md3+px){
+                gap: 0;
+            }
+		}
+		// .header__nav-item
+		&__nav-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 5rem;
+            padding: 0 4rem;
+            color: var(--fontColor2);
+            font-size: 1.3rem;
+            line-height: 100%;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border: 1px solid transparent;
+            border-radius: 1rem;
+            transition: all .3s ease;
+            &:hover, &._active {
+                color: var(--fontColor1);
+                border-color: var(--borderColor);
+            }
+            svg {
+                display: none;
+                width: 1.8rem;
+                height: 1.8rem;
+                fill: var(--fontColor2);
+            }
+            @media (max-width:$md1+px){
+                padding: 0 2rem;
+                div {
+                    display: none;
+                }
+                svg {
+                    display: block;
+                }
+            }
+            @media (max-width:$md4+px){
+                height: 4rem;
+                padding: 0 1.5rem;
+                svg {
+                    width: 1.5rem;
+                    height: 1.5rem;
+                }
+            }
+		}
+    }
+
+</style>
