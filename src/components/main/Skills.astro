@@ -1,0 +1,131 @@
+---
+const tagTitle = 'Навыки';
+const tagIcon = '/main/icons/icons.svg#skills';
+const heading = 'Мои навыки';
+const subtext = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.';
+const skillsList = [
+    {
+        title: 'Верстка / Frontend',
+        skills: [
+            '— HTML5 (PUG), CSS3 (SCSS/LESS)',
+            '— JavaScript (ES6+)',
+            '— Фреймворки/библиотеки: Vue.js',
+            '— Адаптивная/отзывчивая верстка, методология БЭМ (BEM)',
+            '— Сборщики проектов (Webpack, Gulp и др.)',
+            '— Опыт работы с Git',
+            '— Владение графическими редакторами (Figma, Photoshop, Illustrator)'
+        ]
+    },
+    {
+        title: 'Backend',
+        skills: [
+            '— Базовые знания PHP',
+            '— Опыт коммерческих проектов October CMS',
+            '— Работа с Headless-системами (Directus, Strapi)'
+        ]
+    },
+    {
+        title: 'SEO-продвижение',
+        skills: [
+            '— Техническое SEO',
+            '— Опыт продвижения коммерческих проектов',
+            '— Продвижение в высококонкурентных тематиках'
+        ]
+    },
+];
+---
+
+<section class="skills">
+    <div class="_container">
+        <div class="skills__content">
+            <div class="skills__text">
+                <div class="skills__badge badge">
+                    <svg>
+                        <use xlink:href={tagIcon}></use>
+                        <title>{tagTitle}</title>
+                    </svg>
+                    <span>{tagTitle}</span>
+                </div>
+                <h2>{heading}</h2>
+                <p>{subtext}</p>
+            </div>
+            {
+                skillsList.map(item => (
+                    <div class="skills__block">
+                        <h3>{item.title}</h3>
+                        <ul>
+                            {
+                                item.skills.map(item => (
+                                    <li>{item}</li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style lang="scss">
+    @import '../../styles/assets/vars';
+
+    .skills {
+		// .skills__content
+		&__content {
+		}
+		// .skills__text
+		&__text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 6rem;
+            h2 {
+                max-width: 65rem;
+                margin-bottom: 2rem;
+            }
+            p {
+                max-width: 72rem;
+                color: var(--fontColor2);
+            }
+            @media (max-width:$md1+px){
+                p {
+                    max-width: 60rem;
+                }
+            }
+            @media (max-width:$md3+px){
+                margin-bottom: 4rem;
+            }
+		}
+		// .skills__badge
+		&__badge {
+		}
+		// .skills__block
+		&__block {
+            margin-bottom: 6rem;
+            &:last-child {
+                margin-bottom: 0;
+            }
+            h3 {
+                margin-bottom: 1.5rem;
+            }
+            ul {
+                padding-left: 2rem;
+                li {
+                    font-size: 1.8rem;
+                    line-height: 3.2rem;
+                }
+            }
+            @media (max-width:$md3+px){
+                margin-bottom: 4rem;
+                ul {
+                    padding-left: 1.5rem;
+                    li {
+                        font-size: 1.6rem;
+                        line-height: 3rem;
+                    }
+                }
+            }
+		}
+    }
+</style>

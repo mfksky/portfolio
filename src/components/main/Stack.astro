@@ -61,8 +61,8 @@ const stackList = [
                     </svg>
                     <span>{tagTitle}</span>
                 </div>
-                <h1>Инструменты
-и технологии</h1>
+                <h2>Инструменты
+и технологии</h2>
             </div>
             <div class="stack__list">
                 {
@@ -85,6 +85,10 @@ const stackList = [
     @import '../../styles/assets/vars';
 
     .stack {
+        margin-bottom: 24rem;
+        @media (max-width:$md3+px){
+            margin-bottom: 12rem;
+        }
 		// .stack__content
 		&__content {
 		}
@@ -135,15 +139,22 @@ const stackList = [
                 height: 5rem;
             }
             @media (max-width:$md3+px){
+                gap: 1rem;
                 padding: 1.5rem;
                 font-size: 1.6rem;
                 line-height: 1.6rem;
+                border-radius: 1rem;
                 img {
                     height: 4rem;
                 }
             }
             @media (max-width:$md4+px){
-                
+                padding: 1.2rem;
+                font-size: 1.4rem;
+                line-height: 1.4rem;
+                img {
+                    height: 3rem;
+                }
             }
 		}
     }
