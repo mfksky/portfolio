@@ -1,14 +1,16 @@
 ---
 import { fetchSEOData } from '../utils/seo'
 import Default from '../layouts/Default.astro'
+import Static from '../layouts/Static.astro'
 import Header from '../components/main/Header.astro';
 import Avatar from '../components/main/Avatar.astro';
 import Home from '../components/main/Home.astro';
+import Stack from '../components/main/Stack.astro';
 
 import '../styles/main/style.scss';
 
 const pageId = 'index';
-const { lang, title, description, fonts } = await fetchSEOData(pageId);
+//const { lang, title, description, fonts } = await fetchSEOData(pageId);
 
 const parentClass = 'header__contacts';
 const contactNetworks = [
@@ -25,10 +27,12 @@ const contactNetworks = [
 	import 'lazysizes';
 </script>
 
-<Default lang={lang} title={title} description={description} fonts={fonts}>
+<!-- <Default lang={lang} title={title} description={description} fonts={fonts}> -->
+<Static>
 	<Header parentClass={parentClass} contactNetworks={contactNetworks} />
 	<Avatar parentClass={parentClass} contactNetworks={contactNetworks} />
 	<main class="page">
 		<Home />
 	</main>
-</Default>
+</Static>
+<!-- </Default> -->

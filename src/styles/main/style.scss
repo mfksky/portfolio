@@ -1,5 +1,6 @@
 @import '../assets/null.scss';
 @import '../../styles/assets/vars';
+@import 'typo';
 
 @font-face {
     font-family: 'FuturaPT';
@@ -63,6 +64,18 @@ body {
     -moz-osx-font-smoothing: grayscale;
     font-smooth: always;
     background-color: var(--bgColor1);
+    @media (max-width:$md1+px){
+        font-size: 2.2rem;
+        line-height: 2.9rem;
+    }
+    @media (max-width:$md3+px){
+        font-size: 2rem;
+        line-height: 2.6rem;
+    }
+    @media (max-width:$md4+px){
+        font-size: 1.8rem;
+        line-height: 2.3rem;
+    }
 }
 
 ._container {
@@ -73,9 +86,32 @@ body {
         margin-left: calc(30rem + 6%);
     }
     @media (max-width:$md2+px){
-        margin: 0 5rem;
-    }
-    @media (max-width:$md5+px){
         margin: 0 3rem;
+    }
+    @media (max-width:$md3+px){
+        margin: 0 1.5rem;
+    }
+}
+
+.badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    height: 3rem;
+    margin-bottom: 3rem;
+    padding: 0 1.2rem;
+    color: var(--fontColor2);
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: 1px solid var(--borderColor);
+    border-radius: 1rem;
+    svg {
+        width: 10px;
+        height: 10px;
+        fill: var(--fontColor2);
     }
 }

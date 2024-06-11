@@ -1,0 +1,22 @@
+h1 {
+    font-size: 5rem;
+    line-height: 5.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    white-space: pre;
+    @media (max-width:$md1+px){
+        font-size: 4.5rem;
+        line-height: 4.7rem;
+    }
+    @media (max-width:$md3+px){
+        font-size: 4rem;
+        line-height: 4.2rem;
+    }
+    @media (max-width: 550px){
+        white-space: normal; 
+    }
+    @media (max-width:$md4+px){
+        font-size: 3.6rem;
+        line-height: 3.8rem;
+    }
+}
