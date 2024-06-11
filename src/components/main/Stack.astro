@@ -1,2 +1,150 @@
 ---
+const tagTitle = 'Stack';
+const tagIcon = '/main/icons/icons.svg#stack';
+const stackList = [
+    {
+        title: 'HTML5', icon: '/main/images/stack/html.svg'
+    },
+    {
+        title: 'CSS3', icon: '/main/images/stack/html.svg'
+    },
+    {
+        title: 'JavaScript', icon: '/main/images/stack/html.svg'
+    },
+    {
+        title: 'VUE', icon: '/main/images/stack/html.svg'
+    },
+    {
+        title: 'Directus', icon: '/main/images/stack/html.svg'
+    },
+    {
+        title: 'October CMS', icon: '/main/images/stack/html.svg'
+    },
+    {
+        title: 'Astro', icon: '/main/images/stack/html.svg'
+    },
+    {
+        title: 'GIT', icon: '/main/images/stack/html.svg'
+    },
+    {
+        title: 'GULP', icon: '/main/images/stack/html.svg'
+    },
+    {
+        title: 'WEBPACK', icon: '/main/images/stack/html.svg'
+    },
+    {
+        title: 'Vite', icon: '/main/images/stack/html.svg'
+    },
+    {
+        title: 'WebFlow', icon: '/main/images/stack/html.svg'
+    },
+    {
+        title: 'Figma', icon: '/main/images/stack/html.svg'
+    },
+    {
+        title: 'Photoshop', icon: '/main/images/stack/html.svg'
+    },
+    {
+        title: 'Illustrator', icon: '/main/images/stack/html.svg'
+    },
+];
 ---
+
+<section class="stack">
+    <div class="_container">
+        <div class="stack__content">
+            <div class="stack__text">
+                <div class="stack__badge badge">
+                    <svg>
+                        <use xlink:href={tagIcon}></use>
+                        <title>{tagTitle}</title>
+                    </svg>
+                    <span>{tagTitle}</span>
+                </div>
+                <h1>Инструменты
+и технологии</h1>
+            </div>
+            <div class="stack__list">
+                {
+                    stackList.map(item => (
+                        <div class="stack__item">
+                            <img class="lazyload" data-src={item.icon} alt={item.title} />
+                            <noscript>
+                                <img src={item.icon} alt={item.title} />
+                            </noscript>
+                            <p>{item.title}</p>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<style lang="scss">
+    @import '../../styles/assets/vars';
+
+    .stack {
+		// .stack__content
+		&__content {
+		}
+		// .stack__text
+		&__text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 6rem;
+            @media (max-width:$md3+px){
+                margin-bottom: 4rem;
+            }
+		}
+		// .stack__badge
+		&__badge {
+		}
+		// .stack__list
+		&__list {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2rem;
+            @media (max-width:$md1+px){
+                grid-template-columns: repeat(3, 1fr);
+            }
+            @media (max-width:$md3+px){
+                gap: 1rem;
+            }
+            @media (max-width:$md4+px){
+                grid-template-columns: repeat(2, 1fr);
+            }
+		}
+		// .stack__item
+		&__item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            padding: 2rem;
+            text-align: center;
+            font-size: 1.8rem;
+            line-height: 1.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            border: 1px solid var(--borderColor);
+            border-radius: 2rem;
+            img {
+                height: 5rem;
+            }
+            @media (max-width:$md3+px){
+                padding: 1.5rem;
+                font-size: 1.6rem;
+                line-height: 1.6rem;
+                img {
+                    height: 4rem;
+                }
+            }
+            @media (max-width:$md4+px){
+                
+            }
+		}
+    }
+</style>
