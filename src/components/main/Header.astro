@@ -32,6 +32,32 @@ const { parentClass, contactNetworks } = Astro.props;
                 header.classList.remove('_scroll');
             }
         });
+
+        const navItems = document.querySelectorAll('.header__nav-item');
+        const sections = document.querySelectorAll('.section');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.7
+        };
+
+        const observerCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navItems.forEach(item => item.classList.remove('_active'));
+                    const id = entry.target.id;
+                    const correspondingNavItem = document.querySelector(`.header__nav-item[href="#${id}"]`);
+                    correspondingNavItem.classList.add('_active');
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
     });
 </script>
 
@@ -117,12 +143,16 @@ const { parentClass, contactNetworks } = Astro.props;
             &:hover, &._active {
                 color: var(--bgColor2);
                 background-color: var(--fontColor2);
+                svg {
+                    fill: var(--bgColor2);
+                }
             }
             svg {
                 display: none;
                 width: 1.8rem;
                 height: 1.8rem;
                 fill: var(--fontColor2);
+                transition: all .3s ease;
             }
             @media (max-width:$md1+px){
                 div {
@@ -133,9 +163,10 @@ const { parentClass, contactNetworks } = Astro.props;
                 }
             }
             @media (max-width:$md4+px){
-                padding: 0 1.5rem;
+                padding: 0 1.6rem;
             }
             @media (max-width:$md5+px){
+                height: 4rem;
                 padding: 0 1.5rem;
                 svg {
                     width: 1.5rem;
