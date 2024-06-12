@@ -67,7 +67,6 @@ const { parentClass, contactNetworks } = Astro.props;
         border-radius: 1rem;
         transition: top .3s ease;
         &._scroll {
-            top: 2rem;
             background-color: #161616ac;
             backdrop-filter: blur(20px);
         }
@@ -83,9 +82,10 @@ const { parentClass, contactNetworks } = Astro.props;
             bottom: 1.5rem;
             background-color: #161616ac;
             backdrop-filter: blur(20px);
-            &._scroll {
-                top: auto;
-            }
+        }
+        @media (max-width:$md4+px){
+            left: 4rem;
+            right: 4rem;
         }
         @media (max-width:$md5+px){
             left: 3rem;
@@ -112,12 +112,11 @@ const { parentClass, contactNetworks } = Astro.props;
             font-weight: 600;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            border: 1px solid transparent;
             border-radius: 1rem;
             transition: all .3s ease;
             &:hover, &._active {
-                color: var(--fontColor1);
-                border-color: var(--borderColor);
+                color: var(--bgColor2);
+                background-color: var(--fontColor2);
             }
             svg {
                 display: none;
@@ -134,7 +133,9 @@ const { parentClass, contactNetworks } = Astro.props;
                 }
             }
             @media (max-width:$md4+px){
-                height: 4rem;
+                padding: 0 1.5rem;
+            }
+            @media (max-width:$md5+px){
                 padding: 0 1.5rem;
                 svg {
                     width: 1.5rem;

@@ -115,9 +115,9 @@ body {
 }
 
 .section {
-    padding-top: 16rem;
+    margin-bottom: 16rem;
     @media (max-width:$md3+px){
-        padding-top: 8rem;
+        margin-bottom: 8rem;
     }
 }
 
@@ -169,7 +169,7 @@ body {
     justify-content: center;
     gap: 1rem;
     height: 3rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     padding: 0 1.2rem;
     color: var(--fontColor2);
     font-size: 1.2rem;
