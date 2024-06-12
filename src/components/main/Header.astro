@@ -23,6 +23,7 @@ const { parentClass, contactNetworks } = Astro.props;
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // Scroll
         const header = document.querySelector('.header');
 
         window.addEventListener('scroll', function() {
@@ -33,6 +34,7 @@ const { parentClass, contactNetworks } = Astro.props;
             }
         });
 
+        // Активный класс к элементам меню при скролле
         const navItems = document.querySelectorAll('.header__nav-item');
         const sections = document.querySelectorAll('.section');
 
@@ -130,7 +132,7 @@ const { parentClass, contactNetworks } = Astro.props;
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 5rem;
+            height: 6rem;
             padding: 0 2rem;
             color: var(--fontColor2);
             font-size: 1.3rem;
@@ -153,6 +155,9 @@ const { parentClass, contactNetworks } = Astro.props;
                 height: 1.8rem;
                 fill: var(--fontColor2);
                 transition: all .3s ease;
+            }
+            @media (max-width: 1600px){
+                height: 5rem;
             }
             @media (max-width:$md1+px){
                 div {

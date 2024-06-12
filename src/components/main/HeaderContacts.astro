@@ -51,7 +51,7 @@ const { parentClass, contactNetworks } = Astro.props;
             align-items: center;
             justify-content: center;
             gap: 1rem;
-            height: 5rem;
+            height: 6rem;
             padding: 0 2rem;
             font-size: 1.3rem;
             line-height: 100%;
@@ -68,6 +68,9 @@ const { parentClass, contactNetworks } = Astro.props;
             }
             &:hover {
                 background-color: var(--accentColor2);
+            }
+            @media (max-width: 1600px){
+                height: 5rem;
             }
             @media (max-width:$md3+px){
                 div {
@@ -89,7 +92,7 @@ const { parentClass, contactNetworks } = Astro.props;
 		// .contacts-header__content
 		&__content {
             position: absolute;
-            top: 5rem;
+            top: 6rem;
             right: 0;
             display: flex;
             align-items: center;
@@ -106,15 +109,15 @@ const { parentClass, contactNetworks } = Astro.props;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                width: 3.6rem;
-                height: 3.6rem;
+                width: 4rem;
+                height: 4rem;
                 background-color: var(--bgColor1);
                 border: 1px solid var(--borderColor);
                 border-radius: .8rem;
                 transition: all .3s ease;
                 svg {
-                    width: 1.6rem;
-                    height: 1.6rem;
+                    width: 1.8rem;
+                    height: 1.8rem;
                     fill: var(--fontColor2);
                     transition: all .3s ease;
                 }
@@ -126,9 +129,26 @@ const { parentClass, contactNetworks } = Astro.props;
                     }
                 }
             }
+            @media (max-width: 1600px){
+                top: 5rem;
+            }
             @media (max-width:$md2+px){
                 top: -6.5rem;
                 transform: translateY(6.5rem);
+            }
+            @media (max-width:$md4+px){
+                top: -8rem;
+                a {
+                    width: 5rem;
+                    height: 5rem;
+                }
+            }
+            @media (max-width:$md5+px){
+                top: -7rem;
+                a {
+                    width: 4.5rem;
+                    height: 4rem;
+                }
             }
 		}
     }
