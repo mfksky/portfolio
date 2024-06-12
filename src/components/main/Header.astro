@@ -3,7 +3,7 @@ import HeaderContacts from './HeaderContacts.astro';
 
 const navItems = [
     {
-        title: 'Главная', url: '#intro', icon: 'home'
+        title: 'Главная', url: '#home', icon: 'home'
     },
     {
         title: 'Портфолио', url: '#portfolio', icon: 'portfolio'
@@ -20,6 +20,20 @@ const navItems = [
 ];
 const { parentClass, contactNetworks } = Astro.props;
 ---
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const header = document.querySelector('.header');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 0) {
+                header.classList.add('_scroll');
+            } else {
+                header.classList.remove('_scroll');
+            }
+        });
+    });
+</script>
 
 <header class="header">
     <nav class="header__nav">
@@ -51,6 +65,12 @@ const { parentClass, contactNetworks } = Astro.props;
         justify-content: space-between;
         background-color: var(--bgColor2);
         border-radius: 1rem;
+        transition: top .3s ease;
+        &._scroll {
+            top: 2rem;
+            background-color: #161616ac;
+            backdrop-filter: blur(20px);
+        }
         @media (max-width: 1600px){
             top: 3%;
             right: 3%;
@@ -61,6 +81,11 @@ const { parentClass, contactNetworks } = Astro.props;
             right: 5rem;
             left: 5rem;
             bottom: 1.5rem;
+            background-color: #161616ac;
+            backdrop-filter: blur(20px);
+            &._scroll {
+                top: auto;
+            }
         }
         @media (max-width:$md5+px){
             left: 3rem;

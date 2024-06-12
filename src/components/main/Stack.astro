@@ -50,10 +50,10 @@ const stackList = [
 ];
 ---
 
-<section class="stack" id="portfolio">
+<section class="stack section" id="stack">
     <div class="_container">
         <div class="stack__content">
-            <div class="stack__text">
+            <div class="stack__text title-content">
                 <div class="stack__badge badge">
                     <svg>
                         <use xlink:href={tagIcon}></use>
@@ -85,22 +85,11 @@ const stackList = [
     @import '../../styles/assets/vars';
 
     .stack {
-        margin-bottom: 24rem;
-        @media (max-width:$md3+px){
-            margin-bottom: 12rem;
-        }
 		// .stack__content
 		&__content {
 		}
 		// .stack__text
 		&__text {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            margin-bottom: 6rem;
-            @media (max-width:$md3+px){
-                margin-bottom: 4rem;
-            }
 		}
 		// .stack__badge
 		&__badge {

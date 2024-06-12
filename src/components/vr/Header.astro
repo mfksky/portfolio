@@ -124,12 +124,15 @@ import Burger from './Burger.astro';
         const header = document.querySelector('.header');
 
         window.addEventListener('scroll', function() {
-            if (window.scrollY > 0) {
-                header.classList.add('_scroll');
-            } else {
-                header.classList.remove('_scroll');
-            }
+            window.requestAnimationFrame(function() {
+                if (window.scrollY > 0) {
+                    header.classList.add('_scroll');
+                } else {
+                    header.classList.remove('_scroll');
+                }
+            });
         });
+
     });
 </script>
 <style lang="scss">

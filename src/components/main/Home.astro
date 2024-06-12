@@ -6,11 +6,11 @@ const tagIcon = '/main/icons/icons.svg#home';
 const subtext = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.';
 ---
 
-<section class="home">
+<section class="home" id="home">
     <div class="_container">
         <div class="home__content">
-            <div class="home__text">
-                <div class="home__badge badge">
+            <div class="home__text title-content">
+                <div class="badge">
                     <svg>
                         <use xlink:href={tagIcon}></use>
                         <title>{tagTitle}</title>
@@ -36,10 +36,6 @@ const subtext = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspen
     @import '../../styles/assets/vars';
 
     .home {
-        margin-bottom: 24rem;
-        @media (max-width:$md3+px){
-            margin-bottom: 12rem;
-        }
 		// .home__content
 		&__content {
             display: flex;
@@ -56,36 +52,7 @@ const subtext = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspen
 		}
 		// .home__text
 		&__text {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            width: 100%;
-            h1 {
-                max-width: 65rem;
-                margin-bottom: 3rem;
-            }
-            p {
-                max-width: 72rem;
-                margin-bottom: 6rem;
-                color: var(--fontColor2);
-            }
-            @media (max-width:$md1+px){
-                p {
-                    max-width: 60rem;
-                }
-            }
-            @media (max-width:$md3+px){
-                h1 {
-                    margin-bottom: 2rem;
-                }
-                p {
-                    margin-bottom: 4rem;
-                }
-            }
-		}
-		// .home__badge
-		&__badge {
+            margin-bottom: 0;
 		}
 		// .home__scroll-btn
 		&__scroll-btn {

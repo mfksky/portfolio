@@ -35,10 +35,10 @@ const skillsList = [
 ];
 ---
 
-<section class="skills">
+<section class="skills section" id="skills">
     <div class="_container">
         <div class="skills__content">
-            <div class="skills__text">
+            <div class="skills__text title-content">
                 <div class="skills__badge badge">
                     <svg>
                         <use xlink:href={tagIcon}></use>
@@ -76,26 +76,6 @@ const skillsList = [
 		}
 		// .skills__text
 		&__text {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            margin-bottom: 6rem;
-            h2 {
-                max-width: 65rem;
-                margin-bottom: 2rem;
-            }
-            p {
-                max-width: 72rem;
-                color: var(--fontColor2);
-            }
-            @media (max-width:$md1+px){
-                p {
-                    max-width: 60rem;
-                }
-            }
-            @media (max-width:$md3+px){
-                margin-bottom: 4rem;
-            }
 		}
 		// .skills__badge
 		&__badge {
