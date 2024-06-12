@@ -64,11 +64,34 @@ const contactNetworks = [
 
 		// Rotate img + Smooth scroll init
 		const rotatingImage = document.querySelector('.rotating-btn__image');
+		const blob = document.querySelector('.bg-1');
+		const blob2 = document.querySelector('.bg-2');
 		const lenis = new Lenis();
 
 		lenis.on('scroll', ({ scroll, limit }) => {
 			const rotation = (scroll / limit) * 360;
+			const scaleX = 1 + (scroll / limit) * 0.5;
+			const scaleY = 1 + (scroll / limit) * 0.3;
+			const borderRadiusX = 30 + (scroll / limit) * 50;
+  			const borderRadiusY = 30 + (scroll / limit) * 30;
+
+			let blur;
+			  if (window.innerWidth < 767.98) {
+				blur = 120 - (scroll / limit) * 70;
+			} else {
+				blur = 150 - (scroll / limit) * 70;
+			}
+
 			rotatingImage.style.transform = `rotate(${rotation}deg)`;
+
+			const applyTransformations = (element) => {
+				element.style.transform = `rotate(${rotation}deg) scaleX(${scaleX}) scaleY(${scaleY})`;
+				element.style.borderRadius = `${borderRadiusX}% ${100 - borderRadiusX}% ${borderRadiusY}% ${100 - borderRadiusY}% / ${borderRadiusY}% ${100 - borderRadiusY}% ${borderRadiusX}% ${100 - borderRadiusX}%`;
+				element.style.filter = `blur(${blur}px)`;
+    		};
+
+			applyTransformations(blob);
+    		applyTransformations(blob2);
 		});
 
 		function raf(time) {

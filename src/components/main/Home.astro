@@ -30,12 +30,16 @@ const subtext = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspen
             </div>
         </div>
     </div>
+    <div class="bg-1"></div>
+    <div class="bg-2"></div>
 </section>
 
 <style lang="scss">
     @import '../../styles/assets/vars';
 
     .home {
+        position: relative;
+        overflow: hidden;
 		// .home__content
 		&__content {
             display: flex;
@@ -68,6 +72,7 @@ const subtext = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspen
             font-weight: 600;
             letter-spacing: 1.5px;
             text-transform: uppercase;
+            background-color: var(--bgColor1);
             border: 1px solid var(--borderColor);
             border-radius: 1rem;
             transition: transform .6s ease;
@@ -83,6 +88,29 @@ const subtext = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspen
                 width: 100%;
             }
 		}
+    }
+
+    .bg-1, .bg-2 {
+        position: fixed;
+        z-index: -1;
+        width: 300px;
+        height: 300px;
+        background: linear-gradient(to right, #5e76fa, #c7c6d3);
+        filter: blur(150px);
+        @media (max-width:$md3+px){
+            width: 200px;
+            height: 200px;
+            filter: blur(120px);
+        }
+    }
+    .bg-1 {
+        top: 0;
+        right: 0;
+    }
+
+    .bg-2 {
+        bottom: 20%;
+        left: 0;
     }
 
 </style>
