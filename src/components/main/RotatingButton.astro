@@ -1,0 +1,64 @@
+---
+---
+
+<a class="rotating-btn _goto" href="#portfolio">
+    <img class="rotating-btn__image lazyload" data-src="/main/images/scroll_more.svg" alt="К портфолио">
+    <noscript>
+        <img class="rotating-btn__image" src="/main/images/scroll_more.svg" alt="К портфолио">
+    </noscript>
+    <svg class="rotating-btn__icon">
+        <use xlink:href="/main/icons/icons.svg#arrow"></use>
+        <title>К портфолио</title>
+    </svg>
+</a>
+
+<style lang="scss">
+    @import '../../styles/assets/vars';
+
+    .rotating-btn {
+        position: absolute;
+        bottom: 5%;
+        right: 0;
+        transition: transform .6s ease;
+        cursor: pointer;
+        &__image {
+            width: 14rem;
+            height: 14rem;
+            &._rotating {
+                animation: rotate 2s linear infinite;
+            }
+            @keyframes rotate {
+                from {
+                    transform: rotate(0deg);
+                }
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+        }
+        &__icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 3rem;
+            height: 3rem;
+            fill: var(--fontColor1);
+            transform: translate(-50%, -50%);
+        }
+        &:hover {
+            transform: scale(0.9);
+        }
+        @media (max-width: 1600px){
+            bottom: 3%;
+        }
+        @media (max-width:$md1+px){
+            &__image{
+                width: 10rem;
+                height: 10rem;
+            }
+        }
+        @media (max-width:$md3+px){
+            display: none;
+        }
+    }
+</style>

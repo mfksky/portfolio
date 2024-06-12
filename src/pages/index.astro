@@ -26,6 +26,60 @@ const contactNetworks = [
 ---
 <script>
 	import 'lazysizes';
+	import Lenis from 'lenis'
+  
+	document.addEventListener('DOMContentLoaded', function () {
+		// GOTO
+		const anchors = document.querySelectorAll('a[href^="#"]');
+		let offset;
+
+		function updateOffset() {
+			if (window.innerWidth < 991.98) {
+				offset = -30;
+			} else if (window.innerWidth < 1600) {
+				offset = -130;
+			} else {
+				offset = -150;
+			}
+		}
+
+		updateOffset();
+
+		anchors.forEach(anchor => {
+			anchor.addEventListener('click', (e) => {
+				e.preventDefault();
+
+				const targetId = anchor.getAttribute('href');
+				const targetElement = document.querySelector(targetId);
+
+				if (targetElement) {
+					lenis.scrollTo(targetElement, {
+						offset: offset,
+						duration: 1.2,
+						easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+					});
+				}
+			});
+		});
+
+		// Rotate img + Smooth scroll init
+		const rotatingImage = document.querySelector('.rotating-btn__image');
+		const lenis = new Lenis();
+
+		lenis.on('scroll', ({ scroll, limit }) => {
+			const rotation = (scroll / limit) * 360;
+			rotatingImage.style.transform = `rotate(${rotation}deg)`;
+		});
+
+		function raf(time) {
+			lenis.raf(time);
+			requestAnimationFrame(raf);
+		}
+
+		requestAnimationFrame(raf);
+
+		window.addEventListener('resize', updateOffset);
+	});
 </script>
 
 <!-- <Default lang={lang} title={title} description={description} fonts={fonts}> -->
