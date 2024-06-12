@@ -71,6 +71,7 @@ const { parentClass, contactNetworks } = Astro.props;
                     <div>{item.title}</div>
                     <svg>
                         <use xlink:href={`/main/icons/icons.svg#${item.icon}`}></use>
+                        <title>{item.title}</title>
                     </svg>
                 </a>
             ))

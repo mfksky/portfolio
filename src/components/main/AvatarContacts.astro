@@ -3,7 +3,7 @@ const { parentClass, contactNetworks } = Astro.props;
 ---
 
 <div class={`${parentClass ? parentClass : ''} contacts-avatar`}>
-    <button class="contacts-avatar__btn">
+    <button class="contacts-avatar__btn contact-button">
         <span>Связаться со мной</span>
     </button>
     <ul class="contacts-avatar__content">
@@ -23,14 +23,10 @@ const { parentClass, contactNetworks } = Astro.props;
 </div>
 
 <script>
+    import { toggleContacts } from '../../js/main/contactsToggle';
+    
     document.addEventListener('DOMContentLoaded', () => {
-        const callBtn = document.querySelector('.contacts-avatar__btn');
-        const callContent = document.querySelector('.contacts-avatar__content');
-
-        callBtn.addEventListener('click', () => {
-            callBtn.classList.toggle('_active');
-            callContent.classList.toggle('_active');
-        });
+        toggleContacts('.contacts-avatar__btn', '.contacts-avatar__content');
     });
 </script>
 
@@ -41,51 +37,7 @@ const { parentClass, contactNetworks } = Astro.props;
         position: relative;
         // .contacts-avatar__btn
         &__btn {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1.5rem;
             width: 100%;
-            height: 6rem;
-            padding: 0 2rem;
-            font-size: 1.3rem;
-            line-height: 100%;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            background-color: var(--accentColor1);
-            border-radius: 1rem;
-            overflow: hidden;
-            transition: background-color .3s ease 0s;
-            &::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 0;
-                background-image: var(--gradient1);
-                opacity: 0;
-                transition: all .3s ease;
-
-            }
-            span {
-                position: relative;
-            }
-            &:hover {
-                &::before {
-                    height: 100%;
-                    opacity: 1;
-                }
-            }
-            @media (max-width: 1600px){
-                height: 5rem;
-            }
-            @media (max-width:$md5+px){
-                height: 4rem;
-            }
         }
         // .contacts-avatar__content
         &__content {

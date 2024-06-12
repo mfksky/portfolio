@@ -3,8 +3,8 @@ const { parentClass, contactNetworks } = Astro.props;
 ---
 
 <div class={`${parentClass ? parentClass : ''} contacts-header`}>
-    <button class="contacts-header__btn" type="button" title="Написать мне">
-        <div>Написать мне</div>
+    <button class="contacts-header__btn contact-button" type="button" title="Написать мне">
+        <span>Написать мне</span>
         <svg>
             <use xlink:href="/main/icons/icons.svg#chat"></use>
             <title>Написать мне</title>
@@ -26,14 +26,10 @@ const { parentClass, contactNetworks } = Astro.props;
     </ul>
 </div>
 <script>
+    import { toggleContacts } from '../../js/main/contactsToggle';
+    
     document.addEventListener('DOMContentLoaded', () => {
-        const callBtn = document.querySelector('.contacts-header__btn');
-        const callContent = document.querySelector('.contacts-header__content');
-
-        callBtn.addEventListener('click', () => {
-            callBtn.classList.toggle('_active');
-            callContent.classList.toggle('_active');
-        });
+        toggleContacts('.contacts-header__btn', '.contacts-header__content');
     });
 </script>
 
@@ -42,60 +38,10 @@ const { parentClass, contactNetworks } = Astro.props;
 
     .contacts-header {
         position: relative;
-        display: inline-block;
 		// .contacts-header__btn
 		&__btn {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            height: 6rem;
-            padding: 0 2rem;
-            font-size: 1.3rem;
-            line-height: 100%;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            background-color: var(--accentColor1);
-            border-radius: 1rem;
-            overflow: hidden;
-            transition: background-color .3s ease 0s;
-            &::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 0;
-                background-image: var(--gradient1);
-                opacity: 0;
-                transition: all .3s ease;
-
-            }
-            div {
-                position: relative;
-            }
-            svg {
-                position: relative;
-                width: 1.8rem;
-                height: 1.8rem;
-                fill: var(--fontColor1);
-            }
-            &:hover {
-                &:hover {
-                    &::before {
-                        height: 100%;
-                        opacity: 1;
-                    }
-                }
-            }
-            @media (max-width: 1600px){
-                height: 5rem;
-            }
             @media (max-width:$md3+px){
-                div {
+                span {
                     display: none;
                 }
             }
@@ -103,7 +49,6 @@ const { parentClass, contactNetworks } = Astro.props;
                 padding: 0 1.6rem;
             }
             @media (max-width:$md5+px){
-                height: 4rem;
                 padding: 0 1.5rem;
                 svg {
                     width: 1.5rem;

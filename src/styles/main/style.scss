@@ -40,9 +40,9 @@
     --fontColor1: #e9e9f1;
     --fontColor2: #c7c6d3;
     --accentColor1: #4e69ff;
-    --accentColor2: #1e3ff9;
+    --accentColor2: #8495f9;
     --borderColor: #303033;
-    --gradient1: linear-gradient(var(--accentColor2), var(--accentColor1));
+    --gradient1: linear-gradient(var(--accentColor1), var(--accentColor2));
 
 }
 
@@ -184,5 +184,57 @@ body {
         width: 10px;
         height: 10px;
         fill: var(--fontColor2);
+    }
+}
+
+.contact-button {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    height: 6rem;
+    padding: 0 2rem;
+    font-size: 1.3rem;
+    line-height: 100%;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    background-color: var(--accentColor1);
+    border-radius: 1rem;
+    overflow: hidden;
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: var(--gradient1);
+        opacity: 0;
+        transform: translateY(100%);
+        transition: all .3s ease;
+    }
+    span {
+        position: relative;
+    }
+    svg {
+        position: relative;
+        width: 1.8rem;
+        height: 1.8rem;
+        fill: var(--fontColor1);
+    }
+    &:hover {
+        &::before {
+            transform: translate(0);
+            opacity: 1;
+        }
+    }
+    @media (max-width: 1600px){
+        height: 5rem;
+    }
+    @media (max-width:$md5+px){
+        height: 4rem;
     }
 }
