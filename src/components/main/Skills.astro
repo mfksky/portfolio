@@ -1,6 +1,5 @@
 ---
-const tagTitle = 'Навыки';
-const tagIcon = '/main/icons/icons.svg#skills';
+const tag = ['Навыки', '/main/icons/icons.svg#skills'];
 const heading = 'Мои навыки';
 const subtext = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.';
 const skillsList = [
@@ -41,10 +40,10 @@ const skillsList = [
             <div class="skills__text title-content">
                 <div class="skills__badge badge">
                     <svg>
-                        <use xlink:href={tagIcon}></use>
-                        <title>{tagTitle}</title>
+                        <use xlink:href={tag[1]}></use>
+                        <title>{tag[0]}</title>
                     </svg>
-                    <span>{tagTitle}</span>
+                    <span>{tag[0]}</span>
                 </div>
                 <h2>{heading}</h2>
                 <p>{subtext}</p>

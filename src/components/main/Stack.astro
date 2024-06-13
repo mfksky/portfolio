@@ -1,51 +1,50 @@
 ---
-const tagTitle = 'Stack';
-const tagIcon = '/main/icons/icons.svg#stack';
+const tag = ['Stack', '/main/icons/icons.svg#stack'];
 const stackList = [
     {
         title: 'HTML5', icon: '/main/images/stack/html.svg'
     },
     {
-        title: 'CSS3', icon: '/main/images/stack/html.svg'
+        title: 'CSS3', icon: '/main/images/stack/css.svg'
     },
     {
-        title: 'JavaScript', icon: '/main/images/stack/html.svg'
+        title: 'JavaScript', icon: '/main/images/stack/js.svg'
     },
     {
-        title: 'VUE', icon: '/main/images/stack/html.svg'
+        title: 'VUE', icon: '/main/images/stack/vue.svg'
     },
     {
-        title: 'Directus', icon: '/main/images/stack/html.svg'
+        title: 'Directus', icon: '/main/images/stack/directus.svg'
     },
     {
-        title: 'October CMS', icon: '/main/images/stack/html.svg'
+        title: 'October CMS', icon: '/main/images/stack/october.svg'
     },
     {
-        title: 'Astro', icon: '/main/images/stack/html.svg'
+        title: 'Astro', icon: '/main/images/stack/astro.svg'
     },
     {
-        title: 'GIT', icon: '/main/images/stack/html.svg'
+        title: 'GIT', icon: '/main/images/stack/git.svg'
     },
     {
-        title: 'GULP', icon: '/main/images/stack/html.svg'
+        title: 'GULP', icon: '/main/images/stack/gulp.svg'
     },
     {
-        title: 'WEBPACK', icon: '/main/images/stack/html.svg'
+        title: 'WEBPACK', icon: '/main/images/stack/webpack.svg'
     },
     {
-        title: 'Vite', icon: '/main/images/stack/html.svg'
+        title: 'Vite', icon: '/main/images/stack/vite.svg'
     },
     {
-        title: 'WebFlow', icon: '/main/images/stack/html.svg'
+        title: 'WebFlow', icon: '/main/images/stack/webflow.svg'
     },
     {
-        title: 'Figma', icon: '/main/images/stack/html.svg'
+        title: 'Figma', icon: '/main/images/stack/figma.svg'
     },
     {
-        title: 'Photoshop', icon: '/main/images/stack/html.svg'
+        title: 'Photoshop', icon: '/main/images/stack/photoshop.svg'
     },
     {
-        title: 'Illustrator', icon: '/main/images/stack/html.svg'
+        title: 'Illustrator', icon: '/main/images/stack/illustrator.svg'
     },
 ];
 ---
@@ -56,10 +55,10 @@ const stackList = [
             <div class="stack__text title-content">
                 <div class="stack__badge badge">
                     <svg>
-                        <use xlink:href={tagIcon}></use>
-                        <title>{tagTitle}</title>
+                        <use xlink:href={tag[1]}></use>
+                        <title>{tag[0]}</title>
                     </svg>
-                    <span>{tagTitle}</span>
+                    <span>{tag[0]}</span>
                 </div>
                 <h2>Инструменты
 и технологии</h2>
@@ -68,9 +67,9 @@ const stackList = [
                 {
                     stackList.map(item => (
                         <div class="stack__item">
-                            <img class="lazyload" data-src={item.icon} alt={item.title} />
+                            <img class="lazyload" data-src={item.icon} alt={item.title} title={item.title} />
                             <noscript>
-                                <img src={item.icon} alt={item.title} />
+                                <img src={item.icon} alt={item.title} title={item.title} />
                             </noscript>
                             <p>{item.title}</p>
                         </div>

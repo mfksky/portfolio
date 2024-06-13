@@ -13,9 +13,9 @@ const { parentClass, contactNetworks } = Astro.props;
     <div class="avatar__info">
         <div class="avatar__logo">
             <div class="avatar__logo-image">
-                <img class="lazyload" data-src={logo[0]} alt={logo[1]} />
+                <img class="lazyload" data-src={logo[0]} alt={logo[1]} title={logo[1]} />
                 <noscript>
-                    <img src={logo[0]} alt={logo[1]} />
+                    <img src={logo[0]} alt={logo[1]} title={logo[1]} />
                 </noscript>
             </div>
             <p>{logo[1]}</p>
@@ -24,6 +24,7 @@ const { parentClass, contactNetworks } = Astro.props;
             <Picture
                 src={srcImage}
                 alt='Test'
+                title={logo[1]}
                 width={512}
                 height={512}
                 formats={['avif', 'webp']}
