@@ -83,7 +83,9 @@ const contactNetworks = [
 				blur = 150 - (scroll / limit) * 70;
 			}
 
-			rotatingImage.style.transform = `rotate(${rotation}deg)`;
+			if (rotatingImage) {
+				rotatingImage.style.transform = `rotate(${rotation}deg)`;
+			}
 
 			const applyTransformations = (element) => {
 				element.style.transform = `rotate(${rotation}deg) scaleX(${scaleX}) scaleY(${scaleY})`;
