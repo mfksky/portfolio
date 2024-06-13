@@ -1,9 +1,9 @@
 ---
+import { Picture } from 'astro:assets';
+import srcImage from '../../images/main/me.jpg';
 import AvatarContacts from './AvatarContacts.astro'
 
-const logo = '/main/logo.svg';
-const logoTitle = 'Александр Иванов';
-const myImage = '/main/images/me.jpg';
+const logo = ['/main/logo.svg', 'Александр Иванов']
 const specs = 'Верстка и фронтенд разработка';
 const location = 'Белгород, Россия';
 const { parentClass, contactNetworks } = Astro.props;
@@ -13,15 +13,22 @@ const { parentClass, contactNetworks } = Astro.props;
     <div class="avatar__info">
         <div class="avatar__logo">
             <div class="avatar__logo-image">
-                <img src={logo} alt="MFK" />
+                <img class="lazyload" data-src={logo[0]} alt={logo[1]} />
+                <noscript>
+                    <img src={logo[0]} alt={logo[1]} />
+                </noscript>
             </div>
-            <p>{logoTitle}</p>
+            <p>{logo[1]}</p>
         </div>
         <div class="avatar__main-image">
-            <img class="lazyload" data-src={myImage} alt={logoTitle} />
-            <noscript>
-                <img src={myImage} alt={logoTitle} />
-            </noscript>
+            <Picture
+                src={srcImage}
+                alt='Test'
+                width={512}
+                height={512}
+                formats={['avif', 'webp']}
+                fallbackFormat='jpg'
+            />
         </div>
         <div class="avatar__specs">
             <div>
@@ -105,8 +112,6 @@ const { parentClass, contactNetworks } = Astro.props;
             flex-shrink: 0;
             width: 6rem;
             height: 6rem;
-            background-color: var(--accentColor1);
-            border-radius: 1rem;
 		}
 		// .avatar__main-image
 		&__main-image {
@@ -147,7 +152,6 @@ const { parentClass, contactNetworks } = Astro.props;
                     text-transform: uppercase;
                 }
                 p {
-                    font-size: 2.4rem;
                     line-height: 2.6rem;
                     font-weight: 600;
                 }
@@ -160,7 +164,6 @@ const { parentClass, contactNetworks } = Astro.props;
                         line-height: 1rem;
                     }
                     p {
-                        font-size: 2rem;
                         line-height: 2.2rem;
                     }
                 }

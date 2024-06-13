@@ -14,7 +14,7 @@ const { parentClass, contactNetworks } = Astro.props;
         {
             contactNetworks.map((item) => (
                 <li>
-                    <a href={item.url}>
+                    <a href={item.url} target="_blank">
                         <svg>
                             <use xlink:href={`/main/icons/icons.svg#${item.icon}`}></use>
                             <title>{item.title}</title>
