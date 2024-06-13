@@ -64,8 +64,9 @@ const contactNetworks = [
 
 		// Rotate img + Smooth scroll init
 		const rotatingImage = document.querySelector('.rotating-btn__image');
-		const blob = document.querySelector('.bg-1');
-		const blob2 = document.querySelector('.bg-2');
+		const blob1 = document.querySelector('.blob-1');
+		const blob2 = document.querySelector('.blob-2');
+		const blobs = [blob1, blob2];
 		const lenis = new Lenis();
 
 		lenis.on('scroll', ({ scroll, limit }) => {
@@ -90,8 +91,11 @@ const contactNetworks = [
 				element.style.filter = `blur(${blur}px)`;
     		};
 
-			applyTransformations(blob);
-    		applyTransformations(blob2);
+			blobs.forEach(blob => {
+				if (blob) {
+					applyTransformations(blob);
+				}
+			});
 		});
 
 		function raf(time) {

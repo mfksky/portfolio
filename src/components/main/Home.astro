@@ -1,8 +1,7 @@
 ---
 import RotatingButton from './RotatingButton.astro';
 
-const tagTitle = 'Главная';
-const tagIcon = '/main/icons/icons.svg#home';
+const tag = ['Главная', '/main/icons/icons.svg#home'];
 const subtext = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.';
 ---
 
@@ -12,10 +11,10 @@ const subtext = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspen
             <div class="home__text title-content">
                 <div class="badge">
                     <svg>
-                        <use xlink:href={tagIcon}></use>
-                        <title>{tagTitle}</title>
+                        <use xlink:href={tag[1]}></use>
+                        <title>{tag[0]}</title>
                     </svg>
-                    <span>{tagTitle}</span>
+                    <span>{tag[0]}</span>
                 </div>
                 <h1>Верстка сайтов 
 и Frontend-разработка</h1>
@@ -24,14 +23,14 @@ const subtext = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspen
                     <svg>
                         <use xlink:href="/main/icons/icons.svg#portfolio"></use>
                     </svg>
-                    <div>Мои работы</div>
+                    <span>Мои работы</span>
                 </a>
                 <RotatingButton />
             </div>
         </div>
     </div>
-    <div class="bg-1"></div>
-    <div class="bg-2"></div>
+    <div class="blob-1"></div>
+    <div class="blob-2"></div>
 </section>
 
 <style lang="scss">
@@ -90,7 +89,7 @@ const subtext = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspen
 		}
     }
 
-    .bg-1, .bg-2 {
+    .blob-1, .blob-2 {
         position: fixed;
         z-index: -1;
         width: 300px;
@@ -103,12 +102,12 @@ const subtext = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspen
             filter: blur(120px);
         }
     }
-    .bg-1 {
+    .blob-1 {
         top: 0;
         right: 0;
     }
 
-    .bg-2 {
+    .blob-2 {
         bottom: 20%;
         left: 0;
     }
