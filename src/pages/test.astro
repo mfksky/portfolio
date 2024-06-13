@@ -5,6 +5,10 @@ import srcImage from '../images/main/me.jpg';
 import Static from '../layouts/Static.astro'
 
 import '../styles/main/style.scss';
+
+
+
+
 ---
 
 <Static>
@@ -18,5 +22,37 @@ import '../styles/main/style.scss';
             formats={['avif', 'webp']}
             fallbackFormat='jpg'
         />
+        <form id="contactForm">
+            <input type="text" name="name" placeholder="Ваше имя" required>
+            <input type="email" name="email" placeholder="Ваш email" required>
+            <textarea name="message" placeholder="Ваше сообщение" required></textarea>
+            <button type="submit">Отправить</button>
+          </form>
 	</main>
 </Static>
+
+<script>
+    import { createDirectus, rest, readItem, createItem } from '@directus/sdk';
+
+        const directus = createDirectus('http://147.45.246.185:8055')
+        .with(rest())
+        .with(readItem())
+        .with(createItem());
+
+  
+        document.getElementById('contactForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData);
+    data.date = new Date().toISOString();
+
+    try {
+      await directus.request(createItem('contact_messages', data));
+      alert('Сообщение успешно отправлено!');
+      e.target.reset();
+    } catch (error) {
+      console.error('Ошибка при отправке сообщения:', error);
+      alert('Произошла ошибка при отправке сообщения.');
+    }
+  });
+  </script>

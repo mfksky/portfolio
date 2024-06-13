@@ -11,7 +11,7 @@ import Skills from '../components/main/Skills.astro';
 import '../styles/main/style.scss';
 
 const pageId = 'index';
-//const { lang, title, description, fonts } = await fetchSEOData(pageId);
+const { lang, title, description, fonts } = await fetchSEOData(pageId);
 
 const parentClass = 'header__contacts';
 const contactNetworks = [
@@ -111,8 +111,8 @@ const contactNetworks = [
 	});
 </script>
 
-<!-- <Default lang={lang} title={title} description={description} fonts={fonts}> -->
-<Static>
+<Default lang={lang} title={title} description={description} fonts={fonts}>
+<!-- <Static> -->
 	<Header parentClass={parentClass} contactNetworks={contactNetworks} />
 	<Avatar parentClass={parentClass} contactNetworks={contactNetworks} />
 	<main class="page">
@@ -120,5 +120,5 @@ const contactNetworks = [
 		<Stack />
 		<Skills />
 	</main>
-</Static>
-<!-- </Default> -->
+<!-- </Static> -->
+</Default>

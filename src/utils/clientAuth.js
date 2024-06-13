@@ -1,0 +1,1 @@
+export const DIRECTUS_URL = import.meta.env.DIRECTUS_URL;
