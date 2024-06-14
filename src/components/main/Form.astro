@@ -3,62 +3,115 @@ const sendButton = ['Отправить', '/main/icons/icons.svg#send']
 ---
 
 <script>
-	import { createDirectus, rest, readItem, createItem } from '@directus/sdk';
+    import { createItem } from '@directus/sdk';
+    import directus from '../../utils/clientAuth';
 
-	const directus = createDirectus('http://147.45.246.185:8055')
-		.with(rest())
-		.with(readItem())
-		.with(createItem());
+    document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('contactForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData);
+            data.date = new Date().toISOString().split('.')[0];
 
-	document
-		.getElementById('contactForm')
-		.addEventListener('submit', async (e) => {
-			e.preventDefault();
-			const formData = new FormData(e.target);
-			const data = Object.fromEntries(formData);
-			data.date = new Date().toISOString().split('.')[0];
+            try {
+                await directus.request(createItem('contact_messages', data));
+                showMessage(true);
+            } catch (error) {
+                showMessage(false);
+            }
+        });
+    });
 
-			try {
-				await directus.request(createItem('contact_messages', data));
-				alert('Сообщение успешно отправлено!');
-				e.target.reset();
-			} catch (error) {
-				console.error('Ошибка при отправке сообщения:', error);
-				alert('Произошла ошибка при отправке сообщения.');
-			}
-		});
+    function showMessage(isSuccess) {
+        const formMessage = document.querySelector('.form-contact__success.form-message');
+        const contactForm = document.getElementById('contactForm');
+        const succesMessageImages = document.querySelectorAll('.form-message__img._success');
+        const errorMessageImages = document.querySelectorAll('.form-message__img._error');
+        const messageTitle = document.querySelector('.form-message__heading');
+        const messageText = document.querySelector('.form-message__subtext');
+
+        if (isSuccess) {
+            succesMessageImages.forEach(image => {
+                image.classList.add('_active');
+            });
+            messageTitle.textContent = 'Вы восхитительны!';
+            messageText.textContent = 'Я отвечу вам, как можно скорее!';
+        } else {
+            errorMessageImages.forEach(image => {
+                image.classList.add('_active');
+            });
+            messageTitle.textContent = 'Произошла ошибка(';
+            messageText.textContent = 'Я уже разбираюсь с этим!';
+        }
+
+        contactForm.classList.add('_hidden');
+        formMessage.classList.add('_visible');
+
+        setTimeout(() => {
+            formMessage.classList.remove('_visible');
+            setTimeout(() => {
+                contactForm.classList.remove('_hidden');
+                succesMessageImages.forEach(image => {
+                    image.classList.remove('_active');
+                });
+                errorMessageImages.forEach(image => {
+                    image.classList.remove('_active');
+                });
+                document.getElementById('contactForm').reset();
+            }, 800);
+        }, 5000);
+    }
 </script>
 
 <div class="contact__form form-contact">
     <form class="form-contact__form" id="contactForm">
-            <div class="form-contact__inputs">
-                <input type="text" name="name" placeholder="Ваше имя *" required>
-                <input type="email" name="email" placeholder="Ваш email *" required>
-            </div>
-            <textarea name="message" placeholder="Ваше сообщение *" required></textarea>
-            <button class="contact-button" type="submit">
-                <span>{sendButton[0]}</span>
-                <svg>
-                    <use xlink:href={sendButton[1]}></use>
-                </svg>
-            </button>
+        <div class="form-contact__inputs">
+            <input type="text" name="name" placeholder="Ваше имя *" required>
+            <input type="email" name="email" placeholder="Ваш email *" required>
+        </div>
+        <textarea name="message" placeholder="Ваше сообщение *" required></textarea>
+        <button class="form-contact__button contact-button" type="submit">
+            <span>{sendButton[0]}</span>
+            <svg>
+                <use xlink:href={sendButton[1]}></use>
+            </svg>
+        </button>
     </form>
+    <div class="form-contact__success form-message">
+        <div class="form-message__content">
+            <img class="form-message__img _success lazyload" data-src="/main/images/smile.svg" alt="Успех" title="Успех" />
+            <noscript>
+                <img class="form-message__img _success" src="/main/images/smile.svg" alt="Успех" title="Успех" />
+            </noscript>
+            <img class="form-message__img _error lazyload" data-src="/main/images/sad.svg" alt="Ошибка" title="Ошибка" />
+            <noscript>
+                <img class="form-message__img _error" src="/main/images/sad.svg" alt="Ошибка" title="Ошибка" />
+            </noscript>
+            <div class="form-message__text">
+                <h3 class="form-message__heading"></h3>
+                <p class="form-message__subtext"></p>
+            </div>
+        </div>
+    </div>
 </div>
 
 <style lang="scss">
     @import '../../styles/assets/vars';
     
     .form-contact {
+        position: relative;
         // .form-contact__form
         &__form {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
+            transition: opacity .6s ease;
+            &._hidden {
+                opacity: 0;
+            }
         }
         // .form-contact__inputs
         &__inputs {
             display: flex;
             gap: 2rem;
+            margin-bottom: 2rem;
             input {
                 flex: 1;
                 display: flex;
@@ -68,6 +121,7 @@ const sendButton = ['Отправить', '/main/icons/icons.svg#send']
                 padding: 0 2rem;
                 font-size: 2rem;
                 line-height: 100%;
+                background-color: var(--bgColor1);
                 border: 1px solid var(--borderColor);
                 border-radius: 1rem;
                 transition: border-color .3s ease;
@@ -75,12 +129,23 @@ const sendButton = ['Отправить', '/main/icons/icons.svg#send']
                     border-color: var(--accentColor1);
                 }
             }
+            @media (max-width:$md3+px){
+                flex-direction: column;
+                gap: 1.5rem;
+                input {
+                    min-height: 5rem;
+                    font-size: 1.8rem;
+                }
+            }
         }
         textarea {
+            width: 100%;
             height: 16rem;
+            margin-bottom: 6rem;
             padding: 2rem;
             font-size: 2rem;
             line-height: 100%;
+            background-color: var(--bgColor1);
             border: 1px solid var(--borderColor);
             border-radius: 1rem;
             resize: none;
@@ -88,12 +153,69 @@ const sendButton = ['Отправить', '/main/icons/icons.svg#send']
             &:hover, &:focus {
                 border-color: var(--accentColor1);
             }
+            &:focus-visible {
+                outline: none;
+            }
+            @media (max-width:$md3+px){
+                margin-bottom: 4rem;
+                font-size: 1.8rem;
+            }
         }
         button {
-            display: inline-block;
-            width: auto;
+            position: relative;
+            padding: 0 6rem;
             svg {
-                stroke: var(--fontColor1);
+                fill: var(--fontColor1);
+            }
+            @media (max-width:$md2+px){
+                width: 100%;
+            }
+        }
+        // .form-contact__success
+        &__success {
+            
+        }
+    }
+    .form-message {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        visibility: hidden;
+        opacity: 0;
+        transition: all .6s ease .6s;
+        &._visible {
+            visibility: visible;
+            opacity: 1;
+        }
+        &__content {
+            position: relative;
+        }
+        &__img {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            display: none;
+            width: 10rem;
+            height: 10rem;
+            transform: translateX(-50%);
+            &._active {
+                display: block;
+            }
+        }
+        &__text {
+            padding-top: 14rem;
+            text-align: center;
+            p {
+                margin-top: 1rem;
+                font-size: 1.8rem;
+                line-height: 2.3rem;
             }
         }
     }
