@@ -238,3 +238,31 @@ body {
         height: 4rem;
     }
 }
+
+._fade-up {
+    opacity: 0;
+    transform: translateY(10rem);
+    transition-property: opacity, transform;
+    transition-timing-function: ease;
+    &._visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    @media (max-width:$md3+px){
+        transform: translateY(5rem);
+    }
+}
+
+._fade-left {
+    opacity: 0;
+    transform: translateX(100px);
+    transition-property: opacity, transform;
+    transition-timing-function: ease;
+    &._visible {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    @media (max-width:$md3+px){
+        transform: translateX(50px);
+    }
+}

@@ -32,15 +32,15 @@ const contactNetworks = [
 	document.addEventListener('DOMContentLoaded', function () {
 		// GOTO
 		const anchors = document.querySelectorAll('a[href^="#"]');
-		let offset;
+		let gotoOffset;
 
 		function updateOffset() {
 			if (window.innerWidth < 991.98) {
-				offset = -30;
+				gotoOffset = -30;
 			} else if (window.innerWidth < 1600) {
-				offset = -130;
+				gotoOffset = -130;
 			} else {
-				offset = -160;
+				gotoOffset = -160;
 			}
 		}
 
@@ -55,7 +55,7 @@ const contactNetworks = [
 
 				if (targetElement) {
 					lenis.scrollTo(targetElement, {
-						offset: offset,
+						offset: gotoOffset,
 						duration: 1.2,
 						easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
 					});
@@ -108,7 +108,47 @@ const contactNetworks = [
 
 		requestAnimationFrame(raf);
 
-		window.addEventListener('resize', updateOffset);
+		// Scr Items
+		const elements = document.querySelectorAll('._scr-item');
+
+		function getDelay(delayString) {
+			const delays = delayString.split('/');
+			const width = window.innerWidth;
+			
+			if (delays.length === 1) return delays[0];
+			if (width <= 479.98) return delays[4] || delays[0];
+			if (width <= 768.98) return delays[3] || delays[0];
+			if (width <= 991.98) return delays[2] || delays[0];
+			if (width <= 1242) return delays[1] || delays[0];
+			return delays[0];
+		}
+
+		function checkVisibility() {
+			elements.forEach(el => {
+				const rect = el.getBoundingClientRect();
+				const offset = parseInt(el.getAttribute('data-offset')) || 100;
+
+				if (rect.top <= window.innerHeight - offset && rect.bottom >= 0) {
+					const duration = el.getAttribute('data-duration') || '0.6s';
+					const delayAttr = el.getAttribute('data-delay') || '0s';
+					const delay = getDelay(delayAttr);
+
+					el.style.setProperty('transition-duration', duration);
+					el.style.setProperty('transition-delay', delay);
+					el.classList.add('_visible');
+				}
+			});
+		}
+
+		checkVisibility();
+
+		function handleResize() {
+			updateOffset();
+			checkVisibility();
+		}
+
+		window.addEventListener('resize', handleResize);
+		window.addEventListener('scroll', checkVisibility);
 	});
 </script>
 

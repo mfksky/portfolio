@@ -9,17 +9,17 @@ const subtext = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspen
     <div class="_container">
         <div class="home__content">
             <div class="home__text title-content">
-                <div class="badge">
+                <div class="badge _scr-item _fade-up" data-duration=".3s">
                     <svg>
                         <use xlink:href={tag[1]}></use>
                         <title>{tag[0]}</title>
                     </svg>
                     <span>{tag[0]}</span>
                 </div>
-                <h1>Верстка сайтов 
+                <h1 class="_scr-item _fade-up" data-duration=".6s">Верстка сайтов 
 и Frontend-разработка</h1>
-                <p>{subtext}</p>
-                <a class="home__scroll-btn" href="#portfolio">
+                <p class="_scr-item _fade-up" data-duration=".6s" data-delay=".3s">{subtext}</p>
+                <a class="home__scroll-btn _scr-item _fade-up" href="#portfolio" data-offset="-100" data-duration=".6s">
                     <svg>
                         <use xlink:href="/main/icons/icons.svg#portfolio"></use>
                     </svg>

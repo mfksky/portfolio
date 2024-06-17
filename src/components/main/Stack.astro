@@ -2,49 +2,49 @@
 const tag = ['Stack', '/main/icons/icons.svg#stack'];
 const stackList = [
     {
-        title: 'HTML5', icon: '/main/images/stack/html.svg'
+        title: 'HTML5', icon: '/main/images/stack/html.svg', delay: '0s'
     },
     {
-        title: 'CSS3', icon: '/main/images/stack/css.svg'
+        title: 'CSS3', icon: '/main/images/stack/css.svg', delay: '.1s'
     },
     {
-        title: 'JavaScript', icon: '/main/images/stack/js.svg'
+        title: 'JavaScript', icon: '/main/images/stack/js.svg', delay: '.2s/.2s/.2s/.2s/0s'
     },
     {
-        title: 'VUE', icon: '/main/images/stack/vue.svg'
+        title: 'VUE', icon: '/main/images/stack/vue.svg', delay: '.3s/0s/0s/0s/.1s'
     },
     {
-        title: 'Directus', icon: '/main/images/stack/directus.svg'
+        title: 'Directus', icon: '/main/images/stack/directus.svg', delay: '.4s/.1s/.1s/.1s/0s'
     },
     {
-        title: 'October CMS', icon: '/main/images/stack/october.svg'
+        title: 'October CMS', icon: '/main/images/stack/october.svg', delay: '.0s/.2s/.2s/.2s/.1s'
     },
     {
-        title: 'Astro', icon: '/main/images/stack/astro.svg'
+        title: 'Astro', icon: '/main/images/stack/astro.svg', delay: '.1s/0s/0s/0s/0s'
     },
     {
-        title: 'GIT', icon: '/main/images/stack/git.svg'
+        title: 'GIT', icon: '/main/images/stack/git.svg', delay: '.2s/.1s/.1s/.1s/.1s'
     },
     {
-        title: 'GULP', icon: '/main/images/stack/gulp.svg'
+        title: 'GULP', icon: '/main/images/stack/gulp.svg', delay: '.3s/.2s/.2s/.2s/0s'
     },
     {
-        title: 'WEBPACK', icon: '/main/images/stack/webpack.svg'
+        title: 'WEBPACK', icon: '/main/images/stack/webpack.svg', delay: '.4s/0s/0s/0s/.1s'
     },
     {
-        title: 'Vite', icon: '/main/images/stack/vite.svg'
+        title: 'Vite', icon: '/main/images/stack/vite.svg', delay: '0s/.1s/.1s/.1s/0s'
     },
     {
-        title: 'WebFlow', icon: '/main/images/stack/webflow.svg'
+        title: 'WebFlow', icon: '/main/images/stack/webflow.svg', delay: '.1s/.2s/.2s/.2s/.1s'
     },
     {
-        title: 'Figma', icon: '/main/images/stack/figma.svg'
+        title: 'Figma', icon: '/main/images/stack/figma.svg', delay: '.2s/0s/0s/0s/0s'
     },
     {
-        title: 'Photoshop', icon: '/main/images/stack/photoshop.svg'
+        title: 'Photoshop', icon: '/main/images/stack/photoshop.svg', delay: '.3s/.1s/.1s/.1s/.1s'
     },
     {
-        title: 'Illustrator', icon: '/main/images/stack/illustrator.svg'
+        title: 'Illustrator', icon: '/main/images/stack/illustrator.svg', delay: '.4s/.2s/.2s/.2s/0s'
     },
 ];
 ---
@@ -53,20 +53,20 @@ const stackList = [
     <div class="_container">
         <div class="stack__content">
             <div class="stack__text title-content">
-                <div class="stack__badge badge">
+                <div class="stack__badge badge _scr-item _fade-up" data-duration=".3s">
                     <svg>
                         <use xlink:href={tag[1]}></use>
                         <title>{tag[0]}</title>
                     </svg>
                     <span>{tag[0]}</span>
                 </div>
-                <h2>Инструменты
+                <h2 class="_scr-item _fade-up" data-duration=".6s">Инструменты
 и технологии</h2>
             </div>
             <div class="stack__list">
                 {
                     stackList.map(item => (
-                        <div class="stack__item">
+                        <div class="stack__item _scr-item _fade-up" data-delay={item.delay}>
                             <img class="lazyload" data-src={item.icon} alt={item.title} title={item.title} />
                             <noscript>
                                 <img src={item.icon} alt={item.title} title={item.title} />
