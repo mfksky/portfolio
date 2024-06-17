@@ -5,11 +5,11 @@ import BottomContacts from '../../components/main/BottomContacts.astro';
 const tag = ['Контакты', '/main/icons/icons.svg#contacts'];
 ---
 
-<section class="contact" id="contacts">
+<section class="contacts section" id="contacts">
     <div class="_container">
-        <div class="contact__content">
-            <div class="contact__text title-content">
-                <div class="contact__badge badge">
+        <div class="contacts__content">
+            <div class="contacts__text title-content">
+                <div class="contacts__badge badge">
                     <svg>
                         <use xlink:href={tag[1]}></use>
                         <title>{tag[0]}</title>
@@ -24,3 +24,9 @@ const tag = ['Контакты', '/main/icons/icons.svg#contacts'];
         </div>
     </div>
 </section>
+
+<style lang="scss">
+    .contacts {
+        margin-bottom: 0;
+    }
+</style>

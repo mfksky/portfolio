@@ -63,14 +63,14 @@ const sendButton = ['Отправить', '/main/icons/icons.svg#send']
     }
 </script>
 
-<div class="contact__form form-contact">
+<div class="contacts__form form-contact">
     <form class="form-contact__form" id="contactForm">
         <div class="form-contact__inputs">
-            <input type="text" name="name" placeholder="Ваше имя *" required>
-            <input type="email" name="email" placeholder="Ваш email *" required>
+            <input type="text" name="name" placeholder="Ваше имя *" autocomplete="off" required>
+            <input type="email" name="email" placeholder="Ваш email *" autocomplete="off" required>
         </div>
         <textarea name="message" placeholder="Ваше сообщение *" required></textarea>
-        <button class="form-contact__button contact-button" type="submit">
+        <button class="form-contact__button contact-button" type="submit" title="Отправить сообщение">
             <span>{sendButton[0]}</span>
             <svg>
                 <use xlink:href={sendButton[1]}></use>
@@ -172,8 +172,7 @@ const sendButton = ['Отправить', '/main/icons/icons.svg#send']
             }
         }
         // .form-contact__success
-        &__success {
-            
+        &__success { 
         }
     }
     .form-message {
@@ -194,9 +193,11 @@ const sendButton = ['Отправить', '/main/icons/icons.svg#send']
             visibility: visible;
             opacity: 1;
         }
+        // .form-message__content
         &__content {
             position: relative;
         }
+        // .form-message__img
         &__img {
             position: absolute;
             top: 0;
@@ -209,6 +210,7 @@ const sendButton = ['Отправить', '/main/icons/icons.svg#send']
                 display: block;
             }
         }
+        // .form-message__text
         &__text {
             padding-top: 14rem;
             text-align: center;
