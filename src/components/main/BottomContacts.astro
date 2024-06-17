@@ -1,0 +1,109 @@
+---
+const allSocials = [
+    {
+        title: 'Telegram', icon: 'tg', url: 'https://t.me/mfkboy', userName: 'mfkboy'
+    },
+    {
+        title: 'ВКОнтакте', icon: 'vk', url: 'https://vk.com/mfkboy', userName: 'mfkboy'
+    },
+    {
+        title: 'GitHub', icon: 'github', url: 'https://github.com/mfksky', userName: 'mfksky'
+    },
+];
+---
+
+<div class="contact__socials socials-contact">
+    {
+        allSocials.map(item => (
+            <a class="socials-contact__item" href={item.url} target="_blank">
+                <img class="socials-contact__icon" src={`/main/images/social/${item.icon}.svg`} alt={item.title} title={item.title} />
+                <div class="socials-contact__text">
+                    <div>{item.title}:</div>
+                    <p>{item.userName}</p>
+                </div>
+            </a>
+        ))
+    }
+</div>
+
+<style lang="scss">
+    @import '../../styles/assets/vars';
+
+    .socials-contact {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-top: 16rem;
+        padding-bottom: 6rem;
+        @media (max-width:$md1+px){
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @media (max-width:$md3+px){
+            margin-top: 8rem;
+            padding-bottom: 8rem;
+        }
+        @media (max-width:$md4+px){
+            grid-template-columns: 1fr;
+        }
+		// .socials-contact__item
+		&__item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 2rem;
+            border: 1px solid var(--borderColor);
+            border-radius: 1rem;
+            &:hover {
+                .socials-contact__icon {
+                    opacity: 1;
+                }
+                .socials-contact__text {
+                    opacity: 1;
+                }
+                .socials-contact__text {
+                    p {
+                        color: var(--accentColor1);
+                    }
+                }
+            }
+		}
+		// .socials-contact__icon
+		&__icon {
+            width: 5rem;
+            height: 5rem;
+            opacity: .6;
+            transition: opacity .3s ease;
+            @media (max-width:$md3+px){
+                width: 4rem;
+                height: 4rem;
+            }
+		}
+		// .socials-contact__text
+		&__text {
+            display: flex;
+            flex-direction: column;
+            line-height: 100%;
+            text-transform: uppercase;
+            opacity: .6;
+            transition: opacity .3s ease;
+            div {
+                color: var(--fontColor1);
+                font-size: 2rem;
+                font-weight: 600;
+            }
+            p {
+                font-size: 1.4rem;
+                color: var(--fontColor2);
+                transition: color .3s ease;
+            }
+            @media (max-width:$md3+px){
+                div {
+                    font-size: 1.6rem;
+                }
+                p {
+                    font-size: 1.2rem;
+                }
+            }
+		}
+    }
+</style>

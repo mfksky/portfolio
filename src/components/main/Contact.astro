@@ -1,10 +1,11 @@
 ---
 import Form from '../../components/main/Form.astro';
+import BottomContacts from '../../components/main/BottomContacts.astro';
 
 const tag = ['Контакты', '/main/icons/icons.svg#contacts'];
 ---
 
-<section class="contact section" id="contacts">
+<section class="contact" id="contacts">
     <div class="_container">
         <div class="contact__content">
             <div class="contact__text title-content">
@@ -19,9 +20,7 @@ const tag = ['Контакты', '/main/icons/icons.svg#contacts'];
 что-то крутое</h2>
             </div>
             <Form />
-            <div class="contact__socials">
-
-            </div>
+            <BottomContacts />
         </div>
     </div>
 </section>
