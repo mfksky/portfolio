@@ -1,13 +1,13 @@
 ---
 const allSocials = [
     {
-        title: 'Telegram', icon: 'tg', url: 'https://t.me/mfkboy', userName: 'mfkboy'
+        title: 'Telegram', icon: 'tg', url: 'https://t.me/mfkboy', userName: 'mfkboy', delay: '0s', offset: '-10'
     },
     {
-        title: 'ВКОнтакте', icon: 'vk', url: 'https://vk.com/mfkboy', userName: 'mfkboy'
+        title: 'ВКОнтакте', icon: 'vk', url: 'https://vk.com/mfkboy', userName: 'mfkboy', delay: '.1s/.1s/.1s/.1s/0s', offset: '-10'
     },
     {
-        title: 'GitHub', icon: 'github', url: 'https://github.com/mfksky', userName: 'mfksky'
+        title: 'GitHub', icon: 'github', url: 'https://github.com/mfksky', userName: 'mfksky', delay: '.2s/0s/0s/0s/0s', offset: '-10'
     },
 ];
 ---
@@ -15,7 +15,7 @@ const allSocials = [
 <div class="contacts__socials socials-contact">
     {
         allSocials.map(item => (
-            <a class="socials-contact__item" href={item.url} target="_blank">
+            <a class="socials-contact__item _scr-item _fade-up" href={item.url} target="_blank" data-offset={item.offset}>
                 <img class="socials-contact__icon lazyload" data-src={`/main/images/social/${item.icon}.svg`} alt={item.title} title={item.title} />
                 <noscript>
                     <img class="socials-contact__icon" src={`/main/images/social/${item.icon}.svg`} alt={item.title} title={item.title} />
@@ -76,7 +76,7 @@ const allSocials = [
             width: 5rem;
             height: 5rem;
             opacity: .6;
-            transition: opacity .3s ease;
+            transition: all .3s ease;
             @media (max-width:$md3+px){
                 width: 4rem;
                 height: 4rem;
@@ -89,7 +89,7 @@ const allSocials = [
             line-height: 100%;
             text-transform: uppercase;
             opacity: .6;
-            transition: opacity .3s ease;
+            transition: all .3s ease;
             div {
                 color: var(--fontColor1);
                 font-size: 2rem;
@@ -98,7 +98,7 @@ const allSocials = [
             p {
                 font-size: 1.4rem;
                 color: var(--fontColor2);
-                transition: color .3s ease;
+                transition: all .3s ease;
             }
             @media (max-width:$md3+px){
                 div {

@@ -38,24 +38,24 @@ const skillsList = [
     <div class="_container">
         <div class="skills__content">
             <div class="skills__text title-content">
-                <div class="skills__badge badge">
+                <div class="skills__badge badge _scr-item _fade-up" data-duration=".3s">
                     <svg>
                         <use xlink:href={tag[1]}></use>
                         <title>{tag[0]}</title>
                     </svg>
                     <span>{tag[0]}</span>
                 </div>
-                <h2>{heading}</h2>
-                <p>{subtext}</p>
+                <h2 class="_scr-item _fade-up">{heading}</h2>
+                <p class="_scr-item _fade-up">{subtext}</p>
             </div>
             {
                 skillsList.map(item => (
                     <div class="skills__block">
-                        <h3>{item.title}</h3>
+                        <h3 class="_scr-item _fade-up">{item.title}</h3>
                         <ul>
                             {
                                 item.skills.map(item => (
-                                    <li>{item}</li>
+                                    <li class="_scr-item _fade-up">{item}</li>
                                 ))
                             }
                         </ul>
