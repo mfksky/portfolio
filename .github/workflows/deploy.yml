@@ -37,8 +37,8 @@ jobs:
 
     - name: Deploy files via SSH
       run: |
-        rsync -avz -e "ssh -o StrictHostKeyChecking=no" ./dist/ user@yourserver:/var/www/yourdomain.com/html
+        rsync -avz -e "ssh -o StrictHostKeyChecking=no" ./dist/ root@147.45.246.185:/var/www/mfkdev.ru/html
 
     - name: Restart Nginx
       run: |
-        ssh -o StrictHostKeyChecking=no user@yourserver "sudo systemctl reload nginx"
+        ssh -o StrictHostKeyChecking=no root@147.45.246.185 "sudo systemctl reload nginx"
