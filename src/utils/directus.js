@@ -1,14 +1,11 @@
-import { createDirectus, rest, authentication } from '@directus/sdk';
+import { createDirectus, rest, staticToken } from '@directus/sdk';
 import dotenv from 'dotenv';
 dotenv.config();
 
-if (!process.env.DIRECTUS_URL || !process.env.DIRECTUS_EMAIL || !process.env.DIRECTUS_PASSWORD) {
-  throw new Error('Directus environment variables are not set');
-}
 const directus = createDirectus(process.env.DIRECTUS_URL)
-  .with(rest())
-  .with(authentication('json'));
+  .with(staticToken(process.env.DIRECTUS_TOKEN))
+  .with(rest());
 
-await directus.login(process.env.DIRECTUS_EMAIL, process.env.DIRECTUS_PASSWORD);
+//await directus.login(process.env.DIRECTUS_EMAIL, process.env.DIRECTUS_PASSWORD);
 
 export default directus;
