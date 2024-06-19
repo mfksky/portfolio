@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      DIRECTUS_URL: https://directus.mfkdev.ru
-      DIRECTUS_EMAIL: mfksky@icloud.com
-      DIRECTUS_PASSWORD: mainloginDIRECTUSPORTFOLIO1905!
-      PUBLIC_DIRECTUS_URL: https://directus.mfkdev.ru
+      DIRECTUS_URL: {{ secrets.DIRECTUS_URL }}
+      DIRECTUS_EMAIL: {{ secrets.DIRECTUS_EMAIL }}
+      DIRECTUS_PASSWORD: {{ secrets.DIRECTUS_PASSWORD }}
+      PUBLIC_DIRECTUS_URL: {{ secrets.PUBLIC_DIRECTUS_URL }}
 
     steps:
     - name: Checkout code
