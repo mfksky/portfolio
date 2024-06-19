@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      DIRECTUS_URL: http://147.45.246.185:8055
+      DIRECTUS_URL: https://directus.mfkdev.ru
       DIRECTUS_EMAIL: mfksky@icloud.com
       DIRECTUS_PASSWORD: mainloginDIRECTUSPORTFOLIO1905
-      PUBLIC_DIRECTUS_URL: http://147.45.246.185:8055
+      PUBLIC_DIRECTUS_URL: https://directus.mfkdev.ru
 
     steps:
     - name: Checkout code
