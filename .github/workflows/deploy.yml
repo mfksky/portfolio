@@ -12,7 +12,7 @@ jobs:
     env:
       DIRECTUS_URL: https://directus.mfkdev.ru
       DIRECTUS_EMAIL: mfksky@icloud.com
-      DIRECTUS_PASSWORD: mainloginDIRECTUSPORTFOLIO1905
+      DIRECTUS_PASSWORD: mainloginDIRECTUSPORTFOLIO1905!
       PUBLIC_DIRECTUS_URL: https://directus.mfkdev.ru
 
     steps:
