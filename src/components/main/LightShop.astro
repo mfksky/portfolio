@@ -45,11 +45,7 @@ import { Picture } from 'astro:assets';
                                 </div>
                                 <div class="text-lightshop__block">
                                     <div class="text-lightshop__title">Задачи:</div>
-                                    <ul class="text-lightshop__list">
-                                        <li>Описание задачи может быть средней длины</li>
-                                        <li>А может быть и длиннее. Главное протестировать все возможные варианты поведения всех блоков на странице</li>
-                                        <li>Описание задачи может быть средней длины</li>
-                                    </ul>
+                                    <ul class="text-lightshop__list" data-lightshop-tasks></ul>
                                 </div>
                                 <div class="text-lightshop__block">
                                     <div class="text-lightshop__title">Используемые инструменты:</div>
@@ -57,11 +53,7 @@ import { Picture } from 'astro:assets';
                                 </div>
                                 <div class="text-lightshop__block">
                                     <div class="text-lightshop__title">Задействованные навыки:</div>
-                                    <ul class="text-lightshop__list">
-                                        <li>Описание задачи может быть средней длины</li>
-                                        <li>А может быть и длиннее. Главное протестировать все возможные варианты поведения всех блоков на странице</li>
-                                        <li>Описание задачи может быть средней длины</li>
-                                    </ul>
+                                    <ul class="text-lightshop__list" data-lightshop-skills></ul>
                                 </div>
                             </div>
                         </div>
@@ -76,9 +68,10 @@ import { Picture } from 'astro:assets';
                                     </div>
                                 </div>
                             </div>
-                            <a class="content-lightshop__button contact-button" href="#" data-lightshop-item data-key="url" data-property="href">
+                            <a class="content-lightshop__button contact-button" data-lightshop-item data-key="url" data-property="href">
                                 <span>Live-превью</span>
                             </a>
+                            <a href="/vr"></a>
                         </div>
                     </div>
                     <!-- <div class="content-lightshop__about">
@@ -102,161 +95,180 @@ import { Picture } from 'astro:assets';
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-    const body = document.body;
-    const lightshop = document.querySelector('[data-lightshop]');
+        const body = document.body;
+        const lightshop = document.querySelector('[data-lightshop]');
 
-    if (lightshop) {
-        const lightshopItemInfoButtons = lightshop.querySelectorAll('[data-lightshop-button]');
-        const lightshopPopupBody = document.querySelector('[data-lightshop-popup]');
+        if (lightshop) {
+            const lightshopItemInfoButtons = lightshop.querySelectorAll('[data-lightshop-button]');
+            const lightshopPopupBody = document.querySelector('[data-lightshop-popup]');
 
-        if (lightshopItemInfoButtons.length > 0 && lightshopPopupBody) {
-            const lightshopPopupContent = lightshopPopupBody.querySelector('[data-lightshop-popup-content]');
-            const lightshopPrevBtns = document.querySelectorAll('[data-lightshop-prev]');
-            const lightshopNextBtns = document.querySelectorAll('[data-lightshop-next]');
-            const lightshopShareBtn = document.querySelector('[data-lightshop-share]');
-            const lightshopPopupCloseBtns = document.querySelectorAll('[data-lightshop-close]');
-            const lightshopCounterCurrent = document.querySelector('[data-lightshop-currentItem]');
-            const lightshopCounterTotal = document.querySelector('[data-lightshop-totalItems]');
+            if (lightshopItemInfoButtons.length > 0 && lightshopPopupBody) {
+                const lightshopPopupContent = lightshopPopupBody.querySelector('[data-lightshop-popup-content]');
+                const lightshopPrevBtns = document.querySelectorAll('[data-lightshop-prev]');
+                const lightshopNextBtns = document.querySelectorAll('[data-lightshop-next]');
+                const lightshopShareBtn = document.querySelector('[data-lightshop-share]');
+                const lightshopPopupCloseBtns = document.querySelectorAll('[data-lightshop-close]');
+                const lightshopCounterCurrent = document.querySelector('[data-lightshop-currentItem]');
+                const lightshopCounterTotal = document.querySelector('[data-lightshop-totalItems]');
 
-            let currentContentIndex = 0;
-            let lightshopItemData = [];
+                let currentContentIndex = 0;
+                let lightshopItemData = [];
 
-            // Функция для загрузки данных
-            async function loadPortfolioData() {
-                try {
-                    const response = await fetch('/api/portfolio-data');
-                    lightshopItemData = await response.json();
-                    lightshopCounterTotal.textContent = lightshopItemData.length;
-                    //console.log(JSON.stringify(lightshopItemData, null, 2));
-                } catch (error) {
-                    console.error('Ошибка при загрузке данных портфолио:', error);
-                }
-            }
-
-            // Загрузка данных при инициализации
-            loadPortfolioData();
-
-            // Обновление контента по индексу
-            function updateContentByIndex(index) {
-                currentContentIndex = index;
-                if (currentContentIndex < 0) {
-                    currentContentIndex += lightshopItemData.length;
-                }
-                updateContent();
-                window.history.replaceState(null, null, `#${lightshopItemData[currentContentIndex].id}`);
-            }
-
-            // Обновление контента
-            function updateContent() {
-                const currentItem = lightshopItemData[currentContentIndex];
-                lightshopCounterCurrent.textContent = currentContentIndex + 1;
-
-                if (lightshopPopupContent) {
-                    const lightshopItemsToUpdate = lightshopPopupContent.querySelectorAll('[data-lightshop-item]');
-                    lightshopItemsToUpdate.forEach(item => {
-                        const key = item.getAttribute('data-key');
-                        let dataProperty = item.getAttribute('data-property');
-
-                        if (dataProperty.startsWith('[')) {
-                            dataProperty = JSON.parse(dataProperty);
-                        }
-
-                        if (Array.isArray(dataProperty)) {
-                            dataProperty.forEach(prop => {
-                                item[prop] = currentItem[key];
-                            });
-                        } else {
-                            item[dataProperty] = currentItem[key];
-                        }
-                    });
-
-                    // Stack
-                    const lightshopStackContainer = document.querySelector('[data-lightshop-stack]');
-                    
-                    if (lightshopStackContainer && currentItem.stacks) {
-                        lightshopStackContainer.innerHTML = '';
-                        currentItem.stacks.forEach(stack => {
-
-                            console.log(stack.title);
-
-                            const stackElement = document.createElement('div');
-                            stackElement.className = 'text-lightshop__tools-item';
-                            const img = document.createElement('img');
-                            img.setAttribute('src', stack.imageUrl);
-                            img.setAttribute('alt', stack.title);
-                            img.setAttribute('title', stack.title);
-                            stackElement.appendChild(img);
-                            lightshopStackContainer.appendChild(stackElement);
-                        });
+                // Функция для загрузки данных
+                async function loadPortfolioData() {
+                    try {
+                        const response = await fetch('/api/portfolio-data');
+                        lightshopItemData = await response.json();
+                        lightshopCounterTotal.textContent = lightshopItemData.length;
+                        console.log(JSON.stringify(lightshopItemData, null, 2));
+                    } catch (error) {
+                        console.error('Ошибка при загрузке данных портфолио:', error);
                     }
-
-
                 }
-            }
 
-            // Открытие Popup
-            function lightshopOpenPopup(index) {
-                updateContentByIndex(index);
-                
-                lightshopPopupBody.style.display = 'block';
-                body.style.overflow = 'hidden';
+                // Загрузка данных при инициализации
+                loadPortfolioData();
 
-                setTimeout(() => {
-                    lightshopPopupBody.style.opacity = '1';
-                }, 0);
-            }
+                // Обновление контента по индексу
+                function updateContentByIndex(index) {
+                    currentContentIndex = index;
+                    if (currentContentIndex < 0) {
+                        currentContentIndex += lightshopItemData.length;
+                    }
+                    updateContent();
+                    window.history.replaceState(null, null, `#${lightshopItemData[currentContentIndex].id}`);
+                }
 
-            // Загрузка следующего элемента
-            function lightshopLoadNextItem() {
-                updateContentByIndex((currentContentIndex + 1) % lightshopItemData.length);
-            }
-            
-            // Загрузка предыдущего элемента
-            function lightshopLoadPrevItem() {
-                updateContentByIndex((currentContentIndex - 1 + lightshopItemData.length) % lightshopItemData.length);
-            }
+                // Обновление контента
+                function updateContent() {
+                    const currentItem = lightshopItemData[currentContentIndex];
+                    lightshopCounterCurrent.textContent = currentContentIndex + 1;
 
-            // Закрытие Popup
-            function lightshopClosePopup() {
-                lightshopPopupBody.style.opacity = '0';
-                body.style.overflow = 'auto';
-                lightshopPopupBody.style.display = 'none';
-                window.history.replaceState(null, null, window.location.pathname);
-            }
+                    if (lightshopPopupContent) {
+                        const lightshopItemsToUpdate = lightshopPopupContent.querySelectorAll('[data-lightshop-item]');
+                        lightshopItemsToUpdate.forEach(item => {
+                            const key = item.getAttribute('data-key');
+                            let dataProperty = item.getAttribute('data-property');
 
-            // Копирование ссылки
-            function lightshopCopyLink(shareBtn) {
-                const currentURL = window.location.href;
-                navigator.clipboard.writeText(currentURL).then(() => {
-                    shareBtn.classList.add('_active');
+                            if (dataProperty.startsWith('[')) {
+                                dataProperty = JSON.parse(dataProperty);
+                            }
+
+                            if (Array.isArray(dataProperty)) {
+                                dataProperty.forEach(prop => {
+                                    item[prop] = currentItem[key];
+                                });
+                            } else {
+                                item[dataProperty] = currentItem[key];
+                            }
+                        });
+
+                        // Tasks
+                        const lightshopTasksContainer = document.querySelector('[data-lightshop-tasks]');
+
+                        if (lightshopTasksContainer && currentItem.tasks) {
+                            lightshopTasksContainer.innerHTML = '';
+                            currentItem.tasks.forEach(task => {
+                                const taskElement = document.createElement('li');
+                                taskElement.innerText = task.title;
+                                lightshopTasksContainer.appendChild(taskElement);
+                            });
+                        }
+
+                        // Skills
+                        const lightshopSkillsContainer = document.querySelector('[data-lightshop-skills]');
+
+                        if (lightshopSkillsContainer && currentItem.skills) {
+                            lightshopSkillsContainer.innerHTML = '';
+                            currentItem.tasks.forEach(skill => {
+                                const skillElement = document.createElement('li');
+                                skillElement.innerText = skill.title;
+                                lightshopSkillsContainer.appendChild(skillElement);
+                            });
+                        }
+
+                        // Stack
+                        const lightshopStackContainer = document.querySelector('[data-lightshop-stack]');
+                        
+                        if (lightshopStackContainer && currentItem.stacks) {
+                            lightshopStackContainer.innerHTML = '';
+                            currentItem.stacks.forEach(stack => {
+                                const stackElement = document.createElement('div');
+                                stackElement.className = 'text-lightshop__tools-item';
+                                const img = document.createElement('img');
+                                img.setAttribute('src', stack.imageUrl);
+                                img.setAttribute('alt', stack.title);
+                                img.setAttribute('title', stack.title);
+                                stackElement.appendChild(img);
+                                lightshopStackContainer.appendChild(stackElement);
+                            });
+                        }
+                    }
+                }
+
+                // Открытие Popup
+                function lightshopOpenPopup(index) {
+                    updateContentByIndex(index);
+                    
+                    lightshopPopupBody.style.display = 'block';
+                    body.style.overflow = 'hidden';
+
                     setTimeout(() => {
-                        shareBtn.classList.remove('_active');
-                    }, 2000);
+                        lightshopPopupBody.style.opacity = '1';
+                    }, 0);
+                }
+
+                // Загрузка следующего элемента
+                function lightshopLoadNextItem() {
+                    updateContentByIndex((currentContentIndex + 1) % lightshopItemData.length);
+                }
+                
+                // Загрузка предыдущего элемента
+                function lightshopLoadPrevItem() {
+                    updateContentByIndex((currentContentIndex - 1 + lightshopItemData.length) % lightshopItemData.length);
+                }
+
+                // Закрытие Popup
+                function lightshopClosePopup() {
+                    lightshopPopupBody.style.opacity = '0';
+                    body.style.overflow = 'auto';
+                    lightshopPopupBody.style.display = 'none';
+                    window.history.replaceState(null, null, window.location.pathname);
+                }
+
+                // Копирование ссылки
+                function lightshopCopyLink(shareBtn) {
+                    const currentURL = window.location.href;
+                    navigator.clipboard.writeText(currentURL).then(() => {
+                        shareBtn.classList.add('_active');
+                        setTimeout(() => {
+                            shareBtn.classList.remove('_active');
+                        }, 2000);
+                    });
+                }
+
+                // Добавление обработчиков событий
+                lightshopPrevBtns.forEach(btn => btn.addEventListener('click', lightshopLoadPrevItem));
+                lightshopNextBtns.forEach(btn => btn.addEventListener('click', lightshopLoadNextItem));
+                lightshopItemInfoButtons.forEach((button, index) => {
+                    button.addEventListener('click', () => lightshopOpenPopup(index));
+                });
+                lightshopPopupCloseBtns.forEach(btn => btn.addEventListener('click', lightshopClosePopup));
+                if (lightshopShareBtn) {
+                    lightshopShareBtn.addEventListener('click', () => lightshopCopyLink(lightshopShareBtn));
+                }
+
+                // Обработка хэша в URL при загрузке страницы
+                window.addEventListener('load', () => {
+                    const contentKeyFromHash = window.location.hash.slice(1);
+                    const index = lightshopItemData.findIndex(item => item.id.toString() === contentKeyFromHash);
+                    if (index !== -1) {
+                        lightshopOpenPopup(index);
+                    }
                 });
             }
-
-            // Добавление обработчиков событий
-            lightshopPrevBtns.forEach(btn => btn.addEventListener('click', lightshopLoadPrevItem));
-            lightshopNextBtns.forEach(btn => btn.addEventListener('click', lightshopLoadNextItem));
-            lightshopItemInfoButtons.forEach((button, index) => {
-                button.addEventListener('click', () => lightshopOpenPopup(index));
-            });
-            lightshopPopupCloseBtns.forEach(btn => btn.addEventListener('click', lightshopClosePopup));
-            if (lightshopShareBtn) {
-                lightshopShareBtn.addEventListener('click', () => lightshopCopyLink(lightshopShareBtn));
-            }
-
-            // Обработка хэша в URL при загрузке страницы
-            window.addEventListener('load', () => {
-                const contentKeyFromHash = window.location.hash.slice(1);
-                const index = lightshopItemData.findIndex(item => item.id.toString() === contentKeyFromHash);
-                if (index !== -1) {
-                    lightshopOpenPopup(index);
-                }
-            });
         }
-    }
-});
+    });
 </script>
 
 <style lang="scss">
@@ -586,20 +598,6 @@ import { Picture } from 'astro:assets';
                 line-height: 2.3rem;
             }
 		}
-		// .text-lightshop__list
-		&__list {
-            margin-left: 2rem;
-            padding-left: 2rem;
-            list-style: disc;
-            li {
-                margin-bottom: 1rem;
-                color: var(--fontColor2);
-                list-style: disc;
-                &:last-child {
-                    margin-bottom: 0;
-                }
-            }
-		}
         &__list + p {
             margin-top: 2rem;
             @media (max-width:$md3+px){
@@ -628,6 +626,34 @@ import { Picture } from 'astro:assets';
 
 <style lang="scss" is:global>
     @import '../../styles/assets/vars';
+
+    .text-lightshop__list {
+        margin-left: 2rem;
+        padding-left: 2rem;
+        list-style: disc;
+        li {
+            margin-bottom: 1rem;
+            color: var(--fontColor2);
+            list-style: disc;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .text-lightshop__list + p {
+        margin-top: 2rem;
+        @media (max-width:$md3+px){
+            margin-top: 1.5rem;
+        }
+    }
+
+    p + .text-lightshop__list {
+        margin-top: 2rem;
+        @media (max-width:$md3+px){
+            margin-top: 1.5rem;
+        }
+    }
 
     .text-lightshop__tools-item {
         img {

@@ -12,6 +12,8 @@ export async function getPortfolioItems() {
                     'image',
                     'tags',
                     'url',
+                    'tasks',
+                    'skills',
                     'additionTag',
                     'stacks.stack_id.id',
                     'stacks.stack_id.title',

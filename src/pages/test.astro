@@ -1,7 +1,4 @@
 ---
-import { Image, Picture } from 'astro:assets';
-import srcImage from '../images/main/me.jpg';
-
 import Static from '../layouts/Static.astro';
 
 import '../styles/main/style.scss';
@@ -9,48 +6,16 @@ import '../styles/main/style.scss';
 
 <Static>
 	<main class="page">
-		<h1>Test Custom Deploy 1</h1>
-		<Picture
-			src={srcImage}
-			alt="Test"
-			width={512}
-			height={512}
-			formats={['avif', 'webp']}
-			fallbackFormat="jpg"
-		/>
-		<form id="contactForm">
-			<input type="text" name="name" placeholder="Ваше имя" required />
-			<input type="email" name="email" placeholder="Ваш email" required />
-			<textarea name="message" placeholder="Ваше сообщение" required
-			></textarea>
-			<button type="submit">Отправить</button>
-		</form>
+		<h1>Test data</h1>
+		<a href="#" data-lightshop-item data-key="url" data-property='["href"]'>Test</a>
 	</main>
 </Static>
 
 <script>
-	import { createDirectus, rest, readItem, createItem } from '@directus/sdk';
+    document.addEventListener('DOMContentLoaded', () => {
+		const href = '/vr';
+		const link = document.querySelector('[data-lightshop-item]');
 
-	const directus = createDirectus('http://147.45.246.185:8055')
-		.with(rest())
-		.with(readItem())
-		.with(createItem());
-
-	document
-		.getElementById('contactForm')
-		.addEventListener('submit', async (e) => {
-			e.preventDefault();
-			const formData = new FormData(e.target);
-			const data = Object.fromEntries(formData);
-			data.date = new Date().toISOString().split('.')[0];
-
-			try {
-				await directus.request(createItem('contact_messages', data));
-				alert('Сообщение успешно отправлено!');
-				e.target.reset();
-			} catch (error) {
-				console.error('Ошибка при отправке сообщения:', error);
-				alert('Произошла ошибка при отправке сообщения.');
-			}
-		});
+		link.href = href;
+	});
 </script>
