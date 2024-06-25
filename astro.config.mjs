@@ -10,5 +10,10 @@ export default defineConfig({
                 },
             },
         },
+        esbuild: {
+            loader: "jsx",
+            include: /\.[jt]sx?$/,
+            exclude: []
+        },
     }
 });
