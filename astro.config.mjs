@@ -9,11 +9,6 @@ export default defineConfig({
                     additionalData: '@import "./src/styles/global.scss";',
                 },
             },
-        },
-        esbuild: {
-            loader: "jsx",
-            include: /\.[jt]sx?$/,
-            exclude: []
-        },
+        }
     }
 });
