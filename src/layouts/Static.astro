@@ -1,9 +1,18 @@
-<html lang="ru">
+---
+const { lang, title, description, fonts } = Astro.props;
+const shouldIncludeFonts = fonts !== undefined && fonts !== '';
+---
+
+<html lang={lang}>
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
-        <title>Static</title>
+        <title>{title}</title>
+		<meta name="description" content={description}>
+		{shouldIncludeFonts &&
+			<link href={fonts} rel="stylesheet" />
+		}
 	</head>
 	<body>
         <div class="wrapper">
