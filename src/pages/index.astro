@@ -1,10 +1,11 @@
 ---
 import { fetchSEOData } from '../utils/seo'
 import Default from '../layouts/Default.astro'
-import Static from '../layouts/Static.astro'
+//import Static from '../layouts/Static.astro'
 import Header from '../components/main/Header.astro';
 import Avatar from '../components/main/Avatar.astro';
 import Home from '../components/main/Home.astro';
+import Portfolio from '../components/main/Portfolio.astro';
 import Stack from '../components/main/Stack.astro';
 import Skills from '../components/main/Skills.astro';
 import Contact from '../components/main/Contact.astro';
@@ -158,6 +159,7 @@ const contactNetworks = [
 	<Avatar parentClass={parentClass} contactNetworks={contactNetworks} />
 	<main class="page">
 		<Home />
+		<Portfolio />
 		<Stack />
 		<Skills />
 		<Contact />
