@@ -8,7 +8,7 @@ export async function fetchSEOData(pageId) {
 				filter: {
 					page_id: pageId,
 				},
-				fields: ['post_id', 'title', 'description', 'lang', 'fonts'],
+				fields: ['page_id', 'title', 'description', 'lang', 'fonts'],
 			})
 		);
 
