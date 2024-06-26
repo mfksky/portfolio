@@ -74,7 +74,7 @@ import { Picture } from 'astro:assets';
                             <a href="/vr"></a>
                         </div>
                     </div>
-                    <!-- <div class="content-lightshop__about">
+                    <div class="content-lightshop__about">
                         <div class="text-lightshop__block">
                             <div class="text-lightshop__title">О проекте</div>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
@@ -86,7 +86,7 @@ import { Picture } from 'astro:assets';
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
                         </div>
-                    </div> -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -94,6 +94,8 @@ import { Picture } from 'astro:assets';
 </div>
 
 <script>
+    import Lenis from 'lenis';
+
     document.addEventListener('DOMContentLoaded', () => {
         const body = document.body;
         const lightshop = document.querySelector('[data-lightshop]');
@@ -113,6 +115,8 @@ import { Picture } from 'astro:assets';
 
                 let currentContentIndex = 0;
                 let lightshopItemData = [];
+                let popupLenis = null; // Lenis в попапе
+                let rafId = null; // Аниационный фрейм в попапе
 
                 // Функция для загрузки данных
                 async function loadPortfolioData() {
@@ -211,7 +215,34 @@ import { Picture } from 'astro:assets';
                     updateContentByIndex(index);
                     
                     lightshopPopupBody.style.display = 'block';
+                    
                     body.style.overflow = 'hidden';
+
+                    if (window.stopLenis) {
+                        window.stopLenis();
+                    }
+
+                    // Новый экземпляр Lenis для попапа
+                    popupLenis = new Lenis({
+                        wrapper: lightshopPopupContent,
+                        content: lightshopPopupContent,
+                        smoothWheel: true,
+                        smoothTouch: false,
+                        touchMultiplier: 2,
+                    });
+
+                    function raf(time) {
+                        if (popupLenis) {
+                            popupLenis.raf(time);
+                            rafId = requestAnimationFrame(raf);
+                        }
+                    }
+
+                    rafId = requestAnimationFrame(raf);
+
+                    requestAnimationFrame(raf);
+
+                    lightshopPopupContent.style.overflowY = 'auto';
 
                     setTimeout(() => {
                         lightshopPopupBody.style.opacity = '1';
@@ -232,6 +263,23 @@ import { Picture } from 'astro:assets';
                 function lightshopClosePopup() {
                     lightshopPopupBody.style.opacity = '0';
                     body.style.overflow = 'auto';
+
+                    if (window.startLenis) {
+                        window.startLenis();
+                    }
+
+                    if (rafId) {
+                        cancelAnimationFrame(rafId);
+                        rafId = null;
+                    }
+
+                    if (popupLenis) {
+                        popupLenis.destroy();
+                        popupLenis = null;
+                    }
+
+                    lightshopPopupContent.style.overflowY = '';
+
                     lightshopPopupBody.style.display = 'none';
                     window.history.replaceState(null, null, window.location.pathname);
                 }
@@ -246,6 +294,10 @@ import { Picture } from 'astro:assets';
                         }, 2000);
                     });
                 }
+
+                lightshopPopupContent.addEventListener('scroll', (e) => {
+                e.stopPropagation(); // Предотвращаем распространение события скролла
+            });
 
                 // Добавление обработчиков событий
                 lightshopPrevBtns.forEach(btn => btn.addEventListener('click', lightshopLoadPrevItem));
@@ -285,6 +337,7 @@ import { Picture } from 'astro:assets';
         backdrop-filter: blur(1rem);
         display: none;
         opacity: 0;
+        overflow: hidden;
 		// .lightshop-popup__wrapper
 		&__wrapper {
             position: absolute;
@@ -446,7 +499,7 @@ import { Picture } from 'astro:assets';
         padding: 4rem;
         background-color: var(--bgColor1);
         border-radius: 2rem;
-        overflow: hidden scroll;
+        overflow-y: scroll;
         -ms-overflow-style: none;
         &::-webkit-scrollbar {
             width: 0;

@@ -69,7 +69,8 @@ const contactNetworks = [
 		const blob1 = document.querySelector('.blob-1');
 		const blob2 = document.querySelector('.blob-2');
 		const blobs = [blob1, blob2];
-		const lenis = new Lenis();
+
+		window.lenis = new Lenis();
 
 		lenis.on('scroll', ({ scroll, limit }) => {
 			const rotation = (scroll / limit) * 360;
@@ -151,6 +152,18 @@ const contactNetworks = [
 		window.addEventListener('resize', handleResize);
 		window.addEventListener('scroll', checkVisibility);
 	});
+
+	window.stopLenis = function() {
+		if (window.lenis) {
+			window.lenis.stop();
+		}
+	};
+
+	window.startLenis = function() {
+		if (window.lenis) {
+			window.lenis.start();
+		}
+	};
 </script>
 
 <Default lang={lang} title={title} description={description} fonts={fonts}>
