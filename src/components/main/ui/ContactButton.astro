@@ -1,0 +1,229 @@
+---
+const socialNetworks = [
+	{
+		title: 'Telegram', url: 'https://t.me/mfkboy', icon: 'tg'
+	},
+	{
+		title: 'VK', url: 'https://vk.com/mfkboy', icon: 'vk'
+	},
+];
+
+const { variant = 'header' } = Astro.props;
+const isHeader = variant === 'header';
+const componentClass = isHeader ? 'contact-header' : 'contact-avatar';
+const buttonText = isHeader ? 'Написать мне' : 'Связаться со мной';
+---
+
+<div class={componentClass}>
+    <button class={`${componentClass}__btn`} type="button" title={buttonText}>
+        <span>{buttonText}</span>
+        {isHeader && 
+            <svg>
+                <use xlink:href="/main/icons/icons.svg#chat"></use>
+                <title>{buttonText}</title>
+            </svg>
+        }
+    </button>
+    <ul class={`${componentClass}__content`}>
+        {
+            socialNetworks.map((social) => (
+                <li>
+                    <a href={social.url} target="_blank">
+                        <svg>
+                            <use xlink:href={`/main/icons/icons.svg#${social.icon}`}></use>
+                            <title>{social.title}</title>
+                        </svg>
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+</div>
+
+<script is:inline define:vars={{ componentClass }}>
+    function toggleContacts(btnSelector, contentSelector) {
+        const callBtn = document.querySelector(btnSelector);
+        const callContent = document.querySelector(contentSelector);
+
+        if (!callBtn || !callContent) return;
+
+        callBtn.addEventListener('click', () => {
+            callBtn.classList.toggle('_active');
+            callContent.classList.toggle('_active');
+        });
+
+        document.addEventListener('click', (event) => {
+            const isClickInside = callBtn.contains(event.target) || callContent.contains(event.target);
+            if (!isClickInside) {
+                callBtn.classList.remove('_active');
+                callContent.classList.remove('_active');
+            }
+        });
+    }
+    
+    toggleContacts(`.${componentClass}__btn`, `.${componentClass}__content`);
+</script>
+
+<style lang="scss">
+    .contact-header, .contact-avatar {
+        position: relative;
+        &__btn {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            height: 6rem;
+            padding: 0 2rem;
+            font-size: 1.3rem;
+            line-height: 100%;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            background-color: var(--accentColor1);
+            border-radius: 1rem;
+            overflow: hidden;
+            cursor: pointer;
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: var(--gradient1);
+                opacity: 0;
+                transform: translateY(100%);
+                transition: all .6s ease;
+            }
+            span {
+                position: relative;
+            }
+            svg {
+                position: relative;
+                width: 1.8rem;
+                height: 1.8rem;
+                fill: var(--fontColor1);
+            }
+            &:hover {
+                &::before {
+                    transform: translate(0);
+                    opacity: 1;
+                }
+            }
+            @media (max-width: 1600px){
+                height: 5rem;
+            }
+            @media (max-width:$md5+px){
+                height: 4rem;
+            }
+        }
+        &__content {
+            position: absolute;
+            top: 6rem;
+            right: 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem 0;
+            opacity: 0;
+            transform: translateY(-6.5rem);
+            transition: transform .3s ease;
+            &._active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 4rem;
+                height: 4rem;
+                background-color: var(--bgColor1);
+                border: 1px solid var(--borderColor);
+                border-radius: .8rem;
+                transition: all .3s ease;
+                @include no-hover-touch {
+                    background-color: var(--fontColor1);
+                    border-color: var(--fontColor1);
+                    svg {
+                        fill: var(--bgColor1);
+                    }
+                }
+                svg {
+                    width: 1.8rem;
+                    height: 1.8rem;
+                    fill: var(--fontColor2);
+                    transition: all .3s ease;
+                }
+                @media (max-width:$md4+px){
+                    width: 5rem;
+                    height: 5rem;
+                }
+            }
+        }
+    }
+    .contact-header {
+        // .contact-header__btn
+        &__btn {
+            @media (max-width:$md3+px){
+                span {
+                    display: none;
+                }
+            }
+            @media (max-width:$md4+px){
+                padding: 0 1.6rem;
+            }
+            @media (max-width:$md5+px){
+                padding: 0 1.5rem;
+                svg {
+                    width: 1.5rem;
+                    height: 1.5rem;
+                }
+            }
+        }
+        // .contact-header__content
+        &__content {
+            @media (max-width: 1600px){
+                top: 5rem;
+            }
+            @media (max-width:$md2+px){
+                top: -6.5rem;
+                transform: translateY(6.5rem);
+            }
+            @media (max-width:$md4+px){
+                top: -8rem;
+            }
+            @media (max-width:$md5+px){
+                top: -7rem;
+                a {
+                    width: 4.5rem;
+                    height: 4rem;
+                }
+            }
+        }
+    }
+    .contact-avatar {
+        // .contact-avatar__btn
+        &__btn {
+            width: 100%;
+        }
+        // .contact-avatar__content
+        &__content {
+            top: auto;
+            bottom: 6rem;
+            transform: translateY(6.5rem);
+            @media (max-width: 1600px){
+                bottom: 5rem;
+            }
+            @media (max-width:$md5+px){
+                bottom: 4rem;
+                a {
+                    width: 4rem;
+                    height: 4rem;
+                }
+            }
+        }
+    }
+</style>
