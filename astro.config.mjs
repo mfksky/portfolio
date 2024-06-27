@@ -6,7 +6,12 @@ export default defineConfig({
         css: {
             preprocessorOptions: {
                 scss: {
-                    additionalData: '@import "./src/styles/global.scss";',
+                    additionalData: `
+                        @use "sass:math";
+                        @import "/src/styles/assets/mixins";
+                        @import "/src/styles/assets/vars";
+                        @import "/src/styles/assets/null";
+                    `,
                 },
             },
         }
