@@ -1,7 +1,6 @@
 ---
 import { Picture } from 'astro:assets';
 import srcImage from '../../images/main/me.jpg';
-import AvatarContacts from './AvatarContacts.astro'
 
 const logo = ['/main/logo.svg', 'Александр Иванов']
 const specs = 'Верстка и фронтенд разработка';
@@ -42,7 +41,6 @@ const { parentClass, contactNetworks } = Astro.props;
             </div>
         </div>
     </div>
-    <AvatarContacts parentClass={parentClass} contactNetworks={contactNetworks} />
 </div>
 
 <style lang="scss">
