@@ -2,6 +2,12 @@
   "extends": "astro/tsconfigs/base",
   "compilerOptions": {
     "allowJs": true,
-    "checkJs": false
-  }
+    "checkJs": false,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "strict": false
+  },
+  "include": ["src/**/*.ts", "src/**/*.js", "src/**/*.astro"],
+  "exclude": ["node_modules"]
 }
