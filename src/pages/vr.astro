@@ -1,6 +1,5 @@
 ---
-import { fetchSEOData } from '../utils/seo'
-import Default from '../layouts/Default.astro'
+import Static from '../layouts/Static.astro'
 import Header from '../components/vr/Header.astro';
 import Footer from '../components/vr/Footer.astro';
 import Hero from '../components/vr/Hero.astro';
@@ -15,11 +14,13 @@ import Articles from '../components/vr/Articles.astro';
 import Subscribe from '../components/vr/Subscribe.astro';
 import '../styles/vr/style.scss';
 
-const pageId = 'vr';
-const { lang, title, description, fonts } = await fetchSEOData(pageId);
+const lang = 'en';
+const title = 'VR Landing | Портфолио';
+const description = 'Верстка лэндинга VR для портфолио';
+const fonts = 'https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&display=swap';
 ---
 
-<Default lang={lang} title={title} description={description} fonts={fonts}>
+<Static lang={lang} title={title} description={description} fonts={fonts}>
     <Header />
     <main class="page">
         <Hero />
@@ -34,7 +35,7 @@ const { lang, title, description, fonts } = await fetchSEOData(pageId);
         <Subscribe />
     </main>
     <Footer />
-</Default>
+</Static>
 
 <script>
 	import 'lazysizes';

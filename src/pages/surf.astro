@@ -1,6 +1,5 @@
 ---
-import { fetchSEOData } from '../utils/seo'
-import Default from '../layouts/Default.astro'
+import Static from '../layouts/Static.astro'
 import Burger from '../components/surf/Burger.astro';
 import Header from '../components/surf/Header.astro';
 import Hero from '../components/surf/Hero.astro';
@@ -13,11 +12,13 @@ import BgLines from '../components/surf/BgLines.astro';
 import '../styles/surf/style.scss';
 import '../styles/surf/swiper.scss';
 
-const pageId = 'surf';
-const { lang, title, description, fonts } = await fetchSEOData(pageId);
+const lang = 'en';
+const title = 'Surf Landing | Портфолио';
+const description = 'Тренировочный лендинг про серфинг';
+const fonts = 'https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;300;400;500;800&display=swap';
 ---
 
-<Default lang={lang} title={title} description={description} fonts={fonts}>
+<Static lang={lang} title={title} description={description} fonts={fonts}>
     <Burger />
     <Header />
     <main class="page">
@@ -29,7 +30,7 @@ const { lang, title, description, fonts } = await fetchSEOData(pageId);
     </main>
     <Footer />
     <BgLines />
-</Default>
+</Static>
 
 <script>
     import 'lazysizes';
