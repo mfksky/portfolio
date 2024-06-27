@@ -1,0 +1,60 @@
+---
+import Nav from "@components/main/header/Nav.astro";
+import ContactButton from "@components/main/ui/ContactButton.astro";
+---
+
+<header class="header">
+    <Nav />
+    <ContactButton variant='header' />
+</header>
+
+<script>
+    // Добавляем классы к хедеру при скролле
+    const header = document.querySelector('.header');
+    const handleScroll = () => header.classList.toggle('_scroll', window.scrollY > 0);
+
+    window.addEventListener('scroll', handleScroll);
+
+    handleScroll()
+</script>
+
+<style lang="scss">
+    .header {
+        position: fixed;
+        top: 5%;
+        left: calc(40rem + 11%);
+        right: 6%;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: var(--bgColor2);
+        border-radius: 1rem;
+        transition: top .3s ease;
+        &._scroll {
+            background-color: #161616ac;
+            backdrop-filter: blur(20px);
+        }
+        @media (max-width: 1600px){
+            top: 3%;
+            right: 3%;
+            left: calc(30rem + 6%);
+        }
+        @media (max-width:$md2+px){
+            top: auto;
+            right: 5rem;
+            left: 5rem;
+            bottom: 1.5rem;
+            background-color: rgba(22, 22, 22, .8);
+            backdrop-filter: blur(20px);
+        }
+        @media (max-width:$md4+px){
+            left: 4rem;
+            right: 4rem;
+        }
+        @media (max-width:$md5+px){
+            left: 3rem;
+            right: 3rem;
+        }
+    }
+</style>
