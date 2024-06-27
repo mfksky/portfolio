@@ -14,10 +14,15 @@ export async function getPortfolioItems() {
                     'url',
                     'tasks',
                     'skills',
+                    'gallery.directus_files_id',
+                    'gallery.directus_files_id.id',
+                    'gallery.directus_files_id.title',
+                    'gallery.directus_files_id.description',
                     'additionTag',
                     'stacks.stack_id.id',
                     'stacks.stack_id.title',
                     'stacks.stack_id.image',
+                    'about'
                 ],
                 sort: ['id'],
             })
@@ -32,6 +37,14 @@ export async function getPortfolioItems() {
         const portfolioItemsWithImageUrls = response.map(item => ({
             ...item,
             imageUrl: item.image ? `${process.env.DIRECTUS_URL}/assets/${item.image}` : null,
+            gallery: item.gallery.map(galleryItem => ({
+                id: galleryItem.id,
+                imageUrl: galleryItem.directus_files_id
+                    ? `${process.env.DIRECTUS_URL}/assets/${galleryItem.directus_files_id.id}`
+                    : null,
+                alt: galleryItem.directus_files_id?.title || '',
+                title: galleryItem.directus_files_id?.description || '',
+            })),
             stacks: item.stacks.map(stack => ({
                 ...stack.stack_id,
                 imageUrl: stack.stack_id.image ? `${process.env.DIRECTUS_URL}/assets/${stack.stack_id.image}` : null
