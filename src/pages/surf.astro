@@ -1,5 +1,5 @@
 ---
-import Static from '../layouts/Static.astro'
+import Default from '../layouts/Default.astro'
 import Burger from '../components/surf/Burger.astro';
 import Header from '../components/surf/Header.astro';
 import Hero from '../components/surf/Hero.astro';
@@ -18,7 +18,7 @@ const description = 'Тренировочный лендинг про серфи
 const fonts = 'https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;300;400;500;800&display=swap';
 ---
 
-<Static lang={lang} title={title} description={description} fonts={fonts}>
+<Default lang={lang} title={title} description={description} fonts={fonts}>
     <Burger />
     <Header />
     <main class="page">
@@ -30,7 +30,7 @@ const fonts = 'https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;300;4
     </main>
     <Footer />
     <BgLines />
-</Static>
+</Default>
 
 <script>
     import 'lazysizes';

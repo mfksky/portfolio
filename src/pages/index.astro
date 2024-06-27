@@ -1,5 +1,5 @@
 ---
-import Static from '../layouts/Static.astro'
+import Default from '../layouts/Default.astro'
 import Header from '../components/main/Header.astro';
 import Avatar from '../components/main/Avatar.astro';
 import Home from '../components/main/Home.astro';
@@ -164,7 +164,7 @@ const contactNetworks = [
 	};
 </script>
 
-<Static title={title} description={description}>
+<Default title={title} description={description}>
 	<Header parentClass={parentClass} contactNetworks={contactNetworks} />
 	<Avatar parentClass={parentClass} contactNetworks={contactNetworks} />
 	<main class="page">
@@ -174,4 +174,4 @@ const contactNetworks = [
 		<Skills />
 		<Contact />
 	</main>
-</Static>
+</Default>

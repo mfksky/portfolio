@@ -1,5 +1,5 @@
 ---
-import Static from '../layouts/Static.astro'
+import Default from '../layouts/Default.astro'
 import Header from '../components/vr/Header.astro';
 import Footer from '../components/vr/Footer.astro';
 import Hero from '../components/vr/Hero.astro';
@@ -20,7 +20,7 @@ const description = 'Верстка лэндинга VR для портфоли�
 const fonts = 'https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&display=swap';
 ---
 
-<Static lang={lang} title={title} description={description} fonts={fonts}>
+<Default lang={lang} title={title} description={description} fonts={fonts}>
     <Header />
     <main class="page">
         <Hero />
@@ -35,7 +35,7 @@ const fonts = 'https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;40
         <Subscribe />
     </main>
     <Footer />
-</Static>
+</Default>
 
 <script>
 	import 'lazysizes';
