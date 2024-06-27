@@ -1,6 +1,6 @@
 ---
-import Default from '../layouts/Default.astro'
-import Header from '../components/main/Header.astro';
+import Default from '@layouts/Default.astro'
+import Header from '@components/main//header/Header.astro';
 import Avatar from '../components/main/Avatar.astro';
 import Home from '../components/main/Home.astro';
 import Portfolio from '../components/main/Portfolio.astro';
@@ -165,7 +165,7 @@ const contactNetworks = [
 </script>
 
 <Default title={title} description={description}>
-	<Header parentClass={parentClass} contactNetworks={contactNetworks} />
+	<Header />
 	<Avatar parentClass={parentClass} contactNetworks={contactNetworks} />
 	<main class="page">
 		<Home />
@@ -175,3 +175,24 @@ const contactNetworks = [
 		<Contact />
 	</main>
 </Default>
+
+<style lang="scss" is:global>
+	html {
+		height: 100%;
+	}
+	body {
+		&._lock {
+			overflow: hidden;
+		}
+	}
+	.wrapper {
+		position: relative;
+		width: 100%;
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+	}
+	.page {
+		flex: 1 1 auto;
+	}
+</style>
