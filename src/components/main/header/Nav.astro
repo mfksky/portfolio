@@ -1,0 +1,39 @@
+---
+import NavItem from "@components/main/header/NavItem.astro";
+
+const navItems = [
+    {
+        title: 'Главная', url: '#home', icon: 'home'
+    },
+    {
+        title: 'Портфолио', url: '#portfolio', icon: 'portfolio'
+    },
+    {
+        title: 'Stack', url: '#stack', icon: 'stack'
+    },
+    {
+        title: 'Навыки', url: '#skills', icon: 'skills'
+    },
+    {
+        title: 'Контакты', url: '#contacts', icon: 'contacts'
+    },
+];
+---
+
+<nav class="nav">
+    {
+        navItems.map((item =>
+            <NavItem title={item.title} url={item.url} icon={item.icon} />
+        ))
+    }
+</nav>
+
+<style lang="scss">
+    .nav {
+        display: flex;
+        gap: 1rem;
+        @media (max-width:$md3+px){
+            gap: 0;
+        }
+    }
+</style>
