@@ -1,5 +1,5 @@
 h1, h2, h3 {
-    font-weight: 700;
+    font-weight: 600;
     text-transform: uppercase;
     white-space: pre;
 }
@@ -54,5 +54,36 @@ h3 {
     @media (max-width:$md4+px){
         font-size: 2rem;
         line-height: 2.3rem;
+    }
+}
+
+h4 {
+    font-size: 2.3rem;
+    line-height: 2.6rem;
+    font-weight: 600;
+    @media (max-width:$md3+px){
+        font-size: 2rem;
+        line-height: 2.3rem;
+    }
+}
+
+h4 + p {
+    margin-top: 2rem;
+    @media (max-width:$md3+px){
+        margin-top: 1.5rem;
+    }
+}
+
+p + ul {
+    margin-top: 2rem;
+    @media (max-width:$md3+px){
+        margin-top: 1.5rem;
+    }
+}
+
+ul + p {
+    margin-top: 2rem;
+    @media (max-width:$md3+px){
+        margin-top: 1.5rem;
     }
 }

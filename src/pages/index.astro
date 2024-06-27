@@ -1,7 +1,7 @@
 ---
 import { fetchSEOData } from '../utils/seo'
 import Default from '../layouts/Default.astro'
-//import Static from '../layouts/Static.astro'
+import Static from '../layouts/Static.astro'
 import Header from '../components/main/Header.astro';
 import Avatar from '../components/main/Avatar.astro';
 import Home from '../components/main/Home.astro';
@@ -13,7 +13,7 @@ import Contact from '../components/main/Contact.astro';
 import '../styles/main/style.scss';
 
 const pageId = 'index';
-const { lang, title, description, fonts } = await fetchSEOData(pageId);
+//const { lang, title, description, fonts } = await fetchSEOData(pageId);
 
 const parentClass = 'header__contacts';
 const contactNetworks = [
@@ -166,8 +166,8 @@ const contactNetworks = [
 	};
 </script>
 
-<Default lang={lang} title={title} description={description} fonts={fonts}>
-<!-- <Static> -->
+<!-- <Default lang={lang} title={title} description={description} fonts={fonts}> -->
+<Static>
 	<Header parentClass={parentClass} contactNetworks={contactNetworks} />
 	<Avatar parentClass={parentClass} contactNetworks={contactNetworks} />
 	<main class="page">
@@ -177,5 +177,5 @@ const contactNetworks = [
 		<Skills />
 		<Contact />
 	</main>
-<!-- </Static> -->
-</Default>
+</Static>
+<!-- </Default> -->
