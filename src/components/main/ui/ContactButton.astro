@@ -10,7 +10,7 @@ const socialNetworks = [
 
 const { variant = 'header' } = Astro.props;
 const isHeader = variant === 'header';
-const componentClass = isHeader ? 'contact-header' : 'contact-avatar';
+const componentClass = isHeader ? 'contact-header' : 'contact-sidebar';
 const buttonText = isHeader ? 'Написать мне' : 'Связаться со мной';
 ---
 
@@ -65,7 +65,7 @@ const buttonText = isHeader ? 'Написать мне' : 'Связаться с
 </script>
 
 <style lang="scss">
-    .contact-header, .contact-avatar {
+    .contact-header, .contact-sidebar {
         position: relative;
         &__btn {
             position: relative;
@@ -204,7 +204,7 @@ const buttonText = isHeader ? 'Написать мне' : 'Связаться с
             }
         }
     }
-    .contact-avatar {
+    .contact-sidebar {
         // .contact-avatar__btn
         &__btn {
             width: 100%;
