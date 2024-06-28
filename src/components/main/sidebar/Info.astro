@@ -1,0 +1,58 @@
+---
+const infoItems = [
+    {
+        title: 'Специализация', text: 'Верстка и фронтенд разработка'
+    },
+    {
+        title: 'Локация', text: 'Белгород, Россия'
+    }
+];
+---
+
+<div class="info-sidebar">
+    {
+        infoItems.map((item) => (
+            <div class="info-sidebar__item">
+                <div class="info-sidebar__title">{item.title}</div>
+                <div class="info-sidebar__text">{item.text}</div>
+            </div>
+        ))
+    }
+</div>
+
+<style lang="scss">
+    .info-sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+        // .info-sidebar__item
+        &__item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        // .info-sidebar__title
+        &__title {
+            color: var(--fontColor2);
+            font-size: 1.3rem;
+            line-height: 1.3rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        // .info-sidebar__text
+        &__text {
+            line-height: 2.6rem;
+            font-weight: 600;
+        }
+        @media (max-width:$md3+px){
+            gap: 3rem;
+            &__title {
+                font-size: 1rem;
+                line-height: 1rem;
+            }
+            &__text {
+                line-height: 2.2rem;
+            }
+        }
+    }
+</style>

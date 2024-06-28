@@ -1,0 +1,41 @@
+---
+import { title } from "process";
+
+const logo = {
+    icon: {
+        src: '/main/logo.svg',
+        alt: 'MfkDev',
+        title: 'MfkDev'
+    },
+    text: 'Александр Иванов'
+};
+---
+
+<div class="logo">
+    <div class="logo__image">
+        <img src={logo.icon.src} alt={logo.icon.alt} title={logo.icon.title} />
+    </div>
+    <div class="logo__text">{logo.text}</div>
+</div>
+
+<style lang="scss">
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        margin-bottom: 3rem;
+        // .logo__image
+        &__image {
+            flex-shrink: 0;
+            width: 6rem;
+            height: 6rem;
+        }
+        // .logo__text
+        &__text {
+            max-width: 16rem;
+            font-size: 3rem;
+            line-height: 3rem;
+            font-weight: 600;
+        }
+    }
+</style>

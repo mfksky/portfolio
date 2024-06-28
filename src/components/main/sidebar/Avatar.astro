@@ -1,0 +1,47 @@
+---
+import { Picture } from 'astro:assets';
+import srcImage from '@images/main/me.jpg';
+
+const image = {
+    src: srcImage,
+    alt: 'Александр Иванов',
+    title: 'Александр Иванов - MFKDev'
+};
+---
+
+<div class="avatar">
+    <Picture
+        src={image.src}
+        class='avatar__image'
+        alt={image.alt}
+        title={image.title}
+        densities={[1, 2]}
+        sizes='512px'
+        formats={['avif', 'webp']}
+        fallbackFormat='jpg'
+    />
+</div>
+
+<style lang="scss">
+    .avatar {
+        margin-bottom: 6rem;
+        // .avatar__image
+        &__image {
+            border-radius: 2rem;
+        }
+        @media (max-width:$md2+px){
+            &__image {
+                width: 30rem;
+                height: 30rem;
+            }
+        }
+        @media (max-width:$md3+px){
+            width: 100%;
+            margin-bottom: 4rem;
+            &__image {
+                width: 100%;
+                height: 100%;
+            } 
+        }
+    }
+</style>
