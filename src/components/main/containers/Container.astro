@@ -1,0 +1,23 @@
+---
+---
+
+<div class="_container">
+    <slot />
+</div>
+
+<style lang="scss">
+    ._container {
+        margin-right: 6%;
+        margin-left: calc(40rem + 11%);
+        @media (max-width: 1600px){
+            margin-right: 3%;
+            margin-left: calc(30rem + 6%);
+        }
+        @media (max-width:$md2+px){
+            margin: 0 3rem;
+        }
+        @media (max-width:$md3+px){
+            margin: 0 1.5rem;
+        }
+    }
+</style>
