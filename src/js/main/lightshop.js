@@ -102,7 +102,7 @@ export function initLightshop() {
                         lightshopStackContainer.innerHTML = '';
                         currentItem.stacks.forEach(stack => {
                             const stackElement = document.createElement('div');
-                            stackElement.className = 'text-lightshop__tools-item';
+                            stackElement.className = 'tools-grid-popup__item';
                             const img = document.createElement('img');
                             img.setAttribute('src', stack.imageUrl);
                             img.setAttribute('alt', stack.title);
@@ -118,7 +118,7 @@ export function initLightshop() {
                         lightshopGalleryContainer.innerHTML = '';
                         currentItem.gallery.forEach(slide => {
                             const slideElement = document.createElement('div');
-                            slideElement.className = 'gallery-lightshop__item swiper-slide';
+                            slideElement.className = 'gallery-popup__item swiper-slide';
                             const img = document.createElement('img');
                             img.setAttribute('src', slide.imageUrl);
                             img.setAttribute('alt', slide.alt);
@@ -140,12 +140,12 @@ export function initLightshop() {
                         // Инициализация Swiper
                         let lightshopSwiper;
                         if (!lightshopSwiper) {
-                            lightshopSwiper = new Swiper('.gallery-lightshop.swiper', {
+                            lightshopSwiper = new Swiper('.gallery-popup.swiper', {
                                 slidesPerView: 4,
                                 spaceBetween: 20,
                                 navigation: {
-                                    nextEl: '.gallery-lightshop__next',
-                                    prevEl: '.gallery-lightshop__prev',
+                                    nextEl: '[data-gallery-next]',
+                                    prevEl: '[data-gallery-prev]',
                                 },
                             });
                         }
