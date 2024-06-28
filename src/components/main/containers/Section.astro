@@ -1,0 +1,16 @@
+---
+const { id = '', className = '' } = Astro.props;
+---
+
+<section class={`${className} section`.trim()} id={id}>
+    <slot />
+</section>
+
+<style lang="scss">
+    .section {
+        margin-bottom: 16rem;
+        @media (max-width:$md3+px){
+            margin-bottom: 8rem;
+        }
+    }
+</style>
