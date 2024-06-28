@@ -1,0 +1,73 @@
+---
+---
+
+<div class="popup-header-buttons">
+    <button class="popup-header-buttons__button" type="button" title="Назад" data-lightshop-prev>
+        <svg>
+            <use xlink:href="/main/icons/icons.svg#arrow_lightshop"></use>
+        </svg>
+    </button>
+    <button class="popup-header-buttons__button" type="button" title="Вперед" data-lightshop-next>
+        <svg>
+            <use xlink:href="/main/icons/icons.svg#arrow_lightshop"></use>
+        </svg>
+    </button>
+    <button class="popup-header-buttons__button" type="button" title="Закрыть" data-lightshop-close>
+        <span></span>
+        <span></span>
+    </button>
+</div>
+
+<style lang="scss">
+    .popup-header-buttons {
+        display: flex;
+        align-items: center;
+        &__button {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 4rem;
+            height: 4rem;
+            border-radius: 1rem;
+            transition: background-color .3s ease;
+            @include no-hover-touch {
+                svg {
+                    flex-shrink: 0;
+                    fill: var(--fontColor1);
+                }
+            }
+            svg {
+                width: 1.8rem;
+                height: 1.8rem;
+                fill: var(--fontColor2);
+                transition: all .3s ease;
+            }
+            &[data-lightshop-prev] {
+                transform: rotate(180deg);
+            }
+            &[data-lightshop-close] {
+                span {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    width: 2.1rem;
+                    height: 2.5px;
+                    background: var(--fontColor2);
+                    border-radius: 1px;
+                    transform: translate(-50%, -50%) rotate(45deg);
+                    transition: all .3s ease;
+                    &:last-child {
+                        transform: translate(-50%, -50%) rotate(-45deg);
+                    }
+                }
+                @include no-hover-touch {
+                    background-color: #b86b30;
+                    span {
+                        background: var(--fontColor1);
+                    }
+                }
+            }
+        }
+    }
+</style>

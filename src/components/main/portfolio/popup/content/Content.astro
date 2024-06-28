@@ -1,0 +1,79 @@
+---
+import InfoMain from './InfoMain.astro';
+import ImagesBox from './ImagesBox.astro';
+import OutBtn from './OutBtn.astro';
+---
+
+<div class="content-popup" data-lightshop-popup-content>
+    <div class="content-popup__body">
+        <div class="content-popup__top">
+            <InfoMain />
+            <div class="content-popup__right">
+                <ImagesBox />
+                <OutBtn />
+            </div>
+        </div>
+        <div class="content-popup__about" data-lightshop-item data-key="about" data-property="innerHTML"></div>
+    </div>
+</div>
+
+<style lang="scss">
+    .content-popup {
+        margin-top: 4rem;
+        padding: 4rem;
+        background-color: var(--bgColor1);
+        border-radius: 2rem;
+        overflow-y: scroll;
+        -ms-overflow-style: none;
+        &::-webkit-scrollbar {
+            width: 0;
+        }
+        @media (max-width:$md2+px){
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        @media (max-width:$md3+px){
+            margin-top: 2rem;
+            padding: 3rem 1.5rem;
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+        }
+        &__body {
+            display: flex;
+            flex-direction: column;
+            gap: 6rem;
+            @media (max-width:$md3+px){
+                gap: 2rem;
+            }
+        }
+        &__top {
+            display: flex;
+            gap: 6rem;
+            @media (max-width:$md2+px){
+                flex-direction: column;
+                gap: 12rem;
+            }
+            @media (max-width:$md3+px){
+                gap: 8rem;
+            }
+        }
+        &__right {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 6rem;
+            @media (max-width:$md3+px){
+                gap: 4rem;
+            }
+        }
+        &__about {
+            color: var(--fontColor2);
+            font-size: 2rem;
+            line-height: 2.2rem;
+            @media (max-width:$md2+px){
+                font-size: 1.8rem;
+                line-height: 2rem;
+            }
+        }
+    }
+</style>

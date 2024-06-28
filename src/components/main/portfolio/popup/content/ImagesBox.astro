@@ -1,0 +1,20 @@
+---
+import MainImage from './MainImage.astro';
+import Gallery from './Gallery.astro';
+---
+
+<div class="popup-images">
+    <MainImage />
+    <Gallery />
+</div>
+
+<style lang="scss">
+    .popup-images {
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+        @media (max-width:$md3+px){
+            gap: 3rem;
+        }
+    }
+</style>

@@ -1,0 +1,29 @@
+---
+---
+
+<div class="tools-grid-popup" data-lightshop-stack></div>
+
+<style lang="scss">
+    .tools-grid-popup {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+        @media (max-width:$md3+px){
+            gap: 1.5rem;
+        }
+    }
+</style>
+
+<style lang="scss" is:global>
+    .tools-grid-popup__item {
+        img {
+            height: 5rem;
+        }
+        @media (max-width:$md3+px){
+            img {
+                height: 4rem;
+            }
+        }
+    }
+</style>

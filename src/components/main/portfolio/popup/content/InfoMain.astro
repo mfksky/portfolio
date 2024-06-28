@@ -1,0 +1,94 @@
+---
+import ToolsGrid from "./ToolsGrid.astro"
+---
+
+<div class="info-main-popup">
+    <div class="info-main-popup__head">
+        <div data-lightshop-item data-key="title" data-property="textContent"></div>
+        <p data-lightshop-item data-key="subtitle" data-property="textContent"></p>
+    </div>
+    <div class="info-main-popup__block">
+        <div class="info-main-popup__title">Задачи:</div>
+        <ul class="list" data-lightshop-tasks></ul>
+    </div>
+    <div class="info-main-popup__block">
+        <div class="info-main-popup__title">Используемые инструменты:</div>
+        <ToolsGrid />
+    </div>
+    <div class="info-main-popup__block">
+        <div class="info-main-popup__title">Задействованные навыки:</div>
+        <ul class="list" data-lightshop-skills></ul>
+    </div>
+</div>
+
+<style lang="scss">
+    .info-main-popup {
+        // .info-main-popup__head
+		&__head {
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--borderColor);
+            div {
+                font-size: 4rem;
+                line-height: 4.4rem;
+                font-weight: 700;
+            }
+            p {
+                color: var(--fontColor2);
+                font-size: 1.8rem;
+                line-height: 2rem;
+            }
+            @media (max-width:$md3+px){
+                div {
+                    font-size: 3.6rem;
+                    line-height: 3.8rem;
+                }
+            }
+            @media (max-width:$md4+px){
+                div {
+                    font-size: 3rem;
+                    line-height: 3.2rem;
+                }
+            }
+		}
+        // .info-main-popup__block
+		&__block {
+            margin-top: 6rem;
+            color: var(--fontColor2);
+            font-size: 2rem;
+            line-height: 2.2rem;
+            @media (max-width:$md2+px){
+                margin-top: 4rem;
+                font-size: 1.8rem;
+                line-height: 2rem;
+            }
+		}
+		// .info-main-popup__title
+		&__title {
+            margin-bottom: 2rem;
+            color: var(--fontColor1);
+            font-size: 2.3rem;
+            line-height: 2.6rem;
+            font-weight: 600;
+            @media (max-width:$md3+px){
+                font-size: 2rem;
+                line-height: 2.3rem;
+            }
+		}
+    }
+</style>
+
+<style lang="scss">
+    .info-main-popup__list {
+        margin-left: 2rem;
+        padding-left: 2rem;
+        list-style: disc;
+        li {
+            margin-bottom: 1rem;
+            color: var(--fontColor2);
+            list-style: disc;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+</style>

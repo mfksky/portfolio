@@ -1,0 +1,29 @@
+---
+---
+
+<div class="popup-header-info">
+    <div class="popup-header-info__count">
+        <span data-lightshop-currentItem></span> / <span data-lightshop-totalItems></span>
+    </div>
+    <div class="popup-header-info__title" data-lightshop-item data-key="title" data-property="textContent"></div>
+</div>
+
+<style lang="scss">
+    .popup-header-info {
+        display: flex;
+        align-items: center;
+        gap: 6rem;
+        @media (max-width:$md4+px){
+            gap: 2rem;
+        }
+        &__count {
+            color: var(--fontColor2);
+            font-size: 1.4rem;
+            line-height: 100%;
+        }
+        &__title {
+            font-weight: 600;
+            line-height: 100%;
+        }
+    }
+</style>

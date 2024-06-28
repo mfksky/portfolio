@@ -1,0 +1,27 @@
+---
+import InfoHeader from './InfoHeader.astro';
+import BtnsHeader from './BtnsHeader.astro';
+---
+
+<div class="header-popup">
+    <InfoHeader />
+    <BtnsHeader />
+</div>
+
+<style lang="scss">
+    .header-popup {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 6rem;
+        padding: 0 2rem;
+        background-color: var(--bgColor2);
+        border-radius: 2rem;
+        @media (max-width:$md3+px){
+            height: 5rem;
+            padding: 0 1.5rem;
+            border-radius: 0;
+        }
+    }
+</style>

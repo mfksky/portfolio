@@ -1,0 +1,24 @@
+---
+import Section from '@components/main/containers/Section.astro';
+import Container from '@components/main/containers/Container.astro';
+import Title from '../ui/Title.astro';
+import PortfolioItems from './PortfolioItems.astro';
+import Popup from './popup/Popup.astro';
+---
+
+<Section id='portfolio' className='portfolio'>
+    <Container>
+        <div class="portfolio__content">
+            <Title
+                badgeTag={{ title: 'Портфолио', icon: '/main/icons/icons.svg#portfolio' }}
+                badgeAnimate={true}
+                badgeDataDuration=".3s"
+            >
+                <h2 class="_scr-item _fade-up">Это мои
+недавние работы</h2>
+            </Title>
+            <PortfolioItems />
+            <Popup />
+        </div>
+    </Container>
+</Section>
