@@ -6,7 +6,9 @@
       "@layouts/*": ["src/layouts/*"],
       "@components/*": ["src/components/*"],
       "@styles/*": ["src/styles/*"],
-      "@js/*": ["src/js/*"]
+      "@js/*": ["src/js/*"],
+      "@images/*": ["src/images/*"],
+      "@utils/*": ["src/utils/*"]
     },
     "allowJs": true,
     "checkJs": false,
