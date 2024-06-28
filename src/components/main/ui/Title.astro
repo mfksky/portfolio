@@ -1,0 +1,50 @@
+---
+import Badge from "./Badge.astro";
+
+const {
+    badgeTag,
+    badgeAnimate,
+    badgeAnimationType,
+    badgeAnimationDuration,
+    badgeAnimationOffset,
+    badgeAnimationDelay,
+    subtext
+} = Astro.props;
+---
+
+<div class="title">
+    {badgeTag && (
+        <Badge
+            tag={badgeTag}
+            animate={badgeAnimate}
+            animationType={badgeAnimationType}
+            dataDuration={badgeAnimationDuration}
+            dataOffset={badgeAnimationOffset}
+            dataDelay={badgeAnimationDelay}
+        />
+    )}
+    <slot />
+    {subtext && <p class="_scr-item _fade-up">{subtext}</p>}
+</div>
+
+<style lang="scss">
+    .title {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        margin-bottom: 6rem;
+        p {
+            max-width: 72rem;
+            color: var(--fontColor2);
+        }
+        @media (max-width:$md1+px){
+            p {
+                max-width: 60rem;
+            }
+        }
+        @media (max-width:$md3+px){
+            margin-bottom: 4rem;
+        }
+    }
+</style>
