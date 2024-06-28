@@ -10,7 +10,6 @@ export default defineConfig({
                         @use "sass:math";
                         @import "/src/styles/assets/mixins";
                         @import "/src/styles/assets/vars";
-                        @import "/src/styles/assets/null";
                     `,
                 },
             },
