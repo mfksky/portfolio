@@ -1,0 +1,41 @@
+---
+---
+
+<a class="scroll-down-btn _scr-item _fade-up" href="#portfolio" data-offset="-100">
+    <svg>
+        <use xlink:href="/main/icons/icons.svg#portfolio"></use>
+    </svg>
+    <span>Мои работы</span>
+</a>
+
+<style lang="scss">
+    .scroll-down-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        height: 5rem;
+        padding: 0 2rem;
+        color: var(--fontColor1);
+        font-size: 1.3rem;
+        line-height: 100%;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        background-color: var(--bgColor1);
+        border: 1px solid var(--borderColor);
+        border-radius: 1rem;
+        transition: transform .6s ease;
+        @include no-hover-touch {
+            transform: scale(.9);
+        }
+        svg {
+            width: 1.8rem;
+            height: 1.8rem;
+            fill: var(--fontColor1);
+        }
+        @media (max-width:$md3+px){
+            width: 100%;
+        }
+    }
+</style>

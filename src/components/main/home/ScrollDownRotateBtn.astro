@@ -13,14 +13,15 @@
 </a>
 
 <style lang="scss">
-    @import '../../styles/assets/vars';
-
     .rotating-btn {
         position: absolute;
         bottom: 5%;
         right: 0;
         transition: transform .6s ease;
         cursor: pointer;
+        @include no-hover-touch {
+            transform: scale(0.9);
+        }
         &__image {
             width: 14rem;
             height: 14rem;
@@ -33,9 +34,6 @@
             height: 3rem;
             fill: var(--fontColor1);
             transform: translate(-50%, -50%);
-        }
-        &:hover {
-            transform: scale(0.9);
         }
         @media (max-width: 1600px){
             bottom: 3%;

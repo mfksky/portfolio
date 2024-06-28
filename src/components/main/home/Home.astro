@@ -1,0 +1,52 @@
+---
+import Section from '@components/main/containers/Section.astro';
+import Container from '@components/main/containers/Container.astro';
+import Title from '../ui/Title.astro';
+import ScrollDownBtn from './ScrollDownBtn.astro';
+import ScrollDownRotateBtn from './ScrollDownRotateBtn.astro';
+import Blob from '../ui/Blob.astro';
+---
+
+<Section id='home' className='home'>
+    <Container>
+        <div class="home__content">
+            <Title
+                badgeTag={{ title: 'Главная', icon: '/main/icons/icons.svg#home' }}
+                badgeAnimate={true}
+                badgeDataDuration=".3s"
+                subtext='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.'
+            >
+                <h1 class="_scr-item _fade-up">Верстка сайтов 
+и Frontend-разработка</h1>
+            </Title>
+            <ScrollDownBtn />
+            <ScrollDownRotateBtn />
+        </div>
+    </Container>
+    <Blob variant={1} />
+    <Blob variant={2} />
+</Section>
+
+<style lang="scss">
+    .home {
+        position: relative;
+        overflow: hidden;
+        &__content {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-end;
+            height: 100vh;
+            padding-bottom: 5%;
+            @media (max-width: 1600px){
+                padding-bottom: 3%;
+            }
+            @media (max-width:$md2+px){
+                height: auto;
+                padding-bottom: 0;
+            }
+        }
+    }
+</style>
