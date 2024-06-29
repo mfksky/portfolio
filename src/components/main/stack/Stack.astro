@@ -1,0 +1,22 @@
+---
+import Section from '@components/main/containers/Section.astro';
+import Container from '@components/main/containers/Container.astro';
+import Title from '../ui/Title.astro';
+import StackList from './StackList.astro';
+---
+
+<Section id='stack' className='stack'>
+    <Container>
+        <div class="stack__content">
+            <Title
+                badgeTag={{ title: 'Stack', icon: '/main/icons/icons.svg#stack' }}
+                badgeAnimate={true}
+                badgeDataDuration=".3s"
+            >
+                <h2 class="_scr-item _fade-up">Инструменты
+и технологии</h2>
+            </Title>
+            <StackList />
+        </div>
+    </Container>
+</Section>

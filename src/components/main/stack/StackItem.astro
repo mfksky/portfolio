@@ -1,0 +1,59 @@
+---
+const {
+    title,
+    image,
+    delay
+} = Astro.props
+---
+
+<div class="item-stack _scr-item _fade-up" data-delay={delay}>
+    <img class="item-stack__image lazyload" data-src={image} alt={title} title={title} />
+    <noscript>
+        <img class="item-stack__image" src={image} alt={title} title={title} />
+    </noscript>
+    <p class="item-stack__title">{title}</p>
+</div>
+
+<style lang="scss">
+    .item-stack {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        padding: 2rem;
+        background-color: var(--bgColor1);
+        border: 1px solid var(--borderColor);
+        border-radius: 2rem;
+        // .item-stack__image
+        &__image {
+            height: 5rem;
+        }
+        // .item-stack__title
+        &__title {
+            text-align: center;
+            font-size: 1.8rem;
+            line-height: 1.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        @media (max-width:$md3+px){
+            gap: 1rem;
+            padding: 1.5rem;
+            font-size: 1.6rem;
+            line-height: 1.6rem;
+            border-radius: 1rem;
+            &__image {
+                height: 4rem;
+            }
+        }
+        @media (max-width:$md4+px){
+            padding: 1.2rem;
+            font-size: 1.4rem;
+            line-height: 1.4rem;
+            &__image {
+                height: 3rem;
+            }
+        }
+    }
+</style>
