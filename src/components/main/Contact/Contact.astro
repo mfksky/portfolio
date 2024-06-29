@@ -1,0 +1,24 @@
+---
+import Section from '@components/main/containers/Section.astro';
+import Container from '@components/main/containers/Container.astro';
+import Title from '../ui/Title.astro';
+import Form from './form/Form.astro';
+import Socials from './Socials.astro';
+---
+
+<Section id='contacts' className='contacts'>
+    <Container>
+        <div class="contacts__content">
+            <Title
+                badgeTag={{ title: 'Контакты', icon: '/main/icons/icons.svg#contacts' }}
+                badgeAnimate={true}
+                badgeDataDuration=".3s"
+            >
+                <h2 class="_scr-item _fade-up">Давайте сделаем
+что-то крутое</h2>
+            </Title>
+            <Form />
+            <Socials />
+        </div>
+    </Container>
+</Section>

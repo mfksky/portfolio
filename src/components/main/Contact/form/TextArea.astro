@@ -1,0 +1,30 @@
+---
+---
+
+<textarea class="textarea-form _scr-item _fade-up" name="message" placeholder="Ваше сообщение *" required></textarea>
+
+<style lang="scss">
+    .textarea-form {
+        width: 100%;
+        height: 16rem;
+        margin-bottom: 6rem;
+        padding: 2rem;
+        font-size: 2rem;
+        line-height: 100%;
+        background-color: var(--bgColor1);
+        border: 1px solid var(--borderColor);
+        border-radius: 1rem;
+        resize: none;
+        transition: all .3s ease;
+        &:hover, &:focus {
+            border-color: var(--accentColor1);
+        }
+        &:focus-visible {
+            outline: none;
+        }
+        @media (max-width:$md3+px){
+            margin-bottom: 4rem;
+            font-size: 1.8rem;
+        }
+    }
+</style>

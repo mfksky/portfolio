@@ -1,0 +1,44 @@
+---
+import SocialItem from './SocialItem.astro';
+
+const socials = [
+    {
+        title: 'Telegram', image: 'tg', url: 'https://t.me/mfkboy', userName: 'mfkboy', delay: '0s', offset: '-10'
+    },
+    {
+        title: 'ВКОнтакте', image: 'vk', url: 'https://vk.com/mfkboy', userName: 'mfkboy', delay: '.1s/.1s/.1s/.1s/0s', offset: '-10'
+    },
+    {
+        title: 'GitHub', image: 'github', url: 'https://github.com/mfksky', userName: 'mfksky', delay: '.2s/0s/0s/0s/0s', offset: '-10'
+    },
+];
+---
+
+<div class="socials-contacts">
+    {
+        socials.map(social => (
+            <SocialItem title={social.title} image={social.image} userName={social.userName} href={social.url} offset={social.offset} delay={social.delay} />
+        ))
+    }
+</div>
+
+<style lang="scss">
+    .socials-contacts {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-top: 16rem;
+        padding-bottom: 6rem;
+        @media (max-width:$md1+px){
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @media (max-width:$md3+px){
+            gap: 1rem;
+            margin-top: 8rem;
+            padding-bottom: 8rem;
+        }
+        @media (max-width:$md4+px){
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

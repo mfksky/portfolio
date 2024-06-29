@@ -1,0 +1,103 @@
+---
+import Input from './Input.astro';
+import TextArea from './TextArea.astro';
+import SubmitBtn from './SubmitBtn.astro';
+import Message from './Message.astro';
+---
+
+<div class="form-contacts">
+    <form class="form-contact__form" data-form>
+        <div class="form-contact__inputs">
+            <Input name='name' placeholder='Ваше имя *' delay='0s' />
+            <Input name='email' placeholder='Ваш email *' delay='.1s/.1s/.1s/0s/0s' />
+        </div>
+        <TextArea />
+        <SubmitBtn />
+    </form>
+    <Message />
+</div>
+
+<script>
+    import { createItem } from '@directus/sdk';
+    import directus from '@utils/clientAuth';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelector('[data-form]').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData);
+            data.date = new Date().toISOString().split('.')[0];
+
+            try {
+                await directus.request(createItem('contact_messages', data));
+                showMessage(true);
+            } catch (error) {
+                showMessage(false);
+            }
+        });
+    });
+
+    function showMessage(isSuccess) {
+        const formMessage = document.querySelector('[data-form-message]');
+        const contactForm = document.querySelector('[data-form]');
+        const succesMessageImages = document.querySelectorAll('[data-form-message-img-success]');
+        const errorMessageImages = document.querySelectorAll('[data-form-message-img-error]');
+        const messageTitle = document.querySelector('[data-form-message-heading]');
+        const messageText = document.querySelector('[data-form-message-subtext]');
+
+        if (isSuccess) {
+            succesMessageImages.forEach(image => {
+                image.classList.add('_active');
+            });
+            messageTitle.textContent = 'Вы восхитительны!';
+            messageText.textContent = 'Я отвечу вам, как можно скорее!';
+        } else {
+            errorMessageImages.forEach(image => {
+                image.classList.add('_active');
+            });
+            messageTitle.textContent = 'Произошла ошибка(';
+            messageText.textContent = 'Я уже разбираюсь с этим!';
+        }
+
+        contactForm.classList.add('_hidden');
+        formMessage.classList.add('_visible');
+
+        setTimeout(() => {
+            formMessage.classList.remove('_visible');
+            setTimeout(() => {
+                contactForm.classList.remove('_hidden');
+                succesMessageImages.forEach(image => {
+                    image.classList.remove('_active');
+                });
+                errorMessageImages.forEach(image => {
+                    image.classList.remove('_active');
+                });
+                document.querySelector('[data-form]').reset();
+            }, 800);
+        }, 5000);
+    }
+</script>
+
+<style lang="scss">
+    .form-contact {
+        position: relative;
+		// .form-contact__form
+		&__form {
+            transition: opacity .6s ease;
+            &._hidden {
+                opacity: 0;
+            }
+		}
+		// .form-contact__inputs
+		&__inputs {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            @media (max-width:$md3+px){
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+		}
+    }
+
+</style>

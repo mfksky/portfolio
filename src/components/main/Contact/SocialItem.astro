@@ -1,0 +1,81 @@
+---
+const {
+    title,
+    image,
+    userName,
+    href,
+    offset,
+    delay
+} = Astro.props;
+---
+
+<a class="social-item-contacts _scr-item _fade-up" href={href} target="_blank" data-offset={offset} data-delay={delay}>
+    <img class="social-item-contacts__image lazyload" data-src={`/main/images/social/${image}.svg`} alt={title} title={title} />
+    <noscript>
+        <img class="social-item-contacts__image" src={`/main/images/social/${image}.svg`} alt={title} title={title} />
+    </noscript>
+    <div class="socials-contact__text">
+        <div class="social-item-contacts__title">{title}:</div>
+        <div class="social-item-contacts__username">{userName}</div>
+    </div>
+</a>
+
+<style lang="scss">
+    .social-item-contacts {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 2rem;
+        border: 1px solid var(--borderColor);
+        border-radius: 1rem;
+        @include no-hover-touch {
+            .social-item-contacts__image, .social-item-contacts__text {
+                opacity: 1;
+            }
+            .social-item-contacts__username {
+                color: var(--accentColor1);
+            }
+        }
+        // .social-item-contacts__image
+        &__image {
+            width: 5rem;
+            height: 5rem;
+            opacity: .6;
+            transition: all .3s ease;
+            @media (max-width:$md3+px){
+                width: 4rem;
+                height: 4rem;
+            }
+        }
+        // .social-item-contacts__text
+        &__text {
+            display: flex;
+            flex-direction: column;
+            line-height: 100%;
+            opacity: .6;
+            transition: all .3s ease;
+        }
+        // .social-item-contacts__title
+        &__title {
+            color: var(--fontColor1);
+            font-size: 2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        // .social-item-contacts__username
+        &__username {
+            font-size: 1.4rem;
+            color: var(--fontColor2);
+            text-transform: uppercase;
+            transition: all .3s ease;
+        }
+        @media (max-width:$md3+px){
+            &__title {
+                font-size: 1.6rem;
+            }
+            &__username {
+                font-size: 1.2rem;
+            }
+        }
+    }
+</style>

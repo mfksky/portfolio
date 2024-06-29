@@ -9,6 +9,9 @@ const { id = '', className = '' } = Astro.props;
 <style lang="scss">
     .section {
         margin-bottom: 16rem;
+        &:last-child {
+            margin-bottom: 0;
+        }
         @media (max-width:$md3+px){
             margin-bottom: 8rem;
         }

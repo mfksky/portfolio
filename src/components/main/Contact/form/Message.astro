@@ -1,0 +1,72 @@
+---
+---
+
+<div class="message-form" data-form-message>
+    <div class="message-form__content">
+        <img class="message-form__img lazyload" data-src="/main/images/smile.svg" alt="Успех" title="Успех" data-form-message-img-success />
+        <noscript>
+            <img class="message-form__img" src="/main/images/smile.svg" alt="Успех" title="Успех" data-form-message-img-success />
+        </noscript>
+        <img class="message-form__img lazyload" data-src="/main/images/sad.svg" alt="Ошибка" title="Ошибка" data-form-message-img-error />
+        <noscript>
+            <img class="message-form__img" src="/main/images/sad.svg" alt="Ошибка" title="Ошибка" data-form-message-img-error />
+        </noscript>
+        <div class="message-form__text">
+            <h3 class="message-form__heading" data-form-message-heading></h3>
+            <p class="message-form__subtext" data-form-message-subtext></p>
+        </div>
+    </div>
+</div>
+
+<style lang="scss">
+    .message-form {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        visibility: hidden;
+        opacity: 0;
+        transition: all .6s ease .6s;
+        &._visible {
+            visibility: visible;
+            opacity: 1;
+        }
+		// .message-form__content
+		&__content {
+            position: relative;
+		}
+		// .message-form__img
+		&__img {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            display: none;
+            width: 10rem;
+            height: 10rem;
+            transform: translateX(-50%);
+            &._active {
+                display: block;
+            }
+		}
+		// .message-form__text
+		&__text {
+            padding-top: 14rem;
+            text-align: center;
+		}
+		// .message-form__heading
+		&__heading {
+		}
+		// .message-form__subtext
+		&__subtext {
+            margin-top: 1rem;
+            font-size: 1.8rem;
+            line-height: 2.3rem;
+		}
+    }
+</style>

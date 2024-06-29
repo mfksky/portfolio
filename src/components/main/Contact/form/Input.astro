@@ -1,0 +1,33 @@
+---
+const {
+    name,
+    placeholder,
+    delay
+} = Astro.props;
+---
+
+<input class="input-form _scr-item _fade-up" type="text" name={name} placeholder={placeholder} autocomplete="off" required data-delay={delay}>
+
+<style lang="scss">
+    .input-form {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 6rem;
+        padding: 0 2rem;
+        font-size: 2rem;
+        line-height: 100%;
+        background-color: var(--bgColor1);
+        border: 1px solid var(--borderColor);
+        border-radius: 1rem;
+        transition: all .3s ease;
+        &:hover, &:focus {
+            border-color: var(--accentColor1);
+        }
+        @media (max-width:$md3+px){
+            min-height: 5rem;
+            font-size: 1.8rem;
+        }
+    }
+</style>
