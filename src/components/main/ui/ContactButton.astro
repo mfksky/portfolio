@@ -106,7 +106,7 @@ const buttonText = isHeader ? 'Написать мне' : 'Связаться с
                 height: 1.8rem;
                 fill: var(--fontColor1);
             }
-            &:hover {
+            @include no-hover-touch {
                 &::before {
                     transform: translate(0);
                     opacity: 1;
