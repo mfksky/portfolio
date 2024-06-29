@@ -6,8 +6,8 @@ import Message from './Message.astro';
 ---
 
 <div class="form-contacts">
-    <form class="form-contact__form" data-form>
-        <div class="form-contact__inputs">
+    <form class="form-contacts__form" data-form>
+        <div class="form-contacts__inputs">
             <Input name='name' placeholder='Ваше имя *' delay='0s' />
             <Input name='email' placeholder='Ваш email *' delay='.1s/.1s/.1s/0s/0s' />
         </div>
@@ -79,16 +79,16 @@ import Message from './Message.astro';
 </script>
 
 <style lang="scss">
-    .form-contact {
+    .form-contacts {
         position: relative;
-		// .form-contact__form
+		// .form-contacts__form
 		&__form {
             transition: opacity .6s ease;
             &._hidden {
                 opacity: 0;
             }
 		}
-		// .form-contact__inputs
+		// .form-contacts__inputs
 		&__inputs {
             display: flex;
             gap: 2rem;
