@@ -1,0 +1,52 @@
+---
+const {
+    title,
+    skills
+} = Astro.props;
+---
+
+<div class="block-skills">
+    <h3 class="block-skills__heading _scr-item _fade-up">{title}</h3>
+    <ul class="block-skills__list">
+        {
+            skills.map(skill => (
+                <li class="block-skills__list-item _scr-item _fade-up">{skill}</li>
+            ))
+        }
+    </ul>
+</div>
+
+<style lang="scss">
+    .block-skills {
+        margin-bottom: 6rem;
+        &:last-child {
+            margin-bottom: 0;
+        }
+        // .block-skills__heading
+        &__heading {
+            margin-bottom: 2rem;
+        }
+        // .block-skills__list
+        &__list {
+            padding-left: 2rem;
+        }
+        // .block-skills__list-item
+        &__list-item {
+            font-size: 1.8rem;
+            line-height: 3.2rem;
+        }
+        @media (max-width:$md3+px){
+            margin-bottom: 4rem;
+            &__heading {
+                margin-bottom: 1.5rem;
+            }
+            &__list {
+                padding-left: 1.5rem;
+            }
+            &__list-item {
+                font-size: 1.6rem;
+                line-height: 3rem;
+            }
+        }
+    }
+</style>

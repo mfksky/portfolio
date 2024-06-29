@@ -1,0 +1,57 @@
+---
+import Section from '@components/main/containers/Section.astro';
+import Container from '@components/main/containers/Container.astro';
+import Title from '../ui/Title.astro';
+import SkillsItem from './SkillsItem.astro';
+
+const skillsList = [
+    {
+        title: 'Верстка / Frontend',
+        skills: [
+            '— HTML5 (PUG), CSS3 (SCSS/LESS)',
+            '— JavaScript (ES6+)',
+            '— Фреймворки/библиотеки: Vue.js',
+            '— Адаптивная/отзывчивая верстка, методология БЭМ (BEM)',
+            '— Сборщики проектов (Webpack, Gulp и др.)',
+            '— Опыт работы с Git',
+            '— Владение графическими редакторами (Figma, Photoshop, Illustrator)'
+        ]
+    },
+    {
+        title: 'Backend',
+        skills: [
+            '— Базовые знания PHP',
+            '— Опыт коммерческих проектов October CMS',
+            '— Работа с Headless-системами (Directus, Strapi)'
+        ]
+    },
+    {
+        title: 'SEO-продвижение',
+        skills: [
+            '— Техническое SEO',
+            '— Опыт продвижения коммерческих проектов',
+            '— Продвижение в высококонкурентных тематиках'
+        ]
+    },
+];
+---
+
+<Section id='skills' className='skills'>
+    <Container>
+        <div class="skills__content">
+            <Title
+                badgeTag={{ title: 'Навыки', icon: '/main/icons/icons.svg#skills' }}
+                badgeAnimate={true}
+                badgeDataDuration=".3s"
+                subtext='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.'
+            >
+                <h2 class="_scr-item _fade-up">Мои навыки</h2>
+            </Title>
+            {
+                skillsList.map((skill) => (
+                    <SkillsItem title={skill.title} skills={skill.skills} />
+                ))
+            }
+        </div>
+    </Container>
+</Section>
