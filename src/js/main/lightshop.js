@@ -29,7 +29,7 @@ export function initLightshop() {
                         const response = await fetch('/api/portfolio-data');
                         lightshopItemData = await response.json();
                         lightshopCounterTotal.textContent = lightshopItemData.length;
-                        console.log(JSON.stringify(lightshopItemData, null, 2));
+                        //console.log(JSON.stringify(lightshopItemData, null, 2));
                     } catch (error) {
                         console.error('Ошибка при загрузке данных портфолио:', error);
                     }
