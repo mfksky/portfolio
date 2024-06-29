@@ -44,7 +44,14 @@ const { title, icon, url } = Astro.props;
         text-transform: uppercase;
         border-radius: 1rem;
         transition: all .3s ease;
-        &:hover, &._active {
+        @include no-hover-touch {
+            color: var(--bgColor2);
+            background-color: var(--fontColor2);
+            svg {
+                fill: var(--bgColor2);
+            }
+        }
+        &._active {
             color: var(--bgColor2);
             background-color: var(--fontColor2);
             svg {
