@@ -34,10 +34,4 @@
 			@content;
 		}
 	}
-
-	&:focus {
-		@media (hover: hover) and (pointer: fine) {
-			@content;
-		}
-	}
 }
