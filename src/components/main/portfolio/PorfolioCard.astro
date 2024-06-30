@@ -1,5 +1,6 @@
 ---
 import { Picture } from 'astro:assets';
+import PrimaryBtn from '@components/main/ui/PrimaryBtn.astro';
 
 const { id, title, subtitle, mainImage, tags, additionTag } = Astro.props;
 ---
@@ -18,9 +19,7 @@ const { id, title, subtitle, mainImage, tags, additionTag } = Astro.props;
     <div class="item-portfolio__text">
         <h3>{title}</h3>
         <p>{subtitle}</p>
-        <div class="item-portfolio__button">
-            <span>Подробнее</span>
-        </div>
+        <PrimaryBtn additionClass='item-portfolio__button' title='Подробнее' />
     </div>
     <div class="item-portfolio__tags">
     {
@@ -95,45 +94,6 @@ const { id, title, subtitle, mainImage, tags, additionTag } = Astro.props;
                 display: none;
             }
 		}
-        // .item-portfolio__button
-        &__button {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 4rem;
-            padding: 0 2rem;
-            font-size: 1.3rem;
-            line-height: 100%;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            background-color: var(--accentColor1);
-            border-radius: 1rem;
-            overflow: hidden;
-            cursor: pointer;
-            &::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-image: var(--gradient1);
-                opacity: 0;
-                transform: translateY(100%);
-                transition: all .6s ease;
-            }
-            span {
-                position: relative;
-            }
-            @include no-hover-touch {
-                &::before {
-                    transform: translate(0);
-                    opacity: 1;
-                }
-            }
-        }
 		// .item-portfolio__tags
 		&__tags {
             position: absolute;
@@ -201,4 +161,11 @@ const { id, title, subtitle, mainImage, tags, additionTag } = Astro.props;
 		}
     }
 
+</style>
+
+<style lang="scss" is:global>
+    .item-portfolio__text .item-portfolio__button {
+        width: 100%;
+        height: 4rem;
+    }
 </style>

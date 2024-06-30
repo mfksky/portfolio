@@ -11,7 +11,7 @@ import ContactButton from "@components/main/ui/ContactButton.astro";
         <Avatar />
         <Info />
     </div>
-    <ContactButton variant='sidebar' />
+    <ContactButton title='Связаться со мной' />
 </div>
 
 <style lang="scss">
@@ -60,6 +60,27 @@ import ContactButton from "@components/main/ui/ContactButton.astro";
             }
             @media (max-width:$md3+px){
                 margin-bottom: 4rem;
+            }
+        }
+    }
+</style>
+
+<style lang="scss" is:global>
+    .sidebar .btn-contact__btn {
+        width: 100%;
+    }
+    .sidebar .btn-contact__content {
+        top: auto;
+        bottom: 6rem;
+        transform: translateY(6.5rem);
+        @media (max-width: 1600px){
+            bottom: 5rem;
+        }
+        @media (max-width: $md5+px){
+            bottom: 4rem;
+            a {
+                width: 4rem;
+                height: 4rem;
             }
         }
     }

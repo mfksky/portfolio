@@ -5,7 +5,7 @@ import ContactButton from "@components/main/ui/ContactButton.astro";
 
 <header class="header">
     <Nav />
-    <ContactButton variant='header' />
+    <ContactButton componentClass='header__btn-contact' title='Написать мне' icon='/main/icons/icons.svg#chat' />
 </header>
 
 <script>
@@ -55,6 +55,45 @@ import ContactButton from "@components/main/ui/ContactButton.astro";
         @media (max-width:$md5+px){
             left: 3rem;
             right: 3rem;
+        }
+    }
+</style>
+
+<style lang="scss" is:global>
+    .header .btn-contact__btn{
+        @media (max-width:$md3+px){
+            span {
+                display: none;
+            }
+        }
+        @media (max-width:$md4+px){
+            padding: 0 1.6rem;
+        }
+        @media (max-width:$md5+px){
+            padding: 0 1.5rem;
+            svg {
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+        }
+    }
+    .header .btn-contact__content {
+        @media (max-width: 1600px){
+            top: 5rem;
+        }
+        @media (max-width:$md2+px){
+            top: -6.5rem;
+            transform: translateY(6.5rem);
+        }
+        @media (max-width:$md4+px){
+            top: -8rem;
+        }
+        @media (max-width:$md5+px){
+            top: -7rem;
+            a {
+                width: 4.5rem;
+                height: 4rem;
+            }
         }
     }
 </style>

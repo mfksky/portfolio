@@ -1,7 +1,7 @@
 ---
 import Input from './Input.astro';
 import TextArea from './TextArea.astro';
-import SubmitBtn from './SubmitBtn.astro';
+import PrimaryBtn from '@components/main/ui/PrimaryBtn.astro';
 import Message from './Message.astro';
 ---
 
@@ -12,7 +12,7 @@ import Message from './Message.astro';
             <Input name='email' placeholder='Ваш email *' delay='.1s/.1s/.1s/0s/0s' />
         </div>
         <TextArea />
-        <SubmitBtn />
+        <PrimaryBtn additionClass='form-contacts__submit _scr-item _fade-up' type='submit' title='Отправить' icon='/main/icons/icons.svg#send' />
     </form>
     <Message />
 </div>
@@ -100,4 +100,10 @@ import Message from './Message.astro';
 		}
     }
 
+</style>
+
+<style lang="scss" is:global>
+    .form-contacts__form .form-contacts__submit {
+        padding: 0 6rem;
+    }
 </style>
